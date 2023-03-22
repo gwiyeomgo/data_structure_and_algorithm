@@ -33,33 +33,18 @@ int a[1000000]:4MB
 
 ---
 
-|번호 |목차 | 진행|참고 링크|
-|---|---|---|---|
-| 02 | 연결 리스트| |https://www.golangprograms.com/golang-program-for-implementation-of-linked-list.html ,https://dororongju.tistory.com/108?category=731412|
-| 03 | 양방향 연결 리스트| ||
-| 04 | 스택| ||
-| 05 | 스택을 활용한 계산기 만들기| ||
-| 06 | 큐| ||
-| 07 | 정렬 - 선택 정렬과 삽입 정렬| ||
-| 08 | 정렬 - 퀵 정렬| ||
-| 09 | 정렬 - 계수 정렬| ||
-| 10 | 정렬 - 기수 정렬| ||
-| 11 | 트리 - 이진 트리| ||
-| 12 | 트리 - 이진 트리의 구현 및 순회| ||
-| 13 | 우선순위 큐| ||
-| 14 | 탐색 - 순차 탐색과 이진 탐색| |https://ryusm.tistory.com/39?category=858287,
-https://blog.hexabrain.net/245|
-| 15 | 그래프 - 그래프의 개념과 구현| |https://dreammarker.tistory.com/146|
-| 16 | 그래프 - 깊이 우선 탐색| ||
-| 17 | 그래프 - 너비 우선 탐색| ||
-| 18 | 탐색 - 이진 탐색 트리| ||
-| 19 | 탐색 - AVL 트리| ||
-| 20 | 해시| ||
-| 21 | 프림 알고리즘| ||
-| 22 | 그래프 - 다익스트라의최단 경로| ||
-| 23 | 고급 자료구조 - 세그먼트 트리| ||
-| 24 | 인덱스 트리| ||
-| 25 | 문자열 - KMP 문자열 매칭| ||
-| 26 | 문자열 - 라빈 카프 문자열 매칭| ||
+|번호 | 목차 |  진행|
+|---|---|---|
+| 01 | [List](./List.md)           | |
+| 02 | [Stack](./Stack.md)         | |
+| 03 | [Queue](./Queue.md)         | |
+| 04 | [Sort](./Sort.md)           | |
+| 05 | [Tree](./Tree.md)           | |
+| 06 | [Search](./Search.md)       | |
+| 07 | [Graph](./Graph.md)         | |
+| 08 | [Heap](./Heap.md)           | |
+| 09 | [HashTable](./HashTable.md) | |
+
+https://github.com/WeareSoft/tech-interview
 
 https://velog.io/@teo/%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%97%90%EA%B2%8C-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B3%B5%EB%B6%80%EA%B0%80-%EB%AF%B8%EC%B9%98%EB%8A%94-%EC%98%81%ED%96%A5
