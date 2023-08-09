@@ -54,13 +54,13 @@ https://velog.io/@teo/%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EA%B0%9C%EB
 
 # 이론 기록
 
-```go
+```
 fmt.Printf("Enter  size  of  your  array: “)
 var  size  int
 fmt.Scanln(&size)
 ```
 ___
-```go
+```
 arr  :=  make([]int, 10)
 for i:=0; i<size; i++ {
 fmt.Printf("Enter %dth  element: ",  i)
@@ -68,7 +68,7 @@ fmt.Scanf("%d", &arr[i])
 }
 ```
 ___
-```go
+```
 var n1, n2, n3, n4 int
 
 fmt.Println("IPv4 주소")
@@ -78,7 +78,7 @@ fmt.Scanf("%d.%d.%d.%d", &n1, &n2, &n3, &n4)
 //128.34.0.1
 ```
 ___
-```go
+```
 reader  :=  bufio.NewReader(os.Stdin)
 
 fmt.Println("Simple  Shell")
