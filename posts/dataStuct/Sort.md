@@ -1,5 +1,4 @@
 
-
 버블정렬(Bubble sort)
 병합정렬(Merge sort)
 선택정렬(Selection sort)
