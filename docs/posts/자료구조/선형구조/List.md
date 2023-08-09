@@ -1,12 +1,5 @@
 
 
-| 01 | [ArrayList]()
-| 02 | [LinkedList]()
-| 03 | [DoublyLinkedList]()
-
-https://www.golangprograms.com/golang-program-for-implementation-of-linked-list.html
-
-https://dororongju.tistory.com/108?category=731412
 
 
 # 연결 리스트(linked list)
@@ -16,7 +9,7 @@ https://dororongju.tistory.com/108?category=731412
 - [배열기반 리스트 예시](https://replit.com/@gwiyeomgo/js-datastruct#addArray.js)
 
 
-# 포인터 기반 리스트
+### 포인터 기반 리스트
 
 ### 단반향 연결 리스트
 javascript는 객체로 구현
@@ -29,12 +22,9 @@ javascript는 객체로 구현
 
 
 
-객체를 통해 구현 예시,설명
-[참고](https://www.geeksforgeeks.org/linked-list-set-2-inserting-a-node/)
-[참고1](https://velog.io/@kimkevin90/Javascript%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-Linked-List-%EA%B5%AC%ED%98%84)
-
 
 ___
+
 ### [3.1 연결 리스트 뒤집기](https://leetcode.com/problems/reverse-linked-list/)
 
 ### 연결리스트 
@@ -45,7 +35,7 @@ ___
 |범위,제한사항|      |  |
 |아이디어          | 링크드리스트 생성시 값을 stack 에 추가 <br/> 마지막 요소는 넣지 않고 <br/> 스택에서 요소를 꺼내서 마지막 노드로부터 꺼내어진 요소를 다음으로 연결<br/>  |    |
 
-```
+```go
 func reverseList(head *ListNode) *ListNode {
     var prev *ListNode // 이전 노드를 가리킬 포인터
     curr := head      // 현재 노드를 가리킬 포인터
@@ -73,7 +63,7 @@ func reverseList(head *ListNode) *ListNode {
 
 ```
 
-```
+```go
 
 /**
  * Definition for singly-linked list.
@@ -114,7 +104,7 @@ func reverseList(head *ListNode) *ListNode {
 //head는 연결 리스트의 첫 번째 노드를 가리키는 포인터
 ```
 
-```
+```go
 
 func reverseList(head *ListNode) *ListNode {
     if head == nil || head.Next == nil {
@@ -140,7 +130,7 @@ ___
 |범위,제한사항|                                                                                     ||
 |아이디어          | Fast/slow 포인터 패턴: Fast 포인터를 한 번에 2칸씩 움직이고 Slow 포인터를 한 번에 1칸씩 움직이며 서로 만나는 경우가 있는지 확인 |  |
 
-```
+```go
 /**
  * Definition for singly-linked list.
  * type ListNode struct {
@@ -166,7 +156,7 @@ func hasCycle(head *ListNode) bool {
   * 빠른(Fast) 포인터와 느린(Slow) 포인터를 동시에 사용하면서 서로 다른 속도로 움직이게 하여 데이터 구조를 순회하거나 특정 조건을 확인하는데 유용하게 활용
 
 
-```
+```go
 func hasCycle(head *ListNode) bool {
         hash := make(map[*ListNode]bool)
     for curr := head; curr != nil; curr = curr.Next {
@@ -188,7 +178,7 @@ ___
 |범위,제한사항|  연결 리스트는 양의 정수로 표현 <br/> 1번째 노드는 가장 높은 자리의 숫자 <br/> 주어진 두 연결 리스트는 무조건 값이 있다 <br/> 0을 제외하고 0으로 시작 하는 숫자는 없다  <br/>    | |
 |아이디어          |2개의 연결 리스트를 뒤집는다 뒤집은 연결 리스트를 순회하면서 각 자리수를 더한다 각 자리 숫자를 더하면 새로운 노드를 생성하고 연결 * 첫 노드가 가장 큰 수 이니 가장 작은 숫자부터 진행하려면 연결 리스트의 맨 뒤 숫자부터 시작 => 뒤집는 방법으로 stack 을 사용하기도 함 * 코드에서 reverseList 함수는 연결 리스트를 뒤집는 역할을 하고, addTwoNumbers 함수는 역순으로 더한 결과를 생성하되, 마지막에 결과를 다시 뒤집어서 정순으로 반환하도록 수정되었습니다. 이 코드를 사용하면 주어진 입력에 대해 [7,8,0,7]과 같은 원하는 결과를 얻을 수 있을 것입니다.  |  |
 
-```
+```go
 /**
  * Definition for singly-linked list.
  * type ListNode struct {

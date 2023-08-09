@@ -1,0 +1,556 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>단순구조-문자열 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../선형구조/Array.html" />
+    
+    
+    <link rel="prev" href="../DataStruct.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../DataStruct.html">
+            
+                <a href="../DataStruct.html">
+            
+                    
+                    자료구조
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.2.1" data-path="String.html">
+            
+                <a href="String.html">
+            
+                    
+                    단순구조-문자열
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../선형구조/Array.html">
+            
+                <a href="../선형구조/Array.html">
+            
+                    
+                    선형구조-배열
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../선형구조/Array.html">
+            
+                <a href="../선형구조/Array.html">
+            
+                    
+                    선형구조-리스트
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../선형구조/Stack.html">
+            
+                <a href="../선형구조/Stack.html">
+            
+                    
+                    선형구조-스택
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../선형구조/Queue.html">
+            
+                <a href="../선형구조/Queue.html">
+            
+                    
+                    선형구조-큐
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../비선형구조/Tree.html">
+            
+                <a href="../비선형구조/Tree.html">
+            
+                    
+                    비선형-트리
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../알고리즘/Algorithm.html">
+            
+                <a href="../../알고리즘/Algorithm.html">
+            
+                    
+                    알고리즘
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../알고리즘/Recursion.html">
+            
+                <a href="../../알고리즘/Recursion.html">
+            
+                    
+                    재귀
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../알고리즘/DynamicProgramming.html">
+            
+                <a href="../../알고리즘/DynamicProgramming.html">
+            
+                    
+                    동적계획
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    tip
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >단순구조-문자열</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <hr>
+<h3 id="21-&#xD68C;&#xBB38;&#xC778;&#xC9C0;-&#xD655;&#xC778;"><a href="https://leetcode.com/problems/valid-palindrome/submissions/" target="_blank">2.1 &#xD68C;&#xBB38;&#xC778;&#xC9C0; &#xD655;&#xC778;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td></td>
+<td>o(n) &#xBB38;&#xC790;&#xC5F4;&#xC758; &#xAE38;&#xC774;&#xB9CC;&#xD07C; &#xBC18;&#xBCF5;&#xBB38;&#xC744; &#xC218;&#xD589;</td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td>&#xC544;&#xC2A4;&#xD0A4;&#xCF54;&#xB4DC; &#xC54C;&#xD30C;&#xBCB3;&#xC18C;&#xBB38;&#xC790;&#xB85C; &#xD1B5;&#xC77C; <br> &#xC544;&#xC2A4;&#xD0A4;&#xCF54;&#xB4DC; &#xBB38;&#xC790;&#xB098;,&#xC22B;&#xC790;&#xC77C; &#xACBD;&#xC6B0;&#xB9CC; &#xBD84;&#xB9AC; <br> &#xBB38;&#xC790;&#xC5F4;&#xC744; &#xB9AC;&#xBC84;&#xC2A4;&#xD574;&#xC11C; &#xC77C;&#xCE58;&#xD558;&#xB294;&#xC9C0; &#xBE44;&#xAD50; <br></td>
+<td>o(n) &#xC0C8;&#xB85C;&#xC6B4; &#xBB38;&#xC790;&#xC5F4; cleanedStr&#xACFC; reversedStr&#xC744; &#xB9CC;&#xB4E4;&#xAE30; &#xB54C;&#xBB38;&#xC5D0;</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> isPalindrome(s <span class="hljs-keyword">string</span>) <span class="hljs-keyword">bool</span> {
+  cleanedStr := <span class="hljs-string">&quot;&quot;</span>
+  <span class="hljs-keyword">for</span> _, ch := <span class="hljs-keyword">range</span> s {
+    <span class="hljs-keyword">if</span> unicode.IsLetter(ch) || unicode.IsDigit(ch) {
+      cleanedStr += <span class="hljs-keyword">string</span>(unicode.ToLower(ch))
+    }
+  }
+
+  <span class="hljs-comment">// &#xBB38;&#xC790;&#xC5F4;&#xC744; &#xB9AC;&#xBC84;&#xC2A4;&#xD558;&#xC5EC; &#xBE44;&#xAD50;&#xD569;&#xB2C8;&#xB2E4;.</span>
+  reversedStr := <span class="hljs-string">&quot;&quot;</span>
+  <span class="hljs-keyword">for</span> i := <span class="hljs-built_in">len</span>(cleanedStr) - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i-- {
+    reversedStr += <span class="hljs-keyword">string</span>(cleanedStr[i])
+  }
+
+  <span class="hljs-keyword">return</span> cleanedStr == reversedStr
+}
+</code></pre>
+<ul>
+<li>&#xD68C;&#xBB38;(palindrome)&#xC740; &#xC55E;&#xC73C;&#xB85C; &#xC77D;&#xC73C;&#xB098; &#xB4A4;&#xB85C; &#xC77D;&#xC73C;&#xB098; &#xB3D9;&#xC77C;&#xD55C; &#xBB38;&#xC790;&#xC5F4;&#xC774; &#xB418;&#xB294; &#xB2E8;&#xC5B4;, &#xBB38;&#xC7A5;, &#xB610;&#xB294; &#xC22B;&#xC790;&#xB97C; &#xC758;&#xBBF8;&#xD569;&#xB2C8;&#xB2E4;.</li>
+<li>&#xC544;&#xC2A4;&#xD0A4;&#xCF54;&#xB4DC;(ASCII)<ul>
+<li>&#xC22B;&#xC790;: 48&#xBD80;&#xD130; 57&#xAE4C;&#xC9C0; (0&#xBD80;&#xD130; 9&#xAE4C;&#xC9C0;)</li>
+<li>&#xC18C;&#xBB38;&#xC790;: 97&#xBD80;&#xD130; 122&#xAE4C;&#xC9C0; (a&#xBD80;&#xD130; z&#xAE4C;&#xC9C0;)</li>
+<li>&#xB300;&#xBB38;&#xC790;: 65&#xBD80;&#xD130; 90&#xAE4C;&#xC9C0; (A&#xBD80;&#xD130; Z&#xAE4C;&#xC9C0;)
+```go
+s := &#x201C;GOLANG&quot;
+//[71 79 76 65 78 71]</li>
+</ul>
+</li>
+</ul>
+<p>for _, r := range s {
+fmt.Printf(&quot;%c - %d\n&quot;, r, r)
+//G - 71
+//O - 79
+}</p>
+<pre><code>- &#xACF5;&#xBC31;&#xC81C;&#xAC70;
+```go
+sample := &quot; This is a sample string   &quot;
+noSpaceString := strings.ReplaceAll(sample, &quot; &quot;, &#x201C;&quot;)
+</code></pre><h3 id="22-&#xADF8;&#xB8F9;-&#xC5D0;&#xB108;&#xADF8;&#xB7A8;"><a href="https://leetcode.com/problems/group-anagrams/" target="_blank">2.2 &#xADF8;&#xB8F9; &#xC5D0;&#xB108;&#xADF8;&#xB7A8;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td>&#xBB38;&#xC790;&#xC5F4; &#xB9AC;&#xC2A4;&#xD2B8;,&#xB9AC;&#xC2A4;&#xD2B8;&#xC5D0; &#xC788;&#xB294; &#xBAA8;&#xB4E0; &#xBB38;&#xC790;&#xC5F4;&#xC740; &#xC18C;&#xBB38;&#xC790;&#xB85C; &#xAD6C;&#xC131;</td>
+<td>O(n log n) sort.Strings(s) &#xC0AC;&#xC6A9;&#xC73C;&#xB85C;</td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td></td>
+<td>strings.Join(s, &quot;&quot;)&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xBB38;&#xC790;&#xC5F4;&#xC744; &#xB2E4;&#xC2DC; &#xD569;&#xCE58;&#xB294; &#xC791;&#xC5C5;&#xB3C4; &#xC2DC;&#xAC04;&#xACFC; &#xBA54;&#xBAA8;&#xB9AC;&#xB97C; &#xC18C;&#xBAA8;</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-go"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;sort&quot;</span>
+<span class="hljs-keyword">func</span> groupAnagrams(strs []<span class="hljs-keyword">string</span>) [][]<span class="hljs-keyword">string</span> {
+    hashmap := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>][]<span class="hljs-keyword">string</span>)
+    <span class="hljs-keyword">for</span> _, str := <span class="hljs-keyword">range</span> strs {
+      s := strings.Split(str, <span class="hljs-string">&quot;&quot;</span>)
+      sort.Strings(s)
+      key := strings.Join(s, <span class="hljs-string">&quot;&quot;</span>)
+       hashmap[key]  =<span class="hljs-built_in">append</span>(hashmap[key],str)
+
+    }
+
+    list := <span class="hljs-built_in">make</span>([][]<span class="hljs-keyword">string</span>, <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(hashmap))
+
+    <span class="hljs-keyword">for</span>  _, value := <span class="hljs-keyword">range</span> hashmap {
+      list = <span class="hljs-built_in">append</span>(list, value)
+    }
+    <span class="hljs-keyword">return</span> list
+}
+</code></pre>
+<blockquote>
+<p> &#xC5D0;&#xB108;&#xADF8;&#xB7A8;&#xC740; &#xB450; &#xB2E8;&#xC5B4;&#xAC00; &#xAC19;&#xC740; &#xBB38;&#xC790;&#xB4E4;&#xB85C; &#xC774;&#xB8E8;&#xC5B4;&#xC838; &#xC788;&#xC9C0;&#xB9CC;, &#xC11C;&#xB85C; &#xB2E4;&#xB978; &#xC21C;&#xC11C;&#xB85C; &#xBC30;&#xC5F4;&#xB418;&#xC5B4; &#xC788;&#xC744; &#xB54C; &#xBC1C;&#xC0DD;
+Ex) &#x201D;listen&#x201D;&#xACFC; &quot;silent&quot;&#xC740; &#xC5D0;&#xB108;&#xADF8;&#xB7A8;</p>
+</blockquote>
+<h3 id="24-validipaddress"><a href="https://leetcode.com/problems/validate-ip-address/" target="_blank">2.4 validIPAddress</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td>&#xBB38;&#xC790;&#xC5F4; &#xB9AC;&#xC2A4;&#xD2B8;,&#xB9AC;&#xC2A4;&#xD2B8;&#xC5D0; &#xC788;&#xB294; &#xBAA8;&#xB4E0; &#xBB38;&#xC790;&#xC5F4;&#xC740; &#xC18C;&#xBB38;&#xC790;&#xB85C; &#xAD6C;&#xC131;</td>
+<td>O(1)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td></td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> validIPAddress(queryIP <span class="hljs-keyword">string</span>) <span class="hljs-keyword">string</span> {
+ipv4Pattern := <span class="hljs-string">`^(?:(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$`</span>
+    ipv6Pattern := <span class="hljs-string">`^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$`</span>
+    <span class="hljs-keyword">if</span> regexp.MustCompile(ipv4Pattern).MatchString(queryIP) {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;IPv4&quot;</span>
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> regexp.MustCompile(ipv6Pattern).MatchString(queryIP) {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;IPv6&quot;</span>
+    }
+<span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Neither&quot;</span>
+}
+</code></pre>
+<blockquote>
+<p>&#xC704; &#xCF54;&#xB4DC;&#xC5D0;&#xC11C;&#xB294; IPv4 &#xD328;&#xD134;&#xACFC; IPv6 &#xD328;&#xD134;&#xC744; &#xAC01;&#xAC01; &#xC815;&#xADDC;&#xC2DD;&#xC73C;&#xB85C; &#xCEF4;&#xD30C;&#xC77C;&#xD558;&#xC5EC; regexp.MatchString &#xD568;&#xC218;&#xB97C; &#xD1B5;&#xD574; &#xB9E4;&#xCE58; &#xC5EC;&#xBD80;&#xB97C; &#xD655;&#xC778;&#xD569;&#xB2C8;&#xB2E4;. &#xB9E4;&#xCE58;&#xB418;&#xB294; &#xD328;&#xD134;&#xC774; &#xC788;&#xC744; &#xACBD;&#xC6B0;&#xC5D0; &#xD574;&#xB2F9;&#xD558;&#xB294; &#xBB38;&#xC790;&#xC5F4;(&quot;IPv4&quot; &#xB610;&#xB294; &quot;IPv6&quot;)&#xC744; &#xBC18;&#xD658;</p>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../DataStruct.html" class="navigation navigation-prev " aria-label="Previous page: 자료구조">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../선형구조/Array.html" class="navigation navigation-next " aria-label="Next page: 선형구조-배열">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"단순구조-문자열","level":"1.2.1","depth":2,"next":{"title":"선형구조-배열","level":"1.2.2","depth":2,"path":"posts/자료구조/선형구조/Array.md","ref":"posts/자료구조/선형구조/Array.md","articles":[]},"previous":{"title":"자료구조","level":"1.2","depth":1,"path":"posts/자료구조/DataStruct.md","ref":"posts/자료구조/DataStruct.md","articles":[{"title":"단순구조-문자열","level":"1.2.1","depth":2,"path":"posts/자료구조/단순구조/String.md","ref":"posts/자료구조/단순구조/String.md","articles":[]},{"title":"선형구조-배열","level":"1.2.2","depth":2,"path":"posts/자료구조/선형구조/Array.md","ref":"posts/자료구조/선형구조/Array.md","articles":[]},{"title":"선형구조-리스트","level":"1.2.3","depth":2,"path":"posts/자료구조/선형구조/Array.md","ref":"posts/자료구조/선형구조/Array.md","articles":[]},{"title":"선형구조-스택","level":"1.2.4","depth":2,"path":"posts/자료구조/선형구조/Stack.md","ref":"posts/자료구조/선형구조/Stack.md","articles":[]},{"title":"선형구조-큐","level":"1.2.5","depth":2,"path":"posts/자료구조/선형구조/Queue.md","ref":"posts/자료구조/선형구조/Queue.md","articles":[]},{"title":"비선형-트리","level":"1.2.6","depth":2,"path":"posts/자료구조/비선형구조/Tree.md","ref":"posts/자료구조/비선형구조/Tree.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/자료구조/단순구조/String.md","mtime":"2023-08-09T14:51:35.551Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-09T15:39:53.963Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

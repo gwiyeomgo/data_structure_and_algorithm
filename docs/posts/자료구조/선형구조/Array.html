@@ -1,0 +1,1164 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>선형구조-배열 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Array.html" />
+    
+    
+    <link rel="prev" href="../단순구조/String.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../DataStruct.html">
+            
+                <a href="../DataStruct.html">
+            
+                    
+                    자료구조
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../단순구조/String.html">
+            
+                <a href="../단순구조/String.html">
+            
+                    
+                    단순구조-문자열
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.2" data-path="Array.html">
+            
+                <a href="Array.html">
+            
+                    
+                    선형구조-배열
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.3" data-path="Array.html">
+            
+                <a href="Array.html">
+            
+                    
+                    선형구조-리스트
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="Stack.html">
+            
+                <a href="Stack.html">
+            
+                    
+                    선형구조-스택
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="Queue.html">
+            
+                <a href="Queue.html">
+            
+                    
+                    선형구조-큐
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../비선형구조/Tree.html">
+            
+                <a href="../비선형구조/Tree.html">
+            
+                    
+                    비선형-트리
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../알고리즘/Algorithm.html">
+            
+                <a href="../../알고리즘/Algorithm.html">
+            
+                    
+                    알고리즘
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../알고리즘/Recursion.html">
+            
+                <a href="../../알고리즘/Recursion.html">
+            
+                    
+                    재귀
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../알고리즘/DynamicProgramming.html">
+            
+                <a href="../../알고리즘/DynamicProgramming.html">
+            
+                    
+                    동적계획
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    tip
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >선형구조-배열</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <hr>
+<h3 id="11-&#xB450;--&#xC218;&#xC758;--&#xD569;--&#xCC3E;&#xAE30;"><a href="[https:/leetcode.com/problems/two-sum/editorial">1.1 &#xB450;  &#xC218;&#xC758;  &#xD569;  &#xCC3E;&#xAE30;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td>&#xAC19;&#xC740;  &#xC694;&#xC18C;&#xC758;  &#xAC12;&#xC744;  &#xC911;&#xBCF5;&#xD574;&#xC11C;  &#xC0AC;&#xC6A9;  &#xBD88;&#xAC00;</td>
+<td>O(n2)</td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td>2&#xC911; for &#xBB38; <br>   Target &#xACFC; &#xD569;&#xC774; &#xAC19;&#xC73C;&#xBA74; &#xD0C8;&#xCD9C; <br> &#xBC30;&#xC5F4; &#xBC18;&#xD658;</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+<span class="hljs-keyword">import</span> (<span class="hljs-string">&quot;fmt&quot;</span>)
+<span class="hljs-keyword">func</span> main() {
+<span class="hljs-comment">//&#xB450; &#xC218;&#xC758; &#xD569; &#xCC3E;&#xAE30;</span>
+nums := []<span class="hljs-keyword">int</span>{<span class="hljs-number">2</span>,<span class="hljs-number">7</span>,<span class="hljs-number">10</span>,<span class="hljs-number">19</span>}
+target := <span class="hljs-number">9</span>
+    <span class="hljs-keyword">for</span> i,_ := <span class="hljs-keyword">range</span> nums {
+        <span class="hljs-keyword">for</span> j := i+<span class="hljs-number">1</span> ; j &lt; <span class="hljs-built_in">len</span>(nums); j++ {
+            <span class="hljs-keyword">if</span> target == <span class="hljs-keyword">int</span>(nums[i]+nums[j]){
+                fmt.Print([]<span class="hljs-keyword">int</span>{i,j})
+            }
+        }
+    }
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td>&#xAC19;&#xC740;  &#xC694;&#xC18C;&#xC758;  &#xAC12;&#xC744;  &#xC911;&#xBCF5;&#xD574;&#xC11C;  &#xC0AC;&#xC6A9;  &#xBD88;&#xAC00;</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td>Target - &#xC694;&#xC18C;1  = &#xC694;&#xC18C;2 <br> &#xC694;&#xC18C;2&#xAC00; &#xC788;&#xB2E4;&#xBA74; &#xCD9C;&#xB825; <br> &#xC694;&#xC18C;2 &#xC5C6;&#xB2E4;&#xBA74; &#xC694;&#xC18C;1&#xC758; &#xAC12;&#xC744; map&#xC5D0; &#xC800;&#xC7A5; <br> &#xCD9C;&#xB825;&#xC2DC; i &#xBCF4;&#xB2E4; &#xC778;&#xB371;&#xC2A4;&#xAC00; &#xD074; &#xC218; &#xC788;&#xC73C;&#xB2C8; &#xC624;&#xB984;&#xCC28;&#xC21C;&#xC73C;&#xB85C; &#xC815;&#xB82C; <br></td>
+<td>O(n) &#xD574;&#xC2DC; &#xD14C;&#xC774;&#xBE14;&#xC744; &#xC0DD;&#xC131;&#xD558;&#xC5EC; &#xCD5C;&#xB300;&#xB85C; &#xBAA8;&#xB4E0; &#xC694;&#xC18C;( n)&#xC744; &#xB2F4;&#xC544;&#xC57C; &#xD55C;&#xB2E4;</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;sort&quot;</span>
+)
+
+<span class="hljs-keyword">func</span> main() {
+    nums := []<span class="hljs-keyword">int</span>{<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">11</span>,<span class="hljs-number">12</span>}
+    target := <span class="hljs-number">13</span>
+    dataMap := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-keyword">int</span>]<span class="hljs-keyword">int</span>,<span class="hljs-number">0</span>)
+
+    <span class="hljs-keyword">for</span> i , num := <span class="hljs-keyword">range</span> nums {
+        val := target-num
+        v, ok := dataMap[val]
+        <span class="hljs-keyword">if</span> ok {
+            result := []<span class="hljs-keyword">int</span>{i,v}
+            sort.Slice(result,<span class="hljs-keyword">func</span>(i, j <span class="hljs-keyword">int</span>) <span class="hljs-keyword">bool</span> {
+                <span class="hljs-keyword">return</span> result[i] &lt;result[j]
+            })
+            fmt.Print(result)
+            <span class="hljs-keyword">break</span>
+        }<span class="hljs-keyword">else</span>{
+            dataMap[num] = i
+        }
+    }
+}
+</code></pre>
+<ul>
+<li><p>&#xBE0C;&#xB8E8;&#xD2B8; &#xD3EC;&#xC2A4;(brute force) &#xC54C;&#xACE0;&#xB9AC;&#xC998;</p>
+<blockquote>
+<p> &#xC120;&#xD615; &#xAD6C;&#xC870; :&#xC21C;&#xCC28; &#xD0D0;&#xC0C9;</p>
+<p>&#xBE44;&#xC120;&#xD615; &#xAD6C;&#xC870;: &#xBC31;&#xD2B8;&#xB798;&#xD0B9;, dfs,bfs</p>
+</blockquote>
+</li>
+<li><p>&#xD574;&#xC2DC; &#xD14C;&#xC774;&#xBE14;</p>
+<ul>
+<li>&#xC911;&#xBCF5;&#xC774;&#xB77C;&#xB294; &#xB9D0;&#xC774; &#xB098;&#xC628;&#xB2E4;&#xBA74; &#xD574;&#xC2DC; &#xD14C;&#xC774;&#xBE14;&#xC744; &#xAC80;&#xD1A0; &#xC0DD;&#xAC00;&#xAC00;&#xD558;&#xAE30;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="12-&#xC815;&#xB82C;&#xB41C;-&#xBC30;&#xC5F4;&#xC5D0;&#xC11C;-&#xC911;&#xBCF5;-&#xC81C;&#xAC70;"><a href="https://www.hackerrank.com/contests/doyoulikeit/challenges/remove-duplicates-from-sorted-array" target="_blank">1.2 &#xC815;&#xB82C;&#xB41C; &#xBC30;&#xC5F4;&#xC5D0;&#xC11C; &#xC911;&#xBCF5; &#xC81C;&#xAC70;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td>an integer n (size of array) &lt;/br&gt; array of size n.</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td>fmt.scanf &#xB85C; &#xC785;&#xB825;&#xAC12; &#xBC1B;&#xC544;&#xC11C; &#xBC30;&#xC5F4;&#xC5D0; &#xAC12; &#xB123;&#xC74C; <br> &#xBC30;&#xC5F4;&#xC758; &#xC911;&#xBCF5;&#xD574;&#xACB0; (map &#xC0AC;&#xC6A9;)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
+
+<span class="hljs-keyword">func</span> removeDupplicateItems(intSlice []<span class="hljs-keyword">int</span>) []<span class="hljs-keyword">int</span> {
+    keys := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-keyword">int</span>]<span class="hljs-keyword">bool</span>)
+    list := []<span class="hljs-keyword">int</span>{}   
+    <span class="hljs-keyword">for</span> _, entry := <span class="hljs-keyword">range</span> intSlice {
+        <span class="hljs-keyword">if</span> _, value := keys[entry]; !value {
+            keys[entry] = <span class="hljs-literal">true</span>
+            list = <span class="hljs-built_in">append</span>(list, entry)
+        }
+    }
+    <span class="hljs-keyword">return</span> list
+}
+<span class="hljs-keyword">func</span> main() {
+ <span class="hljs-comment">//Enter your code here. Read input from STDIN. Print output to STDOUT</span>
+    <span class="hljs-keyword">var</span> n <span class="hljs-keyword">int</span>
+    fmt.Scanln(&amp;n)
+    arr := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">int</span>,n)
+
+    <span class="hljs-keyword">for</span> i:=<span class="hljs-number">0</span>; i&lt;n;i++ {
+        fmt.Scanf(<span class="hljs-string">&quot;%d&quot;</span>,&amp;arr[i])
+    }
+    fmt.Println(<span class="hljs-built_in">len</span>(removeDupplicateItems(arr)))
+
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td>&#xC774;&#xC9C4;&#xD0D0;&#xC0C9; <br> &#xB9E8; &#xCCAB; &#xC694;&#xC18C; curr &#xC800;&#xC7A5; <br> &#xBC30;&#xC5F4;&#xC758; &#xC694;&#xC18C;&#xB97C; &#xB9E8; &#xCCAB; &#xC694;&#xC18C;&#xB97C; &#xC81C;&#xC678;&#xD558;&#xACE0; &#xC21C;&#xD68C;</td>
+<td>O(n) &#xBC30;&#xC5F4;&#xC758; &#xBAA8;&#xB4E0; &#xC694;&#xC18C; n&#xAC1C;&#xB97C; &#xC21C;&#xD68C;</td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td>fmt.scanf &#xB85C; &#xC785;&#xB825;&#xAC12; &#xBC1B;&#xC544;&#xC11C; &#xBC30;&#xC5F4;&#xC5D0; &#xAC12; &#xB123;&#xC74C; <br> &#xBC30;&#xC5F4;&#xC758; &#xC911;&#xBCF5;&#xD574;&#xACB0; (map &#xC0AC;&#xC6A9;)</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
+
+<span class="hljs-keyword">func</span> main() {
+    <span class="hljs-keyword">var</span> n <span class="hljs-keyword">int</span>
+    fmt.Scanln(&amp;n)
+    nums := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">int</span>,n)
+    <span class="hljs-keyword">for</span> i:=<span class="hljs-number">0</span>; i&lt;n;i++ {
+        fmt.Scanf(<span class="hljs-string">&quot;%d&quot;</span>,&amp;nums[i])
+    }
+    curr := nums[<span class="hljs-number">0</span>]
+    cnt := <span class="hljs-number">1</span>
+
+       <span class="hljs-keyword">for</span> i,v := <span class="hljs-keyword">range</span> nums {
+        <span class="hljs-keyword">if</span> curr != v {
+            curr = nums[i]
+            nums[cnt] = curr
+            cnt += <span class="hljs-number">1</span>
+        }
+    }
+    fmt.Println(cnt)
+}
+</code></pre>
+<ul>
+<li><a href="https://cjh5414.github.io/binary-search/" target="_blank">&#xC774;&#xC9C4;&#xD0D0;&#xC0C9;</a></li>
+</ul>
+<hr>
+<h3 id="13-&#xBC30;&#xC5F4;&#xC5D0;&#xC11C;-&#xC0BD;&#xC785;-&#xC704;&#xCE58;-&#xCC3E;&#xAE30;"><a href="https://leetcode.com/problems/search-insert-position/" target="_blank">1.3 &#xBC30;&#xC5F4;&#xC5D0;&#xC11C; &#xC0BD;&#xC785; &#xC704;&#xCE58; &#xCC3E;&#xAE30;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td></td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td>&#xBC30;&#xC5F4;&#xC758; &#xAC01; &#xC694;&#xC18C;&#xB97C; &#xC778;&#xB371;&#xC2A4; 0&#xC5D0;&#xC11C;&#xBD80;&#xD130; &#xC21C;&#xD68C;&#xD55C;&#xB2E4; <br> &#xC21C;&#xD68C;&#xD558;&#xBA74;&#xC11C; target &#xC758; &#xAC12;&#xACFC; &#xAC19;&#xAC70;&#xB098; &#xD06C;&#xB2E4;&#xBA74; &#xC21C;&#xD68C;&#xB97C; &#xC911;&#xB2E8;&#xD55C;&#xB2E4; <br> &#xC911;&#xB2E8;&#xB41C; &#xC2DC;&#xC810;&#xC758; &#xC778;&#xB371;&#xC2A4;&#xB97C; &#xBC18;&#xD658;&#xD55C;&#xB2E4;</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> searchInsert(nums []<span class="hljs-keyword">int</span>, target <span class="hljs-keyword">int</span>) <span class="hljs-keyword">int</span> {
+
+index := <span class="hljs-number">0</span>
+
+<span class="hljs-keyword">for</span> index &lt; <span class="hljs-built_in">len</span>(nums) {
+<span class="hljs-keyword">if</span> target &lt;= nums[index] {
+<span class="hljs-keyword">break</span>;
+}
+index += <span class="hljs-number">1</span>
+}
+
+<span class="hljs-keyword">return</span> index
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td></td>
+<td>O(NlogN)</td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td>&#xBC30;&#xC5F4; &#xC694;&#xC18C;&#xB97C; &#xC774;&#xC9C4; &#xD0D0;&#xC0C9;&#xC73C;&#xB85C; &#xC811;&#xADFC;&#xD55C;&#xB2E4; <br> &#xC694;&#xC18C;&#xB97C; &#xCC3E;&#xB294;&#xB2E4;&#xBA74;, &#xD574;&#xB2F9; &#xC778;&#xB371;&#xC2A4;&#xB97C; &#xBC18;&#xD658; <br> &#xB05D;&#xAE4C;&#xC9C0; &#xCC3E;&#xC9C0; &#xBABB;&#xD558;&#xACE0; &#xC774;&#xC9C4; &#xD0D0;&#xC0C9;&#xC744; &#xC885;&#xB8CC;&#xD55C;&#xB2E4;&#xBA74;, <br> &#xCD5C;&#xC885; &#xC811;&#xADFC;&#xD588;&#xB358; &#xB0AE;&#xC740; &#xC778;&#xB371;&#xC2A4;&#xC758; &#xAC12;&#xC744; &#xBC18;&#xD658;&#xD55C;&#xB2E4; <br></td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> searchInsert(nums []<span class="hljs-keyword">int</span>, target <span class="hljs-keyword">int</span>) <span class="hljs-keyword">int</span> {
+
+    low := <span class="hljs-number">0</span>
+    high := <span class="hljs-built_in">len</span>(nums) <span class="hljs-number">-1</span>
+    mid := <span class="hljs-number">0</span>
+
+    <span class="hljs-keyword">for</span> low &lt;= high {
+        mid = (low + high) /<span class="hljs-number">2</span>;
+
+        <span class="hljs-keyword">if</span>(nums[mid]== target){
+              fmt.Println(mid)
+                <span class="hljs-keyword">return</span> mid
+        }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[mid]&gt; target){
+            high = mid <span class="hljs-number">-1</span>
+        }<span class="hljs-keyword">else</span> {
+            low = mid +<span class="hljs-number">1</span>
+        }
+    }
+    <span class="hljs-keyword">return</span> low
+}
+</code></pre>
+<hr>
+<h3 id="14-&#xC815;&#xB82C;&#xB41C;-&#xBC30;&#xC5F4;&#xC758;-&#xBCD1;&#xD569;"><a href="https://leetcode.com/problems/merge-sorted-array/description/" target="_blank">1.4 &#xC815;&#xB82C;&#xB41C; &#xBC30;&#xC5F4;&#xC758; &#xBCD1;&#xD569;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td></td>
+<td>non-decreasing order (&#xB0B4;&#xB9BC;&#xCC28;&#xC21C;&#xC774; &#xC544;&#xB2CC; 2&#xAC1C;&#xC758; &#xBC30;&#xC5F4;) <br> &#xB450;&#xAC1C;&#xC758; &#xBC30;&#xC5F4;&#xC740; &#xC815;&#xB82C;&#xB428; <br> num1  m&#xAC1C;, num2 n &#xAC1C; &#xC694;&#xC18C;&#xAC00; &#xC788;&#xB2E4; <br> Num1 &#xC758; &#xBC30;&#xC5F4;&#xC758; &#xD06C;&#xAE30;&#xB294; m+n  <br></td>
+<td>O(NlogN)</td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td>&#xBC30;&#xC5F4;&#xC740; &#xC815;&#xB82C;&#xB418;&#xC5B4;&#xC788;&#xC74C; <br> &#xAC12;&#xC774; &#xC5C6;&#xB294; &#xC694;&#xC18C;&#xB294; m &#xBC88; &#xC774;&#xD6C4;&#xBD80;&#xD130;&#xB85C; &#xC21C;&#xCC28;&#xC801;&#xC73C;&#xB85C; &#xBC30;&#xCE58; &#xD6C4; &#xC815;&#xB82C;</td>
+<td>O(N)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-go"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;sort&quot;</span>
+<span class="hljs-keyword">func</span> merge(nums1 []<span class="hljs-keyword">int</span>, m <span class="hljs-keyword">int</span>, nums2 []<span class="hljs-keyword">int</span>, n <span class="hljs-keyword">int</span>)  {
+
+    <span class="hljs-keyword">for</span> i,v := <span class="hljs-keyword">range</span> nums2 {
+        nums1[m+i]= v
+    }
+
+      sort.Slice(nums1,<span class="hljs-keyword">func</span>(i, j <span class="hljs-keyword">int</span>) <span class="hljs-keyword">bool</span> {
+        <span class="hljs-keyword">return</span> nums1[i] &lt; nums1[j]
+      })
+      fmt.Println(nums1)
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td></td>
+<td>O(N+M)</td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td>0. Index I,j,k &#xB97C; &#xC0AC;&#xC6A9;  <br> 1.num1 &#xC758; &#xAC12;&#xC774; 0&#xC778; &#xC778;&#xB371;&#xC2A4;&#xB294; m &#xC774;&#xB2E4;  <br> 2.num2 &#xC758; &#xC778;&#xB371;&#xC2A4; (n-1) &#xC758; &#xAC12;&#xC774; &#xAC00;&#xC7A5; &#xD070; &#xC694;&#xC18C; &#xC774;&#xB2E4; <br> 3. num1[m-1] &#xAC12;&#xACFC; num2[n-1]  &#xBE44;&#xAD50;  &#xAC12;&#xC774; &#xD06C;&#xB2E4;&#xBA74; num1[i] &#xCD94;&#xAC00;&#xD558;&#xACE0; k &#xC640; j &#xAC12;&#xC744; -1 &#xD574;&#xC900;&#xB2E4; <br> 4 . &#xBE44;&#xAD50;&#xD558;&#xB2E4;&#xAC00; i,j&#xAC12;&#xC774; 0 &#xBCF4;&#xB2E4; &#xC791;&#xC544;&#xC9C0;&#xBA74; &#xC911;&#xB2E8; <br></td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> merge(nums1 []<span class="hljs-keyword">int</span>, m <span class="hljs-keyword">int</span>, nums2 []<span class="hljs-keyword">int</span>, n <span class="hljs-keyword">int</span>)  {
+
+  i := m<span class="hljs-number">-1</span> 
+  j := n<span class="hljs-number">-1</span>
+  k := m + n <span class="hljs-number">-1</span>
+
+  <span class="hljs-keyword">for</span> i&gt;=<span class="hljs-number">0</span> &amp;&amp; j &gt;= <span class="hljs-number">0</span> {
+    <span class="hljs-keyword">if</span> nums1[i] &lt; nums2[j] {
+        nums1[k] = nums2[j]
+        j -= <span class="hljs-number">1</span>
+    }<span class="hljs-keyword">else</span>{
+        nums1[k] = nums1[i]
+        i -= <span class="hljs-number">1</span>
+    }
+    k -= <span class="hljs-number">1</span>
+  } 
+
+  <span class="hljs-keyword">for</span> j &gt;=<span class="hljs-number">0</span> {
+    nums1[k] = nums2[j]
+    k -= <span class="hljs-number">1</span>
+    j -= <span class="hljs-number">1</span>
+  }
+}
+</code></pre>
+<ul>
+<li>O(NlogN) &#xC548;&#xC815;&#xC801;&#xC778; &#xC2DC;&#xAC04; &#xBCF5;&#xC7A1;&#xB3C4;</li>
+</ul>
+<hr>
+<h3 id="14-&#xD30C;&#xC2A4;&#xCE7C;&#xC758;-&#xC0BC;&#xAC01;&#xD615;"><a href="https://leetcode.com/problems/pascals-triangle/" target="_blank">1.4 &#xD30C;&#xC2A4;&#xCE7C;&#xC758; &#xC0BC;&#xAC01;&#xD615;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td></td>
+<td>O(n2)</td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td>&#xAE30;&#xBC18; &#xB9AC;&#xC2A4;&#xD2B8; &#xC0DD;&#xC131; <br> 1&#xBC88;&#xC9F8; &#xB9AC;&#xC2A4;&#xD2B8; &#xC694;&#xC18C;&#xB97C; 1&#xB85C; &#xCD08;&#xAE30;&#xD654; <br> &#xC785;&#xB825;&#xC73C;&#xB85C; &#xC8FC;&#xC5B4;&#xC9C4; &#xD589;&#xC218; &#xB9CC;&#xD07C; &#xC21C;&#xD68C; <br> &#xD56D;&#xC0C1; &#xB9E8; &#xC55E;&#xACFC; &#xB9E8; &#xB4A4; &#xAC12;&#xC740; 1 <br></td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> generate(numRows <span class="hljs-keyword">int</span>) [][]<span class="hljs-keyword">int</span> {
+    pascal := <span class="hljs-built_in">make</span>([][]<span class="hljs-keyword">int</span>,<span class="hljs-number">0</span>)
+    <span class="hljs-keyword">if</span> numRows &lt;= <span class="hljs-number">0</span> {
+        <span class="hljs-keyword">return</span> pascal
+    }
+    pascal = <span class="hljs-built_in">append</span>(pascal,[]<span class="hljs-keyword">int</span>{<span class="hljs-number">1</span>})
+    <span class="hljs-keyword">for</span> i:=<span class="hljs-number">1</span>;i&lt; numRows;i++ {
+        pre_len := <span class="hljs-built_in">len</span>(pascal[i<span class="hljs-number">-1</span>])
+        curr_list := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">int</span>,<span class="hljs-number">0</span>)
+        <span class="hljs-keyword">for</span> j:=<span class="hljs-number">0</span>;j&lt;pre_len+<span class="hljs-number">1</span>;j++ {
+            num :=<span class="hljs-number">1</span>
+            <span class="hljs-keyword">if</span> j !=<span class="hljs-number">0</span> &amp;&amp; j != pre_len {
+              num = pascal[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>] +pascal[i<span class="hljs-number">-1</span>][j]
+            }
+            curr_list = <span class="hljs-built_in">append</span>(curr_list,num)
+        }
+         pascal = <span class="hljs-built_in">append</span>(pascal,curr_list)
+    }
+    <span class="hljs-keyword">return</span> pascal
+}
+</code></pre>
+<p>&#xFFFC;</p>
+<hr>
+<h3 id="15-&#xBC30;&#xC5F4;&#xC5D0;&#xC11C;-&#xB2E4;&#xC218;&#xC758;-&#xC694;&#xC18C;-&#xCC3E;&#xAE30;"><a href="https://leetcode.com/problems/majority-element/" target="_blank">1.5 &#xBC30;&#xC5F4;&#xC5D0;&#xC11C; &#xB2E4;&#xC218;&#xC758; &#xC694;&#xC18C; &#xCC3E;&#xAE30;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td>Num &#xC758; &#xAE38;&#xC774;&#xAC12;&#xC774; n ,&#xC815;&#xC218; &#xBC30;&#xC5F4; ,&#xB2E4;&#xC218;&#xC758; &#xC218;&#xB294; &#xBB34;&#xC870;&#xAC74; &#xD558;&#xB098;&#xAC00; &#xC874;&#xC7AC;</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td>&#xD574;&#xC2DC; &#xD14C;&#xC774;&#xBE14;&#xC5D0;&#xC11C; &#xD0A4;= &#xC694;&#xC18C;,&#xAC12; =&#xD69F;&#xC218; <br> &#xBC30;&#xC5F4;&#xC744; &#xC21C;&#xD68C;&#xD558;&#xBA74;&#xC11C; &#xD574;&#xC2DC;&#xD14C;&#xC774;&#xBE14;&#xC5D0; &#xC800;&#xC7A5; <br> N &#xBCF4;&#xB2E4; &#xD070; &#xC218;&#xB97C; &#xCC3E;&#xC74C; <br></td>
+<td>O(N)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> majorityElement(nums []<span class="hljs-keyword">int</span>) <span class="hljs-keyword">int</span> {
+    n := <span class="hljs-built_in">len</span>(nums)/<span class="hljs-number">2</span>
+    data := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-keyword">int</span>]<span class="hljs-keyword">int</span>,<span class="hljs-number">0</span>)
+    <span class="hljs-keyword">for</span> _,num := <span class="hljs-keyword">range</span> nums {
+
+        data[num]+=<span class="hljs-number">1</span>
+
+         <span class="hljs-keyword">if</span> data[num] &gt; n {
+           <span class="hljs-keyword">return</span> num
+        }
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td>1.&#xC815;&#xB82C;&#xD55C;&#xB2E4; <br> 2. &#xBC30;&#xC5F4;&#xC758; n &#xC694;&#xC18C;&#xB97C; &#xCD9C;&#xB825;</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> majorityElement(nums []<span class="hljs-keyword">int</span>) <span class="hljs-keyword">int</span> {
+    n := <span class="hljs-built_in">len</span>(nums)/<span class="hljs-number">2</span>
+
+     sort.Slice(nums,<span class="hljs-keyword">func</span>(i, j <span class="hljs-keyword">int</span>) <span class="hljs-keyword">bool</span> {
+        <span class="hljs-keyword">return</span> nums[i] &gt; nums[j]
+      })
+
+    <span class="hljs-keyword">return</span> nums[n]
+}
+</code></pre>
+<hr>
+<h3 id="16-&#xBC30;&#xC5F4;&#xC758;-&#xD68C;&#xC804;"><a href="https://practice.geeksforgeeks.org/problems/rotate-array-by-n-elements-1587115621/1?utm_source=gfg&amp;utm_medium=article&amp;utm_campaign=bottom_sticky_on_article" target="_blank">1.6 &#xBC30;&#xC5F4;&#xC758; &#xD68C;&#xC804;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td></td>
+<td>O(n^2)</td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td>&#xBC30;&#xC5F4;&#xC758; &#xAC01; &#xC694;&#xC18C;&#xB97C; &#xC67C;&#xCABD;&#xC73C;&#xB85C; d&#xBC88; &#xC774;&#xB3D9; <br>&#xCCAB;&#xBC88;&#xC9F8; &#xC694;&#xC18C;&#xB97C; &#xC784;&#xC2DC;&#xBCC0;&#xC218;&#xC5D0; &#xC800;&#xC7A5;</td>
+<td>&#xACF5;&#xAC04; : O(1)&#xACF5;&#xAC04; &#xBCF5;&#xC7A1;&#xB3C4;&#xB294; &#xD574;&#xB2F9; &#xC54C;&#xACE0;&#xB9AC;&#xC998;&#xC774; &#xC2E4;&#xD589;&#xB418;&#xB294; &#xB3D9;&#xC548; &#xC0AC;&#xC6A9;&#xB418;&#xB294; &#xCD94;&#xAC00;&#xC801;&#xC778; &#xBA54;&#xBAA8;&#xB9AC; &#xACF5;&#xAC04;&#xC758; &#xD06C;&#xAE30;&#xB97C; &#xB098;&#xD0C0;&#xB0C5;&#xB2C8;&#xB2E4;. &#xC774; &#xBB38;&#xC81C;&#xC5D0;&#xC11C; &#xC0AC;&#xC6A9;&#xB418;&#xB294; &#xBA54;&#xBAA8;&#xB9AC;&#xB294; &#xC785;&#xB825; &#xBC30;&#xC5F4;&#xC758; &#xAE38;&#xC774;&#xC5D0; &#xB530;&#xB77C; &#xB2EC;&#xB77C;&#xC9C0;&#xB294; &#xBC30;&#xC5F4; &#xC694;&#xC18C;&#xC758; &#xC784;&#xC2DC; &#xC800;&#xC7A5;&#xC6A9; &#xBCC0;&#xC218; temp &#xD558;&#xB098; &#xBFD0;&#xC785;&#xB2C8;&#xB2E4;. &#xB530;&#xB77C;&#xC11C; &#xBC30;&#xC5F4;&#xC758; &#xD06C;&#xAE30;&#xAC00; &#xBCC0;&#xD558;&#xC9C0; &#xC54A;&#xB294; &#xD55C;, &#xCD94;&#xAC00;&#xC801;&#xC778; &#xBA54;&#xBAA8;&#xB9AC;&#xB294; &#xC0C1;&#xC218; &#xD06C;&#xAE30;&#xC774;&#xBBC0;&#xB85C; O(1)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> rotLeft(a []<span class="hljs-keyword">int32</span>, d <span class="hljs-keyword">int32</span>) []<span class="hljs-keyword">int32</span> {
+
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">int</span>(d); i++ {
+        temp := a[<span class="hljs-number">0</span>] 
+        <span class="hljs-keyword">for</span> i := <span class="hljs-number">1</span>; i &lt; <span class="hljs-built_in">len</span>(a); i++ {
+            a[i<span class="hljs-number">-1</span>] = a[i]   <span class="hljs-comment">//&#xC55E;&#xC73C;&#xB85C; &#xB561;&#xAE30;&#xAE30;</span>
+        }
+        a[<span class="hljs-built_in">len</span>(a)<span class="hljs-number">-1</span>] = temp 
+
+    }
+    <span class="hljs-keyword">return</span> a
+}
+</code></pre>
+<blockquote>
+<p>&#xCC38;&#xACE0; (&#xBC30;&#xC5F4;&#xC758; &#xAC01; &#xC694;&#xC18C;&#xB97C; &#xC624;&#xB978;&#xCABD;&#xC73C;&#xB85C; d &#xBC88; &#xC774;&#xB3D9;)</p>
+<pre><code class="lang-go">prev := slice[<span class="hljs-built_in">len</span>(slice)<span class="hljs-number">-1</span>]
+<span class="hljs-keyword">for</span> i := <span class="hljs-keyword">range</span> slice {
+    temp := slice[i]
+    slice[i] = prev
+    prev = temp
+}
+d--
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td></td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td>&#xC2AC;&#xB77C;&#xC774;&#xC2A4; &#xBCF5;&#xC0AC; <br> &#xC2AC;&#xB77C;&#xC774;&#xC2A4;(slice)&#xC758; &#xAE38;&#xC774;&#xB97C; n&#xC73C;&#xB85C; &#xC800;&#xC7A5;&#xD558;&#xACE0;, b&#xB97C; n&#xC73C;&#xB85C; &#xB098;&#xB204;&#xC5B4; &#xB098;&#xBA38;&#xC9C0;&#xB97C; &#xAD6C;&#xD569;&#xB2C8;&#xB2E4;. &#xC774;&#xB97C; &#xD1B5;&#xD574; b&#xAC00; &#xC2AC;&#xB77C;&#xC774;&#xC2A4;&#xC758; &#xAE38;&#xC774;&#xBCF4;&#xB2E4; &#xD070; &#xACBD;&#xC6B0;&#xC5D0; &#xB300;&#xBE44;&#xD569;&#xB2C8;&#xB2E4;. <br> &#xADF8;&#xB9AC;&#xACE0; append &#xD568;&#xC218;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xC2AC;&#xB77C;&#xC774;&#xC2A4;&#xC758; b&#xBC88;&#xC9F8; &#xC778;&#xB371;&#xC2A4;&#xBD80;&#xD130; &#xB05D;&#xAE4C;&#xC9C0;&#xC640; &#xCC98;&#xC74C;&#xBD80;&#xD130; b-1&#xBC88;&#xC9F8; &#xC778;&#xB371;&#xC2A4;&#xAE4C;&#xC9C0;&#xB97C; &#xC798;&#xB77C;&#xC11C; &#xB2E4;&#xC2DC; &#xD569;&#xCE69;&#xB2C8;&#xB2E4;. &#xC774;&#xB97C; &#xD1B5;&#xD574; &#xC67C;&#xCABD;&#xC73C;&#xB85C; b&#xBC88; &#xC774;&#xB3D9;&#xD55C; &#xC2AC;&#xB77C;&#xC774;&#xC2A4;&#xB97C; &#xC0DD;&#xC131;&#xD569;&#xB2C8;&#xB2E4;. <br> b %= n b&#xB97C; n&#xC73C;&#xB85C; &#xB098;&#xB208; &#xB098;&#xBA38;&#xC9C0; &#xAC12;&#xC744; b&#xC5D0; &#xB2E4;&#xC2DC; &#xC800;&#xC7A5;&#xD558;&#xB294; &#xC5F0;&#xC0B0;</td>
+<td>append &#xD568;&#xC218;&#xB294; &#xC0C8;&#xB85C;&#xC6B4; &#xBA54;&#xBAA8;&#xB9AC; &#xACF5;&#xAC04;&#xC744; &#xD560;&#xB2F9;&#xD558;&#xC5EC; &#xC2AC;&#xB77C;&#xC774;&#xC2A4;&#xB97C; &#xBCF5;&#xC0AC;&#xD558;&#xBBC0;&#xB85C;, &#xC5EC;&#xAE30;&#xC11C; &#xC0AC;&#xC6A9;&#xB418;&#xB294; &#xCD94;&#xAC00;&#xC801;&#xC778; &#xBA54;&#xBAA8;&#xB9AC;&#xB294; &#xC785;&#xB825; &#xC2AC;&#xB77C;&#xC774;&#xC2A4;&#xC758; &#xD06C;&#xAE30;&#xC5D0; &#xBE44;&#xB840;&#xD569;&#xB2C8;&#xB2E4;. &#xB530;&#xB77C;&#xC11C; &#xC774; &#xC54C;&#xACE0;&#xB9AC;&#xC998;&#xC758; &#xACF5;&#xAC04; &#xBCF5;&#xC7A1;&#xB3C4;&#xB294; O(n)</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> rotLeft(a []<span class="hljs-keyword">int32</span>, d <span class="hljs-keyword">int32</span>) []<span class="hljs-keyword">int32</span> {
+
+    n := <span class="hljs-keyword">int32</span>(<span class="hljs-built_in">len</span>(a))
+    d %= n
+
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">append</span>(a[d:], a[:d]...)
+}
+</code></pre>
+<blockquote>
+<p>slice</p>
+<pre><code>slice := []int{1, 2, 3, 4, 5}
+slice[:b]&#xB294; &#xC778;&#xB371;&#xC2A4; 0&#xBD80;&#xD130; &#xC778;&#xB371;&#xC2A4; b-1&#xAE4C;&#xC9C0;&#xC758; &#xC694;&#xC18C;
+slice[b:]&#xB294; b&#xBC88;&#xC9F8; &#xC694;&#xC18C;&#xBD80;&#xD130; &#xB05D;&#xAE4C;&#xC9C0;&#xC758; &#xBAA8;&#xB4E0; &#xC694;&#xC18C;
+slice[:3]&#xC740; [1, 2, 3]
+</code></pre><hr>
+<h3 id="17-&#xBE60;&#xC9C4;-&#xC22B;&#xC790;-&#xCC3E;&#xAE30;"><a href="https://leetcode.com/problems/missing-number/submissions/" target="_blank">1.7 &#xBE60;&#xC9C4; &#xC22B;&#xC790; &#xCC3E;&#xAE30;</a></h3>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td></td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td></td>
+<td>&#xC8FC;&#xC5B4;&#xC9C4; &#xD568;&#xC218;&#xC5D0;&#xC11C; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xBA54;&#xBAA8;&#xB9AC;&#xB294; &#xC785;&#xB825; &#xBC30;&#xC5F4; nums&#xC758; &#xAE38;&#xC774; n&#xACFC; &#xBB34;&#xAD00;&#xD558;&#xBA70;, &#xC0C1;&#xC218; &#xAC1C;&#xC218;&#xC758; &#xBCC0;&#xC218;&#xB9CC; &#xC0AC;&#xC6A9;&#xD558;&#xBBC0;&#xB85C;, &#xC785;&#xB825; &#xD06C;&#xAE30;&#xC5D0; &#xBE44;&#xB840;&#xD558;&#xC9C0; &#xC54A;&#xC2B5;&#xB2C8;&#xB2E4;. &#xB530;&#xB77C;&#xC11C; &#xACF5;&#xAC04; &#xBCF5;&#xC7A1;&#xB3C4;&#xB294; O(1)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-go">
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
+<span class="hljs-keyword">func</span> missingNumber(nums []<span class="hljs-keyword">int</span>) <span class="hljs-keyword">int</span> {
+
+      n := <span class="hljs-built_in">len</span>(nums)
+      sort.Slice(nums,<span class="hljs-keyword">func</span>(i, j <span class="hljs-keyword">int</span>) <span class="hljs-keyword">bool</span> {
+        <span class="hljs-keyword">return</span> nums[i] &lt;nums[j]
+      })
+
+      <span class="hljs-keyword">for</span> i:=<span class="hljs-number">0</span>;i&lt;n;i++ {
+          <span class="hljs-keyword">if</span> i == n<span class="hljs-number">-1</span> {
+            <span class="hljs-keyword">return</span> n
+          }
+
+          <span class="hljs-keyword">if</span> nums[i] != i{
+            <span class="hljs-keyword">return</span> i
+          }
+
+     }
+
+  <span class="hljs-keyword">return</span>  <span class="hljs-number">-1</span>
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td></td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td>&#xC774; &#xD568;&#xC218;&#xB294; &#xC8FC;&#xC5B4;&#xC9C4; &#xBC30;&#xC5F4;&#xC5D0;&#xC11C; &#xB204;&#xB77D;&#xB41C; &#xC22B;&#xC790;&#xB97C; &#xCC3E;&#xAE30; &#xC704;&#xD574; XOR &#xC5F0;&#xC0B0;&#xC744; &#xC0AC;&#xC6A9;&#xD569;&#xB2C8;&#xB2E4;. XOR &#xC5F0;&#xC0B0;&#xC740; &#xB450; &#xAC12;&#xC774; &#xAC19;&#xC73C;&#xBA74; 0&#xC744;, &#xB2E4;&#xB974;&#xBA74; 1&#xC744; &#xBC18;&#xD658;&#xD558;&#xB294; &#xC5F0;&#xC0B0;&#xC73C;&#xB85C;, &#xB204;&#xB77D;&#xB41C; &#xC22B;&#xC790;&#xB97C; &#xCC3E;&#xB294;&#xB370; &#xD6A8;&#xACFC;&#xC801;&#xC785;&#xB2C8;&#xB2E4;. &#xC8FC;&#xC5B4;&#xC9C4; &#xBC30;&#xC5F4; nums&#xC5D0;&#xB294; &#xC911;&#xBCF5;&#xB418;&#xC9C0; &#xC54A;&#xC740; 0&#xBD80;&#xD130; n&#xAE4C;&#xC9C0;&#xC758; &#xC694;&#xC18C;&#xB4E4;&#xC774; &#xC788;&#xC73C;&#xBBC0;&#xB85C;, 0&#xBD80;&#xD130; n&#xAE4C;&#xC9C0;&#xC758; &#xC22B;&#xC790;&#xB97C; XOR &#xC5F0;&#xC0B0;&#xD558;&#xBA74; &#xB204;&#xB77D;&#xB41C; &#xC22B;&#xC790;&#xAC00; &#xACB0;&#xACFC;&#xB85C; &#xB098;&#xC624;&#xAC8C; &#xB429;&#xB2C8;&#xB2E4;. &#xB530;&#xB77C;&#xC11C; &#xC704;&#xC758; &#xD568;&#xC218;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xB204;&#xB77D;&#xB41C; &#xC22B;&#xC790;&#xB97C; &#xCC3E;&#xC744; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-go"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
+<span class="hljs-keyword">func</span> missingNumber(nums []<span class="hljs-keyword">int</span>) <span class="hljs-keyword">int</span> {
+     n := <span class="hljs-built_in">len</span>(nums)
+    missing := n <span class="hljs-comment">// n&#xC744; &#xCD08;&#xAE30;&#xAC12;&#xC73C;&#xB85C; &#xC124;&#xC815;&#xD569;&#xB2C8;&#xB2E4;.</span>
+
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; n; i++ {
+        <span class="hljs-comment">// XOR &#xC5F0;&#xC0B0;&#xC744; &#xD1B5;&#xD574; &#xB204;&#xB77D;&#xB41C; &#xC22B;&#xC790;&#xB97C; &#xCC3E;&#xC2B5;&#xB2C8;&#xB2E4;.</span>
+        <span class="hljs-comment">// &#xC608;&#xB97C; &#xB4E4;&#xC5B4;, nums = [3, 0, 1]&#xC77C; &#xB54C;,</span>
+        <span class="hljs-comment">// missing ^= (3 ^ 0 ^ 1 ^ 0 ^ 1 ^ 2 ^ 3) =&gt; missing ^= 2</span>
+        missing ^= (i ^ nums[i])
+    }
+
+    <span class="hljs-keyword">return</span> missing
+
+}
+</code></pre>
+<hr>
+<h3 id="18-&#xBD80;&#xBD84;&#xC9D1;&#xD569;"><a href="https://leetcode.com/problems/subsets/" target="_blank">1.8 &#xBD80;&#xBD84;&#xC9D1;&#xD569;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> generateSubsets(nums []<span class="hljs-keyword">int</span>, index <span class="hljs-keyword">int</span>, subset []<span class="hljs-keyword">int</span>, result *[][]<span class="hljs-keyword">int</span>) {
+    <span class="hljs-keyword">if</span> index == <span class="hljs-built_in">len</span>(nums) {
+        *result = <span class="hljs-built_in">append</span>(*result, <span class="hljs-built_in">append</span>([]<span class="hljs-keyword">int</span>{}, subset...))
+        <span class="hljs-keyword">return</span>
+    }
+    <span class="hljs-comment">// &#xD604;&#xC7AC; &#xC6D0;&#xC18C;&#xB97C; &#xBD80;&#xBD84;&#xC9D1;&#xD569;&#xC5D0; &#xD3EC;&#xD568;&#xD558;&#xC9C0; &#xC54A;&#xB294; &#xACBD;&#xC6B0;</span>
+    generateSubsets(nums, index+<span class="hljs-number">1</span>, subset, result)
+
+    <span class="hljs-comment">// &#xD604;&#xC7AC; &#xC6D0;&#xC18C;&#xB97C; &#xBD80;&#xBD84;&#xC9D1;&#xD569;&#xC5D0; &#xD3EC;&#xD568;&#xD558;&#xB294; &#xACBD;&#xC6B0;</span>
+    subset = <span class="hljs-built_in">append</span>(subset, nums[index])
+    generateSubsets(nums, index+<span class="hljs-number">1</span>, subset, result)
+    <span class="hljs-comment">//&#xCD94;&#xAC00;&#xD55C; &#xC6D0;&#xC18C;&#xB97C; &#xB2E4;&#xC2DC; &#xC81C;&#xAC70;</span>
+    subset = subset[:<span class="hljs-built_in">len</span>(subset)<span class="hljs-number">-1</span>]
+}
+
+<span class="hljs-keyword">func</span> subsets(nums []<span class="hljs-keyword">int</span>) [][]<span class="hljs-keyword">int</span> {
+    result := [][]<span class="hljs-keyword">int</span>{}
+    subset := []<span class="hljs-keyword">int</span>{}
+    generateSubsets(nums, <span class="hljs-number">0</span>, subset, &amp;result)
+    <span class="hljs-keyword">return</span> result
+}
+</code></pre>
+<hr>
+<h3 id="19-&#xB2E8;&#xC5B4;&#xCC3E;&#xAE30;"><a href="https://leetcode.com/problems/word-search/" target="_blank">1.9 &#xB2E8;&#xC5B4;&#xCC3E;&#xAE30;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td>M * n &#xC758; &#xD06C;&#xAE30;&#xC758; &#xBB38;&#xC790; 2&#xCC28;&#xC6D0; &#xBC30;&#xC5F4;</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td>Board &#xBC30;&#xC5F4; &#xC21C;&#xD68C; <br> word[0] &#xACFC;board[x][y]  &#xBE44;&#xAD50; <br> &#xD06C;&#xAE30;&#xB97C; &#xBC97;&#xC5B4;&#xB0AC;&#xB294;&#xC9C0; &#xD655;&#xC778; <br> &#xC774;&#xBBF8; &#xBC29;&#xBB38;&#xD55C; &#xC704;&#xCE58;&#xC778;&#xC9C0; &#xD655;&#xC778; <br></td>
+</tr>
+</tbody>
+</table>
+<pre><code>board := [][]byte{
+    {&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;E&apos;},
+    {&apos;S&apos;, &apos;F&apos;, &apos;C&apos;, &apos;S&apos;},
+    {&apos;A&apos;, &apos;D&apos;, &apos;E&apos;, &apos;E&apos;},
+}
+word := &#x201C;ABCCED&#x201D;
+</code></pre><pre><code class="lang-go"><span class="hljs-keyword">func</span> exist(board [][]<span class="hljs-keyword">byte</span>, word <span class="hljs-keyword">string</span>) <span class="hljs-keyword">bool</span> {
+    rows, cols := <span class="hljs-built_in">len</span>(board), <span class="hljs-built_in">len</span>(board[<span class="hljs-number">0</span>])
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; rows; i++ {
+        <span class="hljs-keyword">for</span> j := <span class="hljs-number">0</span>; j &lt; cols; j++ {
+            <span class="hljs-keyword">if</span> search(board, word, i, j, <span class="hljs-number">0</span>) {
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+            }
+        }
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+}
+
+<span class="hljs-keyword">func</span> search(board [][]<span class="hljs-keyword">byte</span>, word <span class="hljs-keyword">string</span>, row, col, index <span class="hljs-keyword">int</span>) <span class="hljs-keyword">bool</span> {
+    <span class="hljs-keyword">if</span> index == <span class="hljs-built_in">len</span>(word) {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+    }
+
+    rows, cols := <span class="hljs-built_in">len</span>(board), <span class="hljs-built_in">len</span>(board[<span class="hljs-number">0</span>])
+    <span class="hljs-keyword">if</span> row &lt; <span class="hljs-number">0</span> || col &lt; <span class="hljs-number">0</span> || row &gt;= rows || col &gt;= cols || board[row][col] != word[index] {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+    }
+
+    <span class="hljs-comment">// &#xD604;&#xC7AC; &#xC140;&#xC744; &#xBC29;&#xBB38;&#xD55C; &#xC140;&#xB85C; &#xD45C;&#xC2DC;</span>
+    temp := board[row][col]
+    board[row][col] = <span class="hljs-string">&apos;#&apos;</span>
+
+    <span class="hljs-comment">// &#xC0C1;&#xD558;&#xC88C;&#xC6B0; &#xBC29;&#xD5A5;&#xC73C;&#xB85C; &#xC774;&#xB3D9;&#xD558;&#xBA70; &#xB2E4;&#xC74C; &#xC140;&#xB85C; &#xAC80;&#xC0AC;</span>
+    <span class="hljs-keyword">if</span> search(board, word, row<span class="hljs-number">-1</span>, col, index+<span class="hljs-number">1</span>) ||
+       search(board, word, row+<span class="hljs-number">1</span>, col, index+<span class="hljs-number">1</span>) ||
+       search(board, word, row, col<span class="hljs-number">-1</span>, index+<span class="hljs-number">1</span>) ||
+       search(board, word, row, col+<span class="hljs-number">1</span>, index+<span class="hljs-number">1</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+    }
+
+    <span class="hljs-comment">// &#xD604;&#xC7AC; &#xC140;&#xC758; &#xBC29;&#xBB38; &#xD45C;&#xC2DC;&#xB97C; &#xC6D0;&#xB798; &#xAC12;&#xC73C;&#xB85C; &#xBCF5;&#xC6D0;</span>
+    board[row][col] = temp
+
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../단순구조/String.html" class="navigation navigation-prev " aria-label="Previous page: 단순구조-문자열">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Array.html" class="navigation navigation-next " aria-label="Next page: 선형구조-리스트">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"선형구조-배열","level":"1.2.2","depth":2,"next":{"title":"선형구조-리스트","level":"1.2.3","depth":2,"path":"posts/자료구조/선형구조/Array.md","ref":"posts/자료구조/선형구조/Array.md","articles":[]},"previous":{"title":"단순구조-문자열","level":"1.2.1","depth":2,"path":"posts/자료구조/단순구조/String.md","ref":"posts/자료구조/단순구조/String.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/자료구조/선형구조/Array.md","mtime":"2023-08-09T14:54:44.146Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-09T15:39:53.963Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -12,8 +12,9 @@ cp -R _book/* docs/
 
 # delete things
 git clean -fx _book
-
 # upload
 git add .
-git commit -a -m "update docs-20230809"
+git commit -a -m "update docs-20230810"
 git push -u origin master
+
+## gitbook serve

@@ -7,7 +7,7 @@ ___
 |범위,제한사항|같은  요소의  값을  중복해서  사용  불가            |O(n2)            |
 |아이디어          |  2중 for 문 <br/>   Target 과 합이 같으면 탈출 <br/> 배열 반환 |O(1)            |
 ___
-```
+```go
 package main
 import ("fmt")
 func main() {
@@ -28,7 +28,7 @@ target := 9
 |범위,제한사항|같은  요소의  값을  중복해서  사용  불가            |O(n)            |
 |아이디어          |  Target - 요소1  = 요소2 <br/> 요소2가 있다면 출력 <br/> 요소2 없다면 요소1의 값을 map에 저장 <br/> 출력시 i 보다 인덱스가 클 수 있으니 오름차순으로 정렬 <br/> |O(n) 해시 테이블을 생성하여 최대로 모든 요소( n)을 담아야 한다         |
 ___
-```
+```go
 package main
 
 import (
@@ -76,7 +76,7 @@ ___
 |범위,제한사항|an integer n (size of array) </br> array of size n.       |         |
 |아이디어          |  fmt.scanf 로 입력값 받아서 배열에 값 넣음 <br/> 배열의 중복해결 (map 사용)  |     |
 
-```
+```go
 package main
 import "fmt"
 
@@ -109,7 +109,7 @@ func main() {
 |범위,제한사항|이진탐색 <br/> 맨 첫 요소 curr 저장 <br/> 배열의 요소를 맨 첫 요소를 제외하고 순회       | O(n) 배열의 모든 요소 n개를 순회        |
 |아이디어          |  fmt.scanf 로 입력값 받아서 배열에 값 넣음 <br/> 배열의 중복해결 (map 사용)  | O(1)    |
 
-```
+```go
 package main
 import "fmt"
 
@@ -145,7 +145,7 @@ ___
 |범위,제한사항|            | O(n) |
 |아이디어          | 배열의 각 요소를 인덱스 0에서부터 순회한다 <br/> 순회하면서 target 의 값과 같거나 크다면 순회를 중단한다 <br/> 중단된 시점의 인덱스를 반환한다  |  O(1)   |
 
-```
+```go
 func searchInsert(nums []int, target int) int {
   
 index := 0
@@ -167,7 +167,7 @@ return index
 |범위,제한사항|              | O(NlogN) |
 |아이디어          | 배열 요소를 이진 탐색으로 접근한다 <br/> 요소를 찾는다면, 해당 인덱스를 반환 <br/> 끝까지 찾지 못하고 이진 탐색을 종료한다면, <br/> 최종 접근했던 낮은 인덱스의 값을 반환한다 <br/>  |  O(1)   |
 
-```
+```go
 func searchInsert(nums []int, target int) int {
     
     low := 0
@@ -198,7 +198,7 @@ ___
 |범위,제한사항|                                                    | non-decreasing order (내림차순이 아닌 2개의 배열) <br/> 두개의 배열은 정렬됨 <br/> num1  m개, num2 n 개 요소가 있다 <br/> Num1 의 배열의 크기는 m+n  <br/> | O(NlogN) |
 |아이디어          | 배열은 정렬되어있음 <br/> 값이 없는 요소는 m 번 이후부터로 순차적으로 배치 후 정렬 | O(N)                                                                                                                     |
 
-```
+```go
 import "sort"
 func merge(nums1 []int, m int, nums2 []int, n int)  {
 
@@ -217,7 +217,7 @@ func merge(nums1 []int, m int, nums2 []int, n int)  {
 | 범위,제한사항 |               | O(N+M) |
 | 아이디어    | 0. Index I,j,k 를 사용  <br/> 1.num1 의 값이 0인 인덱스는 m 이다  <br/> 2.num2 의 인덱스 (n-1) 의 값이 가장 큰 요소 이다 <br/> 3. num1[m-1] 값과 num2[n-1]  비교  값이 크다면 num1[i] 추가하고 k 와 j 값을 -1 해준다 <br/> 4 . 비교하다가 i,j값이 0 보다 작아지면 중단 <br/> |  O(1)   |
 
-```
+```go
 func merge(nums1 []int, m int, nums2 []int, n int)  {
 
   i := m-1 
@@ -254,7 +254,7 @@ ___
 |범위,제한사항|      | O(n2) |
 |아이디어          | 기반 리스트 생성 <br/> 1번째 리스트 요소를 1로 초기화 <br/> 입력으로 주어진 행수 만큼 순회 <br/> 항상 맨 앞과 맨 뒤 값은 1 <br/>  |  O(1)   |
 
-```
+```go
 func generate(numRows int) [][]int {
     pascal := make([][]int,0)
     if numRows <= 0 {
@@ -286,8 +286,8 @@ ___
 |범위,제한사항|     Num 의 길이값이 n ,정수 배열 ,다수의 수는 무조건 하나가 존재        | O(N)       |
 |아이디어          | 해시 테이블에서 키= 요소,값 =횟수 <br/> 배열을 순회하면서 해시테이블에 저장 <br/> N 보다 큰 수를 찾음 <br/>  | O(N)        |
 
-```
-unc majorityElement(nums []int) int {
+```go
+func majorityElement(nums []int) int {
     n := len(nums)/2
     data := make(map[int]int,0)
     for _,num := range nums {
@@ -308,7 +308,7 @@ unc majorityElement(nums []int) int {
 |범위,제한사항|      |  |
 |아이디어          | 1.정렬한다 <br/> 2. 배열의 n 요소를 출력  |    |
 
-```
+```go
 func majorityElement(nums []int) int {
     n := len(nums)/2
 
@@ -329,7 +329,7 @@ ___
 |범위,제한사항|                                            | O(n^2)|
 |아이디어          | 배열의 각 요소를 왼쪽으로 d번 이동 <br/>첫번째 요소를 임시변수에 저장 |  공간 : O(1)공간 복잡도는 해당 알고리즘이 실행되는 동안 사용되는 추가적인 메모리 공간의 크기를 나타냅니다. 이 문제에서 사용되는 메모리는 입력 배열의 길이에 따라 달라지는 배열 요소의 임시 저장용 변수 temp 하나 뿐입니다. 따라서 배열의 크기가 변하지 않는 한, 추가적인 메모리는 상수 크기이므로 O(1)   |
 
-```
+```go
 func rotLeft(a []int32, d int32) []int32 {
    
     for i := 0; i < int(d); i++ {
@@ -344,7 +344,7 @@ func rotLeft(a []int32, d int32) []int32 {
 }
 ```
 > 참고 (배열의 각 요소를 오른쪽으로 d 번 이동)
-```
+```go
 prev := slice[len(slice)-1]
 for i := range slice {
     temp := slice[i]
@@ -358,7 +358,7 @@ d--
 |범위,제한사항|      | O(1)       |
 |아이디어          | 슬라이스 복사 <br/> 슬라이스(slice)의 길이를 n으로 저장하고, b를 n으로 나누어 나머지를 구합니다. 이를 통해 b가 슬라이스의 길이보다 큰 경우에 대비합니다. <br/> 그리고 append 함수를 사용하여 슬라이스의 b번째 인덱스부터 끝까지와 처음부터 b-1번째 인덱스까지를 잘라서 다시 합칩니다. 이를 통해 왼쪽으로 b번 이동한 슬라이스를 생성합니다. <br/> b %= n b를 n으로 나눈 나머지 값을 b에 다시 저장하는 연산  | append 함수는 새로운 메모리 공간을 할당하여 슬라이스를 복사하므로, 여기서 사용되는 추가적인 메모리는 입력 슬라이스의 크기에 비례합니다. 따라서 이 알고리즘의 공간 복잡도는 O(n)       |
 
-```
+```go
 func rotLeft(a []int32, d int32) []int32 {
    
     n := int32(len(a))
@@ -384,7 +384,7 @@ ___
 |범위,제한사항|      | O(N)       |
 |아이디어          |   |주어진 함수에서 사용하는 메모리는 입력 배열 nums의 길이 n과 무관하며, 상수 개수의 변수만 사용하므로, 입력 크기에 비례하지 않습니다. 따라서 공간 복잡도는 O(1)       |
 
-```
+```go
 
 import "fmt"
 func missingNumber(nums []int) int {
@@ -414,7 +414,7 @@ func missingNumber(nums []int) int {
 |범위,제한사항|      | O(N)       |
 |아이디어          | 이 함수는 주어진 배열에서 누락된 숫자를 찾기 위해 XOR 연산을 사용합니다. XOR 연산은 두 값이 같으면 0을, 다르면 1을 반환하는 연산으로, 누락된 숫자를 찾는데 효과적입니다. 주어진 배열 nums에는 중복되지 않은 0부터 n까지의 요소들이 있으므로, 0부터 n까지의 숫자를 XOR 연산하면 누락된 숫자가 결과로 나오게 됩니다. 따라서 위의 함수를 사용하여 누락된 숫자를 찾을 수 있습니다.  |       |
 
-```
+```go
 import "fmt"
 func missingNumber(nums []int) int {
      n := len(nums)
@@ -433,15 +433,14 @@ func missingNumber(nums []int) int {
 
 ```
 ___
-### [1.8 부분](https://leetcode.com/problems/subsets/)
+### [1.8 부분집합](https://leetcode.com/problems/subsets/)
 
 |                |                          |(시간/공간)복잡도                    |
 |:----------------|-------------------------------|--------------------------|
 |범위,제한사항|      |  |
 |아이디어          |   |     |
 
-```
-
+```go
 func generateSubsets(nums []int, index int, subset []int, result *[][]int) {
     if index == len(nums) {
         *result = append(*result, append([]int{}, subset...))
@@ -481,7 +480,7 @@ board := [][]byte{
 }
 word := “ABCCED”
 ```
-````
+```go
 func exist(board [][]byte, word string) bool {
     rows, cols := len(board), len(board[0])
     for i := 0; i < rows; i++ {

@@ -6,8 +6,7 @@ ___
 |범위,제한사항|      | o(n) 문자열의 길이만큼 반복문을 수행                        |
 |아이디어          | 아스키코드 알파벳소문자로 통일 <br/> 아스키코드 문자나,숫자일 경우만 분리 <br/> 문자열을 리버스해서 일치하는지 비교 <br/>  | o(n) 새로운 문자열 cleanedStr과 reversedStr을 만들기 때문에 |
 
-```
-
+```go
 func isPalindrome(s string) bool {
   cleanedStr := ""
   for _, ch := range s {
@@ -31,7 +30,7 @@ func isPalindrome(s string) bool {
   - 숫자: 48부터 57까지 (0부터 9까지)
   - 소문자: 97부터 122까지 (a부터 z까지)
   - 대문자: 65부터 90까지 (A부터 Z까지)
-```	
+```go
 s := “GOLANG"
 //[71 79 76 65 78 71]
 
@@ -42,7 +41,7 @@ fmt.Printf("%c - %d\n", r, r)
 }
 ```
 - 공백제거
-```
+```go
 sample := " This is a sample string   "
 noSpaceString := strings.ReplaceAll(sample, " ", “")
 ```
@@ -54,7 +53,7 @@ noSpaceString := strings.ReplaceAll(sample, " ", “")
 |범위,제한사항| 문자열 리스트,리스트에 있는 모든 문자열은 소문자로 구성 | O(n log n) sort.Strings(s) 사용으로 |
 |아이디어          |                                 | strings.Join(s, "")을 사용하여 문자열을 다시 합치는 작업도 시간과 메모리를 소모   |
 
-```
+```go
 import "fmt"
 import "sort"
 func groupAnagrams(strs []string) [][]string {
@@ -87,7 +86,7 @@ Ex) ”listen”과 "silent"은 에너그램
 |범위,제한사항| 문자열 리스트,리스트에 있는 모든 문자열은 소문자로 구성 | O(1)|                                                  |
 |아이디어          |                                 | O(1) |
 
-```
+```go
 func validIPAddress(queryIP string) string {
 ipv4Pattern := `^(?:(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$`
 	ipv6Pattern := `^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$`
