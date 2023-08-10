@@ -425,6 +425,87 @@ deque &#xC740; &#xC774;&#xC911; &#xC5F0;&#xACB0; &#xB9AC;&#xC2A4;&#xD2B8;&#xB85C
     <span class="hljs-keyword">return</span> stack.IsEmpty()
 }
 </code></pre>
+<hr>
+<h3 id="43-permutation-&#xC21C;&#xC5F4;"><a href="https://leetcode.com/problems/permutations/" target="_blank">4.3 permutation &#xC21C;&#xC5F4;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td>&#xC2A4;&#xD0DD;&#xC5D0; &#xC313;&#xC544;&#xB454; &#xC22B;&#xC790;&#xB4E4;&#xC744; &#xAEBC;&#xB0B4;&#xC5B4; &#xBAA8;&#xB4E0; &#xAC00;&#xB2A5;&#xD55C; &#xC870;&#xD569;&#xC744; &#xB9CC;&#xB4E4;&#xC5B4;&#xAC00;&#xB294; &#xACFC;&#xC815;&#xC744; &#xBC18;&#xBCF5;&#xD558;&#xBA70; &#xC21C;&#xC5F4;&#xC744; &#xC0DD;&#xC131;&#xD569;&#xB2C8;&#xB2E4;.<br> &#xC5EC;&#xAE30;&#xC11C; &#xC2A4;&#xD0DD;&#xC740; &#xC774;&#xBBF8; &#xC120;&#xD0DD;&#xD55C; &#xC22B;&#xC790;&#xB4E4;&#xC744; &#xCD94;&#xC801;&#xD558;&#xACE0;, &#xBC31;&#xD2B8;&#xB798;&#xD0B9;&#xC744; &#xC704;&#xD574; &#xC0AC;&#xC6A9;&#xB429;&#xB2C8;&#xB2E4;.<br> &#xC774;&#xC804; &#xB2E8;&#xACC4;&#xB85C; &#xB3CC;&#xC544;&#xAC00;&#xBA74;&#xC11C; &#xC870;&#xD569;&#xC744; &#xC0DD;&#xC131;&#xD558;&#xACE0; &#xD0D0;&#xC0C9;&#xD558;&#xB294; &#xBC29;&#xC2DD;&#xC774;&#xAE30; &#xB54C;&#xBB38;&#xC5D0;, <br> &#xC7AC;&#xADC0;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC9C0; &#xC54A;&#xACE0;&#xB3C4; &#xC21C;&#xC5F4;&#xC744; &#xAD6C;&#xD560; &#xC218; &#xC788;&#xAC8C; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;.<br> &#xC774;&#xB7EC;&#xD55C; &#xBC29;&#xC2DD;&#xC740; &#xC2A4;&#xD0DD;&#xC744; &#xD65C;&#xC6A9;&#xD558;&#xC5EC; &#xC7AC;&#xADC0;&#xC801;&#xC778; &#xAD6C;&#xC870;&#xB97C; &#xBA85;&#xC2DC;&#xC801;&#xC73C;&#xB85C; &#xAD6C;&#xD604;&#xD558;&#xC9C0; &#xC54A;&#xACE0;&#xB3C4; &#xC21C;&#xC5F4; &#xBB38;&#xC81C;&#xB97C; &#xD574;&#xACB0;&#xD558;&#xB294; &#xC88B;&#xC740; &#xBC29;&#xBC95; &#xC911; &#xD558;&#xB098;&#xC785;&#xB2C8;&#xB2E4;.</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
+
+<span class="hljs-keyword">func</span> permute(nums []<span class="hljs-keyword">int</span>) [][]<span class="hljs-keyword">int</span> {
+    result := [][]<span class="hljs-keyword">int</span>{}
+    stack := []<span class="hljs-keyword">int</span>{}
+    used := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">bool</span>, <span class="hljs-built_in">len</span>(nums))
+
+    <span class="hljs-keyword">for</span> <span class="hljs-built_in">len</span>(stack) &gt; <span class="hljs-number">0</span> || <span class="hljs-built_in">len</span>(nums) &gt; <span class="hljs-number">0</span> {
+        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(stack) == <span class="hljs-built_in">len</span>(nums) {
+            <span class="hljs-comment">// &#xC2A4;&#xD0DD;&#xC5D0; &#xBAA8;&#xB4E0; &#xC694;&#xC18C;&#xAC00; &#xC313;&#xC600;&#xC744; &#xB54C; &#xC21C;&#xC5F4;&#xC744; &#xACB0;&#xACFC;&#xC5D0; &#xCD94;&#xAC00;</span>
+            current := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">int</span>, <span class="hljs-built_in">len</span>(stack))
+            <span class="hljs-built_in">copy</span>(current, stack)
+            result = <span class="hljs-built_in">append</span>(result, current)
+        }
+
+        <span class="hljs-keyword">for</span> i, num := <span class="hljs-keyword">range</span> nums {
+            <span class="hljs-keyword">if</span> used[i] {
+                <span class="hljs-keyword">continue</span>
+            }
+
+            <span class="hljs-comment">// &#xC22B;&#xC790;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xACE0; &#xC2A4;&#xD0DD;&#xC5D0; &#xCD94;&#xAC00;</span>
+            used[i] = <span class="hljs-literal">true</span>
+            stack = <span class="hljs-built_in">append</span>(stack, num)
+
+            <span class="hljs-comment">// &#xB2E4;&#xC74C; &#xC22B;&#xC790;&#xB85C; &#xC774;&#xB3D9;</span>
+            nums = nums[:i+<span class="hljs-built_in">copy</span>(nums[i:], nums[i+<span class="hljs-number">1</span>:])]
+
+            <span class="hljs-comment">// &#xC2A4;&#xD0DD;&#xC744; &#xAE30;&#xBC18;&#xC73C;&#xB85C; &#xBC31;&#xD2B8;&#xB798;&#xD0B9;&#xD558;&#xC5EC; &#xC21C;&#xC5F4;&#xC744; &#xC0DD;&#xC131;</span>
+            <span class="hljs-keyword">break</span>
+        }
+
+        <span class="hljs-comment">// &#xC2A4;&#xD0DD;&#xC5D0;&#xC11C; &#xB9C8;&#xC9C0;&#xB9C9; &#xC694;&#xC18C; &#xC81C;&#xAC70; &#xBC0F; &#xD574;&#xB2F9; &#xC22B;&#xC790;&#xC758; &#xC0AC;&#xC6A9; &#xD45C;&#xC2DC; &#xD574;&#xC81C;</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(stack) &gt; <span class="hljs-number">0</span> {
+            last := stack[<span class="hljs-built_in">len</span>(stack)<span class="hljs-number">-1</span>]
+            used[numIndex(nums, last)] = <span class="hljs-literal">false</span>
+            stack = stack[:<span class="hljs-built_in">len</span>(stack)<span class="hljs-number">-1</span>]
+        }
+    }
+
+    <span class="hljs-keyword">return</span> result
+}
+
+<span class="hljs-keyword">func</span> numIndex(nums []<span class="hljs-keyword">int</span>, num <span class="hljs-keyword">int</span>) <span class="hljs-keyword">int</span> {
+    <span class="hljs-keyword">for</span> i, n := <span class="hljs-keyword">range</span> nums {
+        <span class="hljs-keyword">if</span> n == num {
+            <span class="hljs-keyword">return</span> i
+        }
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>
+}
+
+<span class="hljs-keyword">func</span> main() {
+    nums := []<span class="hljs-keyword">int</span>{<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>}
+    result := permute(nums)
+    fmt.Println(result)
+}
+</code></pre>
 
                                 
                                 </section>
@@ -468,7 +549,7 @@ deque &#xC740; &#xC774;&#xC911; &#xC5F0;&#xACB0; &#xB9AC;&#xC2A4;&#xD2B8;&#xB85C
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"선형구조-스택","level":"1.2.4","depth":2,"next":{"title":"선형구조-큐","level":"1.2.5","depth":2,"path":"posts/자료구조/선형구조/Queue.md","ref":"posts/자료구조/선형구조/Queue.md","articles":[]},"previous":{"title":"선형구조-리스트","level":"1.2.3","depth":2,"path":"posts/자료구조/선형구조/Array.md","ref":"posts/자료구조/선형구조/Array.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/자료구조/선형구조/Stack.md","mtime":"2023-08-10T04:18:46.124Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-10T07:57:44.640Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"선형구조-스택","level":"1.2.4","depth":2,"next":{"title":"선형구조-큐","level":"1.2.5","depth":2,"path":"posts/자료구조/선형구조/Queue.md","ref":"posts/자료구조/선형구조/Queue.md","articles":[]},"previous":{"title":"선형구조-리스트","level":"1.2.3","depth":2,"path":"posts/자료구조/선형구조/Array.md","ref":"posts/자료구조/선형구조/Array.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/자료구조/선형구조/Stack.md","mtime":"2023-08-10T11:30:48.371Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-10T15:11:20.016Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>

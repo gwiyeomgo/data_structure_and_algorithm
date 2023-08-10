@@ -27,6 +27,13 @@ func (q *Queue) Front() interface{} {
     }
     return q.data[0]
 }
+//큐의 가장 뒤에 있는 항목을 반환(삭제x)
+func (q *Queue) Rear() interface{} {
+	if q.IsEmpty() {
+		return nil
+	}
+	return q.data[len(q.data)-1]
+}
 
 func (q *Queue) IsEmpty() bool {
     return len(q.data) == 0
@@ -36,3 +43,5 @@ func (q *Queue) Size() int {
     return len(q.data)
 }
 ```
+
+* 큐문제는 대개는 트리나 그래프의 너비 우선 탐색 등에서 사용되는 자료구조다
