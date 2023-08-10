@@ -312,6 +312,139 @@
                                 
                                 <p>&#xC7AC;&#xADC0;&#xB294; &#xC5B4;&#xB5A4; &#xD568;&#xC218; &#xB0B4;&#xC5D0;&#xC11C; &#xC790;&#xC2E0;&#xC744; &#xB2E4;&#xC2DC; &#xD638;&#xCD9C;&#xD558;&#xB294; &#xAC83;
 &#xBD84;&#xD560; &#xC815;&#xBCF5; &#xC54C;&#xACE0;&#xB9AC;&#xC998;&#xC5D0; &#xC801;&#xC6A9; &#xAC00;&#xB2A5;</p>
+<h3 id="&#xC7AC;&#xADC0;recursion&#xB97C;-&#xC0AC;&#xC6A9;&#xD558;&#xC5EC;-&#xBC30;&#xC5F4;&#xC758;-&#xC694;&#xC18C;&#xB4E4;&#xC744;-&#xBAA8;&#xB450;-&#xB354;&#xD558;&#xB294;-&#xD568;&#xC218;">&#xC7AC;&#xADC0;(recursion)&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xBC30;&#xC5F4;&#xC758; &#xC694;&#xC18C;&#xB4E4;&#xC744; &#xBAA8;&#xB450; &#xB354;&#xD558;&#xB294; &#xD568;&#xC218;</h3>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+)
+
+<span class="hljs-keyword">func</span> sumElememts(nums []<span class="hljs-keyword">int</span>) <span class="hljs-keyword">int</span>{
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(nums)  == <span class="hljs-number">1</span> {
+        <span class="hljs-keyword">return</span> nums[<span class="hljs-number">0</span>]
+    }
+    <span class="hljs-keyword">return</span> nums[<span class="hljs-number">0</span>] + sumElememts(nums[<span class="hljs-number">1</span>:])
+}
+
+<span class="hljs-keyword">func</span> main() {
+    nums :=   []<span class="hljs-keyword">int</span>{<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>,<span class="hljs-number">11</span>,<span class="hljs-number">12</span>,<span class="hljs-number">13</span>,<span class="hljs-number">14</span>,<span class="hljs-number">15</span>}
+    fmt.Println(sumElememts(nums))
+}
+<span class="hljs-comment">//120</span>
+</code></pre>
+<hr>
+<h3 id="42-&#xACC4;&#xB2E8;&#xC624;&#xB974;&#xAE30;"><a href="https://leetcode.com/problems/climbing-stairs/" target="_blank">4.2 &#xACC4;&#xB2E8;&#xC624;&#xB974;&#xAE30;</a></h3>
+<ul>
+<li>&#xC804;&#xD615;&#xC801;&#xC778; &#xB2E4;&#xC774;&#xB098;&#xBBF9; &#xD504;&#xB85C;&#xADF8;&#xB798;&#xBC0D; &#xBB38;&#xC81C;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td>&#xBA54;&#xBAA8;&#xC774;&#xC81C;&#xC774;&#xC158;&#xC744; &#xC0AC;&#xC6A9;</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> climb(n <span class="hljs-keyword">int</span>,i <span class="hljs-keyword">int</span>) <span class="hljs-keyword">int</span> {
+      <span class="hljs-keyword">if</span> n == i {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> 
+    }
+    <span class="hljs-keyword">if</span> n &lt; i {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span> 
+    }
+    <span class="hljs-keyword">return</span> climb(n,i+<span class="hljs-number">1</span>) + climb(n,i+<span class="hljs-number">2</span>) 
+}
+
+<span class="hljs-keyword">func</span> climbStairs(n <span class="hljs-keyword">int</span>) <span class="hljs-keyword">int</span> {
+  <span class="hljs-keyword">return</span> climb(n,<span class="hljs-number">0</span>)
+}
+</code></pre>
+<p>&#xC7AC;&#xADC0; &#xD638;&#xCD9C;&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xBB38;&#xC81C;&#xB97C; &#xD480;&#xB824;&#xACE0; &#xC2DC;&#xB3C4;&#xD588;&#xC73C;&#xB098;
+&#xD070; &#xC785;&#xB825;&#xAC12;&#xC5D0; &#xB300;&#xD574;&#xC11C;&#xB294; &#xD0C0;&#xC784;&#xC544;&#xC6C3; &#xBC1C;&#xC0DD;
+&#xBA54;&#xBAA8;&#xC774;&#xC81C;&#xC774;&#xC158;&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xC911;&#xBCF5; &#xACC4;&#xC0B0;&#xC744; &#xD53C;&#xD558;&#xAC70;&#xB098; &#xBC18;&#xBCF5;&#xBB38;&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xD6A8;&#xC728;&#xC801;&#xC73C;&#xB85C; &#xAD6C;&#xD604;&#xC774; &#xD544;&#xC694;</p>
+<ul>
+<li><p>&#xBA54;&#xBAA8;&#xC774;&#xC81C;&#xC774;&#xC158;
+```go
+func climb(n int, i int, memo map[int]int) int {
+  if n == i {</p>
+<pre><code>  return 1
+</code></pre><p>  }
+  if n &lt; i {</p>
+<pre><code>  return 0
+</code></pre><p>  }</p>
+<p>  if val, ok := memo[i]; ok {</p>
+<pre><code>  return val
+</code></pre><p>  }</p>
+<p>  memo[i] = climb(n, i+1, memo) + climb(n, i+2, memo)
+  return memo[i]
+}</p>
+</li>
+</ul>
+<p>func climbStairs(n int) int {
+    memo := make(map[int]int)
+    return climb(n, 0, memo)
+}</p>
+<pre><code>https://jeonghwan-kim.github.io/2023/04/17/usememo-usecallback
+https://soyoonique.tistory.com/59
+
+* &#xBC18;&#xBCF5;&#xBB38; &#xC0AC;&#xC6A9;
+```go
+func climbStairs(n int) int {
+    if n &lt;= 2 {
+        return n
+    }
+
+    prev1, prev2 := 1, 2
+    for i := 3; i &lt;= n; i++ {
+        curr := prev1 + prev2
+        prev1, prev2 = prev2, curr
+    }
+
+    return prev2
+}
+</code></pre><hr>
+<h3 id="43-permutation-&#xC21C;&#xC5F4;"><a href="https://leetcode.com/problems/permutations/" target="_blank">4.3 permutation &#xC21C;&#xC5F4;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td>&#xBB38;&#xC790;&#xC5F4; &#xD558;&#xB098;&#xC529; &#xBD84;&#xB9AC; =&gt; &#xD638;&#xCD9C; &#xC2A4;&#xD0DD;&#xC5D0; &#xC800;&#xC7A5; =&gt; &#xB2E4;&#xC2DC; &#xAEBC;&#xB0B4;&#xC11C; &#xB2E8;&#xC5B4; &#xC21C;&#xC11C;&#xB97C; &#xBC14;&#xAFC8; <br> &#xBB38;&#xC790;&#xC5F4;&#xC744; &#xD558;&#xB098;&#xB9CC; &#xB0A8;&#xC744; &#xB54C;&#xAE4C;&#xC9C0; &#xC798;&#xB77C;&#xB0B4; &#xB9C8;&#xC9C0;&#xB9C9; &#xBB38;&#xC790;&#xC640; &#xC774;&#xC804; &#xC2A4;&#xD0DD;&#xC5D0; &#xB0A8;&#xACA8;&#xC9C4; &#xC870;&#xD569;&#xC744; &#xB9CC;&#xB4DC;&#xB294; &#xBD84;&#xD560; &#xC815;&#xBCF5;</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-go">
+
+</code></pre>
+<ul>
+<li>&#xBD84;&#xD560; &#xC815;&#xBCF5;<blockquote>
+<p>&#xBB38;&#xC81C;&#xB97C; &#xC791;&#xC740; &#xC5EC;&#xB7EC;&#xAC1C;&#xC758; &#xBB38;&#xC81C;&#xB85C; &#xCABC;&#xAC20; &#xD6C4; &#xC7AC;&#xADC0;&#xC801;&#xC73C;&#xB85C; &#xAC01; &#xBB38;&#xC81C;&#xB97C; &#xD574;&#xACB0;&#xD55C; &#xD6C4; &#xC774;&#xB97C; &#xB2E4;&#xC2DC; &#xD569;&#xCCD0; &#xC6D0;&#xB798; &#xBB38;&#xC81C;&#xB97C; &#xD574;&#xACB0;&#xD558;&#xB294; &#xBC29;&#xBC95;</p>
+</blockquote>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -355,7 +488,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"재귀","level":"1.3.1","depth":2,"next":{"title":"동적계획","level":"1.3.2","depth":2,"path":"posts/알고리즘/DynamicProgramming.md","ref":"posts/알고리즘/DynamicProgramming.md","articles":[]},"previous":{"title":"알고리즘","level":"1.3","depth":1,"path":"posts/알고리즘/Algorithm.md","ref":"posts/알고리즘/Algorithm.md","articles":[{"title":"재귀","level":"1.3.1","depth":2,"path":"posts/알고리즘/Recursion.md","ref":"posts/알고리즘/Recursion.md","articles":[]},{"title":"동적계획","level":"1.3.2","depth":2,"path":"posts/알고리즘/DynamicProgramming.md","ref":"posts/알고리즘/DynamicProgramming.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/알고리즘/Recursion.md","mtime":"2023-08-09T15:00:03.544Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-09T15:39:53.963Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"재귀","level":"1.3.1","depth":2,"next":{"title":"동적계획","level":"1.3.2","depth":2,"path":"posts/알고리즘/DynamicProgramming.md","ref":"posts/알고리즘/DynamicProgramming.md","articles":[]},"previous":{"title":"알고리즘","level":"1.3","depth":1,"path":"posts/알고리즘/Algorithm.md","ref":"posts/알고리즘/Algorithm.md","articles":[{"title":"재귀","level":"1.3.1","depth":2,"path":"posts/알고리즘/Recursion.md","ref":"posts/알고리즘/Recursion.md","articles":[]},{"title":"동적계획","level":"1.3.2","depth":2,"path":"posts/알고리즘/DynamicProgramming.md","ref":"posts/알고리즘/DynamicProgramming.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/알고리즘/Recursion.md","mtime":"2023-08-10T07:55:40.552Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-10T07:57:44.640Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

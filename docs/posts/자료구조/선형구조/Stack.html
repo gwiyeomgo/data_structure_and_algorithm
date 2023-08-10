@@ -318,6 +318,113 @@ fist in last out</p>
 deque &#xC740; &#xC774;&#xC911; &#xC5F0;&#xACB0; &#xB9AC;&#xC2A4;&#xD2B8;&#xB85C; &#xB370;&#xC774;&#xD130; &#xC5F0;&#xACB0;&#xC744; &#xC9C0;&#xC6D0;&#xD55C;&#xB2E4;</p>
 <p>deque&#xC740; &#xC5F0;&#xACB0; &#xB9AC;&#xC2A4;&#xD2B8; &#xAD6C;&#xC870;&#xC5EC;&#xC11C; &#xC55E;&#xC5D0;&#xC11C;&#xBD80;&#xD130; &#xC811;&#xADFC;&#xD558;&#xAE30; &#xB54C;&#xBB38;&#xC5D0; &#xB9AC;&#xC2A4;&#xD2B8;&#xC758; &#xC778;&#xB371;&#xC2F1;&#xBCF4;&#xB2E4; &#xC870;&#xAE08; &#xB290;&#xB9AC;&#xB2E4;
 &#xB610;&#xD55C; &#xBA54;&#xBAA8;&#xB9AC;&#xAC00; &#xD5C8;&#xC6A9;&#xD558;&#xB294; &#xD55C; &#xACC4;&#xC18D; &#xCD94;&#xAC00;&#xD560; &#xC218; &#xC788;&#xC73C;&#xB098; &#xB9AC;&#xC2A4;&#xD2B8;&#xB294; &#xB9CC;&#xB4E4;&#xC5B4;&#xC9C4; &#xACF5;&#xAC04;&#xC774; &#xCC28;&#xBA74; &#xCD94;&#xAC00;&#xC801;&#xC73C;&#xB85C; &#xD655;&#xC7A5;&#xD574; &#xC8FC;&#xB294; &#xC791;&#xC5C5;&#xC774; &#xD544;&#xC694;&#xD558;&#xB2E4;</p>
+<h1 id="&#xC2AC;&#xB77C;&#xC774;&#xC2A4;-&#xAE30;&#xBC18;-stack"><a href="https://replit.com/@gwiyeomgo/stack#main.go" target="_blank">&#xC2AC;&#xB77C;&#xC774;&#xC2A4; &#xAE30;&#xBC18; stack</a></h1>
+<pre><code class="lang-go">
+<span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
+
+<span class="hljs-keyword">type</span> Stack <span class="hljs-keyword">struct</span> {
+    data []<span class="hljs-keyword">interface</span>{}
+}
+
+<span class="hljs-keyword">func</span> (s *Stack) Push(item <span class="hljs-keyword">interface</span>{}) {
+    s.data = <span class="hljs-built_in">append</span>(s.data, item)
+}
+
+<span class="hljs-keyword">func</span> (s *Stack) Pop() <span class="hljs-keyword">interface</span>{} {
+    <span class="hljs-keyword">if</span> s.IsEmpty() {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+    }
+    lastIndex := <span class="hljs-built_in">len</span>(s.data) - <span class="hljs-number">1</span>
+    popped := s.data[lastIndex]
+    s.data = s.data[:lastIndex]
+    <span class="hljs-keyword">return</span> popped
+}
+
+<span class="hljs-keyword">func</span> (s *Stack) Peek() <span class="hljs-keyword">interface</span>{} {
+    <span class="hljs-keyword">if</span> s.IsEmpty() {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+    }
+    <span class="hljs-keyword">return</span> s.data[<span class="hljs-built_in">len</span>(s.data)<span class="hljs-number">-1</span>]
+}
+
+<span class="hljs-keyword">func</span> (s *Stack) IsEmpty() <span class="hljs-keyword">bool</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(s.data) == <span class="hljs-number">0</span>
+}
+</code></pre>
+<hr>
+<h3 id="41-&#xC720;&#xD6A8;&#xD55C;-&#xAD04;&#xD638;-&#xAC80;&#xC99D;"><a href="https://leetcode.com/problems/valid-parentheses/" target="_blank">4.1 &#xC720;&#xD6A8;&#xD55C; &#xAD04;&#xD638; &#xAC80;&#xC99D;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td>1.&#xBB38;&#xC790;&#xC5F4; &#xC785;&#xB825; <br> 2. (),{},[] <br> 3.&#xBE44;&#xC5B4; &#xC788;&#xB294; &#xBB38;&#xC790;&#xC5F4;&#xC740; &#xC720;&#xD6A8;&#xD558;&#xB2E4;&#xACE0; &#xD310;&#xB2E8;  <br> 4. (,{,[ &#xACBD;&#xC6B0; &#xC774; &#xAD04;&#xD638;&#xB294; &#xB2EB;&#xB294; &#xAD04;&#xD638;&#xAC00; &#xB098;&#xC62C; &#xB54C;&#xAE4C;&#xC9C0; &#xC2A4;&#xD0DD;&#xC5D0; &#xB0A8;&#xC544;&#xC57C; &#xD55C;&#xB2E4;</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td>1. &#xC694;&#xC18C; stack &#xC5D0; &#xB2F4;&#xACE0;  <br> 2.&#xB9C8;&#xC9C0;&#xB9C9; &#xC694;&#xC18C;&#xC640; &#xBE44;&#xAD50;   <br> <em> &#xC9DD;&#xC774; &#xB9DE;&#xC73C;&#xBA74; pop  <br> </em> &#xC9DD;&#xC774; &#xB9DE;&#xC9C0; &#xC54A;&#xC73C;&#xBA74; &#xCD94;&#xAC00;  <br> 3. &#xBAA8;&#xB4E0; &#xC694;&#xC18C;&#xB97C; &#xB3CC;&#xACE0; stack &#xAE38;&#xC774;&#xAC00; 0&#xC774;&#xBA74; true, 1&#xAC1C;&#xC774;&#xC0C1;&#xC774;&#xBA74; false</td>
+<td>O(N)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-go"><span class="hljs-keyword">type</span> Stack <span class="hljs-keyword">struct</span> {
+    data []<span class="hljs-keyword">rune</span>
+}
+
+<span class="hljs-keyword">func</span> (s *Stack) Push(item <span class="hljs-keyword">rune</span>) {
+    s.data = <span class="hljs-built_in">append</span>(s.data, item)
+}
+
+<span class="hljs-keyword">func</span> (s *Stack) Pop() <span class="hljs-keyword">rune</span> {
+    <span class="hljs-keyword">if</span> s.IsEmpty() {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+    }
+    lastIndex := <span class="hljs-built_in">len</span>(s.data) - <span class="hljs-number">1</span>
+    popped := s.data[lastIndex]
+    s.data = s.data[:lastIndex]
+    <span class="hljs-keyword">return</span> popped
+}
+
+<span class="hljs-keyword">func</span> (s *Stack) Peek() <span class="hljs-keyword">rune</span> {
+    <span class="hljs-keyword">if</span> s.IsEmpty() {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+    }
+    <span class="hljs-keyword">return</span> s.data[<span class="hljs-built_in">len</span>(s.data)<span class="hljs-number">-1</span>]
+}
+
+<span class="hljs-keyword">func</span> (s *Stack) IsEmpty() <span class="hljs-keyword">bool</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(s.data) == <span class="hljs-number">0</span>
+}
+
+<span class="hljs-keyword">func</span> isValid(s <span class="hljs-keyword">string</span>) <span class="hljs-keyword">bool</span> {
+    stack := Stack{}
+
+    <span class="hljs-keyword">for</span> _, ch := <span class="hljs-keyword">range</span> s {
+        d := <span class="hljs-keyword">rune</span>(ch)
+
+        <span class="hljs-keyword">if</span> d == <span class="hljs-string">&apos;(&apos;</span> || d == <span class="hljs-string">&apos;{&apos;</span> || d == <span class="hljs-string">&apos;[&apos;</span> {
+            stack.Push(d)
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (d == <span class="hljs-string">&apos;)&apos;</span> &amp;&amp; stack.Peek() == <span class="hljs-string">&apos;(&apos;</span>) ||
+                  (d == <span class="hljs-string">&apos;}&apos;</span> &amp;&amp; stack.Peek() == <span class="hljs-string">&apos;{&apos;</span>) ||
+                  (d == <span class="hljs-string">&apos;]&apos;</span> &amp;&amp; stack.Peek() == <span class="hljs-string">&apos;[&apos;</span>) {
+            stack.Pop()
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+        }
+    }
+
+    <span class="hljs-keyword">return</span> stack.IsEmpty()
+}
+</code></pre>
 
                                 
                                 </section>
@@ -361,7 +468,7 @@ deque &#xC740; &#xC774;&#xC911; &#xC5F0;&#xACB0; &#xB9AC;&#xC2A4;&#xD2B8;&#xB85C
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"선형구조-스택","level":"1.2.4","depth":2,"next":{"title":"선형구조-큐","level":"1.2.5","depth":2,"path":"posts/자료구조/선형구조/Queue.md","ref":"posts/자료구조/선형구조/Queue.md","articles":[]},"previous":{"title":"선형구조-리스트","level":"1.2.3","depth":2,"path":"posts/자료구조/선형구조/Array.md","ref":"posts/자료구조/선형구조/Array.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/자료구조/선형구조/Stack.md","mtime":"2023-08-09T14:58:38.738Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-09T15:39:53.963Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"선형구조-스택","level":"1.2.4","depth":2,"next":{"title":"선형구조-큐","level":"1.2.5","depth":2,"path":"posts/자료구조/선형구조/Queue.md","ref":"posts/자료구조/선형구조/Queue.md","articles":[]},"previous":{"title":"선형구조-리스트","level":"1.2.3","depth":2,"path":"posts/자료구조/선형구조/Array.md","ref":"posts/자료구조/선형구조/Array.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/자료구조/선형구조/Stack.md","mtime":"2023-08-10T04:18:46.124Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-10T07:57:44.640Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
