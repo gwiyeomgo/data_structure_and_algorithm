@@ -65,10 +65,10 @@
     <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../../알고리즘/Algorithm.html" />
+    <link rel="next" href="Heap.html" />
     
     
-    <link rel="prev" href="../선형구조/Queue.html" />
+    <link rel="prev" href="../선형구조/HashTable.html" />
     
 
     </head>
@@ -189,12 +189,51 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.6" data-path="Tree.html">
+        <li class="chapter " data-level="1.2.6" data-path="../선형구조/HashTable.html">
+            
+                <a href="../선형구조/HashTable.html">
+            
+                    
+                    선형구조-해쉬테이블
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.7" data-path="Tree.html">
             
                 <a href="Tree.html">
             
                     
                     비선형-트리
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="Heap.html">
+            
+                <a href="Heap.html">
+            
+                    
+                    비선형-힙
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="Graph.html">
+            
+                <a href="Graph.html">
+            
+                    
+                    비선형-그래프
             
                 </a>
             
@@ -240,6 +279,32 @@
             
                     
                     동적계획
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../../알고리즘/Search.html">
+            
+                <a href="../../알고리즘/Search.html">
+            
+                    
+                    탐색
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../../알고리즘/Sort.html">
+            
+                <a href="../../알고리즘/Sort.html">
+            
+                    
+                    정렬
             
                 </a>
             
@@ -321,10 +386,364 @@
 </ul>
 </li>
 </ul>
+<p>&#xD2B8;&#xB9AC;&#xB97C; &#xD0D0;&#xC0C9;&#xD574; &#xC5BB;&#xACE0;&#xC790; &#xD558;&#xB294; &#xAC12;&#xC774; &#xC5B4;&#xB5A4; &#xAC83;&#xC774;&#xACE0;,&#xC5B4;&#xB5A4; &#xC2DD;&#xC73C;&#xB85C; &#xC21C;&#xD68C;&#xD574;&#xC57C; &#xD6A8;&#xACFC;&#xC801;&#xC73C;&#xB85C; &#xB2F5;&#xC744; &#xCC3E;&#xC744; &#xC218; &#xC788;&#xB294;&#xC9C0; &#xACE0;&#xBBFC;</p>
 <h2 id="&#xC774;&#xC9C4;-&#xD2B8;&#xB9AC;">* &#xC774;&#xC9C4; &#xD2B8;&#xB9AC;</h2>
-<h1 id="-bfs">- bfs</h1>
-<h1 id="dfs">-dfs</h1>
-<h2 id="&#xC778;&#xB371;&#xC2A4;-&#xD2B8;&#xB9AC;">* &#xC778;&#xB371;&#xC2A4; &#xD2B8;&#xB9AC;</h2>
+<p>&#xC790;&#xC2DD; &#xB178;&#xB4DC;&#xAC00; &#xCD5C;&#xB300; 2&#xAC1C;&#xC778; &#xD2B8;&#xB9AC; &#xAD6C;&#xC131;</p>
+<blockquote>
+<p>&#xC804;&#xC704; &#xC21C;&#xD68C;(preorder) : root - l -r</p>
+<p>&#xC911;&#xC704; &#xC21C;&#xD68C;(inorder) : l - root- r</p>
+<p>&#xD6C4;&#xC704; &#xC21C;&#xD68C;(postorder) : l -r -root</p>
+</blockquote>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+)
+
+<span class="hljs-comment">// TreeNode&#xB294; &#xC774;&#xC9C4; &#xD2B8;&#xB9AC; &#xB178;&#xB4DC;&#xB97C; &#xB098;&#xD0C0;&#xB0B4;&#xB294; &#xAD6C;&#xC870;&#xCCB4;&#xC785;&#xB2C8;&#xB2E4;.</span>
+<span class="hljs-keyword">type</span> TreeNode <span class="hljs-keyword">struct</span> {
+    Val   <span class="hljs-keyword">int</span>
+    Left  *TreeNode
+    Right *TreeNode
+}
+
+<span class="hljs-comment">// NewTreeNode&#xB294; &#xC0C8;&#xB85C;&#xC6B4; TreeNode&#xB97C; &#xC0DD;&#xC131;&#xD558;&#xB294; &#xD568;&#xC218;&#xC785;&#xB2C8;&#xB2E4;.</span>
+<span class="hljs-keyword">func</span> NewTreeNode(val <span class="hljs-keyword">int</span>) *TreeNode {
+    <span class="hljs-keyword">return</span> &amp;TreeNode{Val: val, Left: <span class="hljs-literal">nil</span>, Right: <span class="hljs-literal">nil</span>}
+}
+
+<span class="hljs-comment">// Insert&#xB294; &#xC774;&#xC9C4; &#xD2B8;&#xB9AC;&#xC5D0; &#xAC12;&#xC744; &#xC0BD;&#xC785;&#xD558;&#xB294; &#xD568;&#xC218;&#xC785;&#xB2C8;&#xB2E4;.</span>
+<span class="hljs-keyword">func</span> (root *TreeNode) Insert(val <span class="hljs-keyword">int</span>) *TreeNode {
+    <span class="hljs-keyword">if</span> root == <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> NewTreeNode(val)
+    }
+
+    <span class="hljs-keyword">if</span> val &lt; root.Val {
+        root.Left = root.Left.Insert(val)
+    } <span class="hljs-keyword">else</span> {
+        root.Right = root.Right.Insert(val)
+    }
+
+    <span class="hljs-keyword">return</span> root
+}
+
+<span class="hljs-comment">// PreOrderTraversal&#xB294; &#xC774;&#xC9C4; &#xD2B8;&#xB9AC;&#xB97C; &#xC804;&#xC704; &#xC21C;&#xD68C;&#xD558;&#xB294; &#xD568;&#xC218;&#xC785;&#xB2C8;&#xB2E4;.</span>
+<span class="hljs-keyword">func</span> (root *TreeNode) PreOrderTraversal() {
+    <span class="hljs-keyword">if</span> root == <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span>
+    }
+    fmt.Print(root.Val, <span class="hljs-string">&quot; &quot;</span>)
+    root.Left.PreOrderTraversal()
+    root.Right.PreOrderTraversal()
+}
+
+<span class="hljs-comment">// InOrderTraversal&#xB294; &#xC774;&#xC9C4; &#xD2B8;&#xB9AC;&#xB97C; &#xC911;&#xC704; &#xC21C;&#xD68C;&#xD558;&#xB294; &#xD568;&#xC218;&#xC785;&#xB2C8;&#xB2E4;.</span>
+<span class="hljs-keyword">func</span> (root *TreeNode) InOrderTraversal() {
+    <span class="hljs-keyword">if</span> root == <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span>
+    }
+    root.Left.InOrderTraversal()
+    fmt.Print(root.Val, <span class="hljs-string">&quot; &quot;</span>)
+    root.Right.InOrderTraversal()
+}
+
+<span class="hljs-comment">// PostOrderTraversal&#xB294; &#xC774;&#xC9C4; &#xD2B8;&#xB9AC;&#xB97C; &#xD6C4;&#xC704; &#xC21C;&#xD68C;&#xD558;&#xB294; &#xD568;&#xC218;&#xC785;&#xB2C8;&#xB2E4;.</span>
+<span class="hljs-keyword">func</span> (root *TreeNode) PostOrderTraversal() {
+    <span class="hljs-keyword">if</span> root == <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span>
+    }
+    root.Left.PostOrderTraversal()
+    root.Right.PostOrderTraversal()
+    fmt.Print(root.Val, <span class="hljs-string">&quot; &quot;</span>)
+}
+
+<span class="hljs-comment">// Search&#xB294; &#xC774;&#xC9C4; &#xD2B8;&#xB9AC;&#xC5D0;&#xC11C; &#xAC12;&#xC744; &#xCC3E;&#xB294; &#xD568;&#xC218;&#xC785;&#xB2C8;&#xB2E4;.</span>
+<span class="hljs-keyword">func</span> (root *TreeNode) Search(val <span class="hljs-keyword">int</span>) *TreeNode {
+  <span class="hljs-keyword">if</span> root == <span class="hljs-literal">nil</span> || root.Val == val {
+    <span class="hljs-keyword">return</span> root
+  }
+
+  <span class="hljs-keyword">if</span> val &lt; root.Val {
+    <span class="hljs-keyword">return</span> root.Left.Search(val)
+  }
+
+  <span class="hljs-keyword">return</span> root.Right.Search(val)
+}
+
+<span class="hljs-comment">// Delete&#xB294; &#xC774;&#xC9C4; &#xD2B8;&#xB9AC;&#xC5D0;&#xC11C; &#xAC12;&#xC744; &#xC0AD;&#xC81C;&#xD558;&#xB294; &#xD568;&#xC218;&#xC785;&#xB2C8;&#xB2E4;.</span>
+<span class="hljs-keyword">func</span> (root *TreeNode) Delete(val <span class="hljs-keyword">int</span>) *TreeNode {
+  <span class="hljs-keyword">if</span> root == <span class="hljs-literal">nil</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+  }
+
+  <span class="hljs-keyword">if</span> val &lt; root.Val {
+    root.Left = root.Left.Delete(val)
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> val &gt; root.Val {
+    root.Right = root.Right.Delete(val)
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-comment">// &#xC0AD;&#xC81C;&#xD560; &#xB178;&#xB4DC;&#xB97C; &#xCC3E;&#xC740; &#xACBD;&#xC6B0;</span>
+
+    <span class="hljs-comment">// &#xD558;&#xB098; &#xC774;&#xC0C1;&#xC758; &#xC790;&#xC2DD;&#xC774; &#xC5C6;&#xB294; &#xACBD;&#xC6B0; &#xB610;&#xB294; &#xD558;&#xB098;&#xC758; &#xC790;&#xC2DD;&#xB9CC; &#xC788;&#xB294; &#xACBD;&#xC6B0;</span>
+    <span class="hljs-keyword">if</span> root.Left == <span class="hljs-literal">nil</span> {
+      <span class="hljs-keyword">return</span> root.Right
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> root.Right == <span class="hljs-literal">nil</span> {
+      <span class="hljs-keyword">return</span> root.Left
+    }
+
+    <span class="hljs-comment">// &#xB450; &#xAC1C;&#xC758; &#xC790;&#xC2DD;&#xC774; &#xC788;&#xB294; &#xACBD;&#xC6B0;</span>
+    root.Val = root.Right.findMinValue()
+    root.Right = root.Right.Delete(root.Val)
+  }
+  <span class="hljs-keyword">return</span> root
+}
+
+<span class="hljs-comment">// findMinValue&#xB294; &#xD604;&#xC7AC; &#xB178;&#xB4DC; &#xC544;&#xB798;&#xC5D0;&#xC11C; &#xAC00;&#xC7A5; &#xC791;&#xC740; &#xAC12;&#xC744; &#xCC3E;&#xC544; &#xBC18;&#xD658;&#xD558;&#xB294; &#xD568;&#xC218;&#xC785;&#xB2C8;&#xB2E4;.</span>
+<span class="hljs-keyword">func</span> (root *TreeNode) findMinValue() <span class="hljs-keyword">int</span> {
+  current := root
+  <span class="hljs-keyword">for</span> current.Left != <span class="hljs-literal">nil</span> {
+    current = current.Left
+  }
+  <span class="hljs-keyword">return</span> current.Val
+}
+
+<span class="hljs-keyword">func</span> main() {
+    <span class="hljs-keyword">var</span> root *TreeNode
+
+    <span class="hljs-comment">// &#xC774;&#xC9C4; &#xD2B8;&#xB9AC;&#xC5D0; &#xAC12; &#xC0BD;&#xC785;</span>
+    root = root.Insert(<span class="hljs-number">5</span>)
+    root.Insert(<span class="hljs-number">3</span>)
+    root.Insert(<span class="hljs-number">7</span>)
+    root.Insert(<span class="hljs-number">2</span>)
+    root.Insert(<span class="hljs-number">4</span>)
+    root.Insert(<span class="hljs-number">6</span>)
+    root.Insert(<span class="hljs-number">8</span>)
+
+    <span class="hljs-comment">// &#xAC01; &#xC21C;&#xD68C; &#xBC29;&#xBC95; &#xC608;&#xC81C;</span>
+    fmt.Print(<span class="hljs-string">&quot;Pre-order traversal: &quot;</span>)
+    root.PreOrderTraversal() <span class="hljs-comment">// &#xC804;&#xC704; &#xC21C;&#xD68C; &#xACB0;&#xACFC; &#xCD9C;&#xB825;: 5 3 2 4 7 6 8</span>
+    fmt.Println()
+
+    fmt.Print(<span class="hljs-string">&quot;In-order traversal: &quot;</span>)
+    root.InOrderTraversal() <span class="hljs-comment">// &#xC911;&#xC704; &#xC21C;&#xD68C; &#xACB0;&#xACFC; &#xCD9C;&#xB825;: 2 3 4 5 6 7 8</span>
+    fmt.Println()
+
+    fmt.Print(<span class="hljs-string">&quot;Post-order traversal: &quot;</span>)
+    root.PostOrderTraversal() <span class="hljs-comment">// &#xD6C4;&#xC704; &#xC21C;&#xD68C; &#xACB0;&#xACFC; &#xCD9C;&#xB825;: 2 4 3 6 8 7 5</span>
+    fmt.Println()
+
+    <span class="hljs-comment">// &#xAC12; &#xCC3E;&#xAE30; &#xC608;&#xC81C;</span>
+    fmt.Println(root.Search(<span class="hljs-number">6</span>)) <span class="hljs-comment">// &#xCC3E;&#xC740; &#xACBD;&#xC6B0;: &amp;{6 0xc000010240 0xc000010260}</span>
+    fmt.Println(root.Search(<span class="hljs-number">9</span>)) <span class="hljs-comment">// &#xBABB; &#xCC3E;&#xC740; &#xACBD;&#xC6B0;: &lt;nil&gt;</span>
+
+    <span class="hljs-comment">// &#xAC12; &#xC0AD;&#xC81C; &#xC608;&#xC81C;</span>
+    fmt.Print(<span class="hljs-string">&quot;Before deletion: &quot;</span>)
+    root.InOrderTraversal() <span class="hljs-comment">// &#xC911;&#xC704; &#xC21C;&#xD68C; &#xACB0;&#xACFC; &#xCD9C;&#xB825;: 2 3 4 5 6 7 8</span>
+    fmt.Println()
+
+    root = root.Delete(<span class="hljs-number">5</span>)    <span class="hljs-comment">// &#xB8E8;&#xD2B8; &#xB178;&#xB4DC; &#xC0AD;&#xC81C;</span>
+    fmt.Print(<span class="hljs-string">&quot;After deletion: &quot;</span>)
+    root.InOrderTraversal() <span class="hljs-comment">// &#xC911;&#xC704; &#xC21C;&#xD68C; &#xACB0;&#xACFC; &#xCD9C;&#xB825;: 2 3 4 6 7 8</span>
+    fmt.Println()
+
+}
+</code></pre>
+<h1 id="&#xAE4A;&#xC774;-&#xC6B0;&#xC120;-&#xD0D0;&#xC0C9;dfs-&#xC54C;&#xACE0;&#xB9AC;&#xC998;&#xC73C;&#xB85C;-&#xD2B8;&#xB9AC;-&#xD0D0;&#xC0C9;">&#xAE4A;&#xC774; &#xC6B0;&#xC120; &#xD0D0;&#xC0C9;(DFS) &#xC54C;&#xACE0;&#xB9AC;&#xC998;&#xC73C;&#xB85C; &#xD2B8;&#xB9AC; &#xD0D0;&#xC0C9;</h1>
+<pre><code>stack 
+&#xC2A4;&#xD0DD; &#xC790;&#xB8CC;&#xAD6C;&#xC870;&#xB97C; &#xD65C;&#xC6A9;&#xD558;&#xC5EC; &#xD604;&#xC7AC; &#xD0D0;&#xC0C9; &#xC911;&#xC778; &#xB178;&#xB4DC;&#xB97C; &#xC2A4;&#xD0DD;&#xC5D0; &#xB123;&#xACE0; &#xD574;&#xB2F9; &#xB178;&#xB4DC;&#xC758; &#xC790;&#xC2DD; &#xB178;&#xB4DC; &#xC911; &#xD558;&#xB098;&#xB97C; &#xC120;&#xD0DD;&#xD558;&#xC5EC; &#xB2E4;&#xC2DC; &#xC2A4;&#xD0DD;&#xC5D0; &#xB123;&#xB294; &#xBC29;&#xC2DD;
+</code></pre><pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+)
+
+<span class="hljs-comment">// TreeNode&#xB294; &#xAE30;&#xBCF8; &#xD2B8;&#xB9AC; &#xB178;&#xB4DC; &#xAD6C;&#xC870;&#xCCB4;&#xC785;&#xB2C8;&#xB2E4;.</span>
+<span class="hljs-keyword">type</span> TreeNode <span class="hljs-keyword">struct</span> {
+    Value <span class="hljs-keyword">int</span>
+    Left  *TreeNode
+    Right *TreeNode
+}
+
+<span class="hljs-comment">// StackNode&#xB294; &#xC2A4;&#xD0DD;&#xC5D0; &#xC800;&#xC7A5;&#xD560; &#xB178;&#xB4DC; &#xAD6C;&#xC870;&#xCCB4;&#xC785;&#xB2C8;&#xB2E4;.</span>
+<span class="hljs-keyword">type</span> StackNode <span class="hljs-keyword">struct</span> {
+    Node  *TreeNode
+    Level <span class="hljs-keyword">int</span>
+}
+
+<span class="hljs-comment">// Stack&#xC740; &#xC2A4;&#xD0DD; &#xAD6C;&#xC870;&#xCCB4;&#xC785;&#xB2C8;&#xB2E4;.</span>
+<span class="hljs-keyword">type</span> Stack <span class="hljs-keyword">struct</span> {
+    Nodes []StackNode
+}
+
+<span class="hljs-comment">// Push&#xB294; &#xC2A4;&#xD0DD;&#xC5D0; &#xB178;&#xB4DC;&#xB97C; &#xCD94;&#xAC00;&#xD569;&#xB2C8;&#xB2E4;.</span>
+<span class="hljs-keyword">func</span> (s *Stack) Push(node *TreeNode, level <span class="hljs-keyword">int</span>) {
+    s.Nodes = <span class="hljs-built_in">append</span>(s.Nodes, StackNode{Node: node, Level: level})
+}
+
+<span class="hljs-comment">// Pop&#xB294; &#xC2A4;&#xD0DD;&#xC5D0;&#xC11C; &#xB178;&#xB4DC;&#xB97C; &#xAEBC;&#xB0C5;&#xB2C8;&#xB2E4;.</span>
+<span class="hljs-keyword">func</span> (s *Stack) Pop() (node *TreeNode, level <span class="hljs-keyword">int</span>) {
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(s.Nodes) == <span class="hljs-number">0</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, <span class="hljs-number">-1</span>
+    }
+    index := <span class="hljs-built_in">len</span>(s.Nodes) - <span class="hljs-number">1</span>
+    node, level = s.Nodes[index].Node, s.Nodes[index].Level
+    s.Nodes = s.Nodes[:index]
+    <span class="hljs-keyword">return</span> node, level
+}
+
+<span class="hljs-comment">// DFS&#xB294; &#xC2A4;&#xD0DD;&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xAE4A;&#xC774; &#xC6B0;&#xC120; &#xD0D0;&#xC0C9;&#xC744; &#xC218;&#xD589;&#xD569;&#xB2C8;&#xB2E4;.</span>
+<span class="hljs-keyword">func</span> DFS(root *TreeNode) {
+    <span class="hljs-keyword">if</span> root == <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span>
+    }
+
+    stack := Stack{}
+    stack.Push(root, <span class="hljs-number">0</span>)
+
+    <span class="hljs-keyword">for</span> <span class="hljs-built_in">len</span>(stack.Nodes) &gt; <span class="hljs-number">0</span> {
+        node, level := stack.Pop()
+        fmt.Printf(<span class="hljs-string">&quot;Level %d: %d\n&quot;</span>, level, node.Value)
+
+        <span class="hljs-comment">// &#xC624;&#xB978;&#xCABD; &#xC790;&#xC2DD;&#xC744; &#xBA3C;&#xC800; &#xC2A4;&#xD0DD;&#xC5D0; &#xB123;&#xC5B4;&#xC57C; &#xC67C;&#xCABD; &#xC790;&#xC2DD;&#xC774; &#xBA3C;&#xC800; &#xB098;&#xC624;&#xAC8C; &#xB429;&#xB2C8;&#xB2E4;.</span>
+        <span class="hljs-keyword">if</span> node.Right != <span class="hljs-literal">nil</span> {
+            stack.Push(node.Right, level+<span class="hljs-number">1</span>)
+        }
+        <span class="hljs-keyword">if</span> node.Left != <span class="hljs-literal">nil</span> {
+            stack.Push(node.Left, level+<span class="hljs-number">1</span>)
+        }
+    }
+}
+
+<span class="hljs-keyword">func</span> main() {
+    <span class="hljs-comment">// &#xD2B8;&#xB9AC; &#xC0DD;&#xC131; &#xC608;&#xC2DC;:      1</span>
+    <span class="hljs-comment">//                /   \</span>
+    <span class="hljs-comment">//               2     3</span>
+    <span class="hljs-comment">//              / \   / \</span>
+    <span class="hljs-comment">//             4   5 6   7</span>
+    root := &amp;TreeNode{
+        Value: <span class="hljs-number">1</span>,
+        Left: &amp;TreeNode{
+            Value: <span class="hljs-number">2</span>,
+            Left: &amp;TreeNode{
+                Value: <span class="hljs-number">4</span>,
+            },
+            Right: &amp;TreeNode{
+                Value: <span class="hljs-number">5</span>,
+            },
+        },
+        Right: &amp;TreeNode{
+            Value: <span class="hljs-number">3</span>,
+            Left: &amp;TreeNode{
+                Value: <span class="hljs-number">6</span>,
+            },
+            Right: &amp;TreeNode{
+                Value: <span class="hljs-number">7</span>,
+            },
+        },
+    }
+
+    fmt.Println(<span class="hljs-string">&quot;Depth First Search:&quot;</span>)
+    DFS(root)
+}
+</code></pre>
+<h1 id="&#xB108;&#xBE44;-&#xC6B0;&#xC120;-&#xD0D0;&#xC0C9;bfs-&#xC54C;&#xACE0;&#xB9AC;&#xC998;&#xC73C;&#xB85C;-&#xD2B8;&#xB9AC;-&#xD0D0;&#xC0C9;">&#xB108;&#xBE44; &#xC6B0;&#xC120; &#xD0D0;&#xC0C9;(BFS) &#xC54C;&#xACE0;&#xB9AC;&#xC998;&#xC73C;&#xB85C; &#xD2B8;&#xB9AC; &#xD0D0;&#xC0C9;</h1>
+<pre><code>queue
+</code></pre><pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+)
+
+<span class="hljs-comment">// TreeNode&#xB294; &#xAE30;&#xBCF8; &#xD2B8;&#xB9AC; &#xB178;&#xB4DC; &#xAD6C;&#xC870;&#xCCB4;&#xC785;&#xB2C8;&#xB2E4;.</span>
+<span class="hljs-keyword">type</span> TreeNode <span class="hljs-keyword">struct</span> {
+    Value <span class="hljs-keyword">int</span>
+    Left  *TreeNode
+    Right *TreeNode
+}
+
+<span class="hljs-comment">// QueueNode&#xB294; &#xD050;&#xC5D0; &#xC800;&#xC7A5;&#xD560; &#xB178;&#xB4DC; &#xAD6C;&#xC870;&#xCCB4;&#xC785;&#xB2C8;&#xB2E4;.</span>
+<span class="hljs-keyword">type</span> QueueNode <span class="hljs-keyword">struct</span> {
+    Node  *TreeNode
+    Level <span class="hljs-keyword">int</span>
+}
+
+<span class="hljs-comment">// Queue&#xB294; &#xD050; &#xAD6C;&#xC870;&#xCCB4;&#xC785;&#xB2C8;&#xB2E4;.</span>
+<span class="hljs-keyword">type</span> Queue <span class="hljs-keyword">struct</span> {
+    Nodes []QueueNode
+}
+
+<span class="hljs-comment">// Enqueue&#xB294; &#xD050;&#xC5D0; &#xB178;&#xB4DC;&#xB97C; &#xCD94;&#xAC00;&#xD569;&#xB2C8;&#xB2E4;.</span>
+<span class="hljs-keyword">func</span> (q *Queue) Enqueue(node *TreeNode, level <span class="hljs-keyword">int</span>) {
+    q.Nodes = <span class="hljs-built_in">append</span>(q.Nodes, QueueNode{Node: node, Level: level})
+}
+
+<span class="hljs-comment">// Dequeue&#xB294; &#xD050;&#xC5D0;&#xC11C; &#xB178;&#xB4DC;&#xB97C; &#xAEBC;&#xB0C5;&#xB2C8;&#xB2E4;.</span>
+<span class="hljs-keyword">func</span> (q *Queue) Dequeue() (node *TreeNode, level <span class="hljs-keyword">int</span>) {
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(q.Nodes) == <span class="hljs-number">0</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, <span class="hljs-number">-1</span>
+    }
+    node, level = q.Nodes[<span class="hljs-number">0</span>].Node, q.Nodes[<span class="hljs-number">0</span>].Level
+    q.Nodes = q.Nodes[<span class="hljs-number">1</span>:]
+    <span class="hljs-keyword">return</span> node, level
+}
+
+<span class="hljs-comment">// BFS&#xB294; &#xD050;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xB108;&#xBE44; &#xC6B0;&#xC120; &#xD0D0;&#xC0C9;&#xC744; &#xC218;&#xD589;&#xD569;&#xB2C8;&#xB2E4;.</span>
+<span class="hljs-keyword">func</span> BFS(root *TreeNode) {
+    <span class="hljs-keyword">if</span> root == <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span>
+    }
+
+    queue := Queue{}
+    queue.Enqueue(root, <span class="hljs-number">0</span>)
+
+    <span class="hljs-keyword">for</span> <span class="hljs-built_in">len</span>(queue.Nodes) &gt; <span class="hljs-number">0</span> {
+        node, level := queue.Dequeue()
+        fmt.Printf(<span class="hljs-string">&quot;Level %d: %d\n&quot;</span>, level, node.Value)
+
+        <span class="hljs-keyword">if</span> node.Left != <span class="hljs-literal">nil</span> {
+            queue.Enqueue(node.Left, level+<span class="hljs-number">1</span>)
+        }
+        <span class="hljs-keyword">if</span> node.Right != <span class="hljs-literal">nil</span> {
+            queue.Enqueue(node.Right, level+<span class="hljs-number">1</span>)
+        }
+    }
+}
+
+<span class="hljs-keyword">func</span> main() {
+    <span class="hljs-comment">// &#xD2B8;&#xB9AC; &#xC0DD;&#xC131; &#xC608;&#xC2DC;:      1</span>
+    <span class="hljs-comment">//                /   \</span>
+    <span class="hljs-comment">//               2     3</span>
+    <span class="hljs-comment">//              / \   / \</span>
+    <span class="hljs-comment">//             4   5 6   7</span>
+    root := &amp;TreeNode{
+        Value: <span class="hljs-number">1</span>,
+        Left: &amp;TreeNode{
+            Value: <span class="hljs-number">2</span>,
+            Left: &amp;TreeNode{
+                Value: <span class="hljs-number">4</span>,
+            },
+            Right: &amp;TreeNode{
+                Value: <span class="hljs-number">5</span>,
+            },
+        },
+        Right: &amp;TreeNode{
+            Value: <span class="hljs-number">3</span>,
+            Left: &amp;TreeNode{
+                Value: <span class="hljs-number">6</span>,
+            },
+            Right: &amp;TreeNode{
+                Value: <span class="hljs-number">7</span>,
+            },
+        },
+    }
+
+    fmt.Println(<span class="hljs-string">&quot;Breadth First Search:&quot;</span>)
+    BFS(root)
+}
+</code></pre>
+<p><a href="https://leetcode.com/problems/path-sum/" target="_blank">Path Sum</a></p>
+<p><a href="https://leetcode.com/problems/third-maximum-number/" target="_blank">3&#xBC88;&#xC9F8; &#xD070; &#xC218;</a></p>
+<p><a href="https://leetcode.com/problems/invert-binary-tree/" target="_blank">&#xC774;&#xC9C4;&#xD2B8;&#xB9AC; &#xBC18;</a></p>
+<p><a href="https://leetcode.com/problems/validate-binary-search-tree/" target="_blank">&#xC774;&#xC9C4; &#xAC80;&#xC0C9; &#xD2B8;&#xB9AC; &#xAC80;&#xC0C9;</a></p>
 
                                 
                                 </section>
@@ -352,12 +771,12 @@
 
             
                 
-                <a href="../선형구조/Queue.html" class="navigation navigation-prev " aria-label="Previous page: 선형구조-큐">
+                <a href="../선형구조/HashTable.html" class="navigation navigation-prev " aria-label="Previous page: 선형구조-해쉬테이블">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../../알고리즘/Algorithm.html" class="navigation navigation-next " aria-label="Next page: 알고리즘">
+                <a href="Heap.html" class="navigation navigation-next " aria-label="Next page: 비선형-힙">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -368,7 +787,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"비선형-트리","level":"1.2.6","depth":2,"next":{"title":"알고리즘","level":"1.3","depth":1,"path":"posts/알고리즘/Algorithm.md","ref":"posts/알고리즘/Algorithm.md","articles":[{"title":"재귀","level":"1.3.1","depth":2,"path":"posts/알고리즘/Recursion.md","ref":"posts/알고리즘/Recursion.md","articles":[]},{"title":"동적계획","level":"1.3.2","depth":2,"path":"posts/알고리즘/DynamicProgramming.md","ref":"posts/알고리즘/DynamicProgramming.md","articles":[]}]},"previous":{"title":"선형구조-큐","level":"1.2.5","depth":2,"path":"posts/자료구조/선형구조/Queue.md","ref":"posts/자료구조/선형구조/Queue.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/자료구조/비선형구조/Tree.md","mtime":"2023-08-10T12:53:48.779Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-10T15:11:20.016Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"비선형-트리","level":"1.2.7","depth":2,"next":{"title":"비선형-힙","level":"1.2.8","depth":2,"path":"posts/자료구조/비선형구조/Heap.md","ref":"posts/자료구조/비선형구조/Heap.md","articles":[]},"previous":{"title":"선형구조-해쉬테이블","level":"1.2.6","depth":2,"path":"posts/자료구조/선형구조/HashTable.md","ref":"posts/자료구조/선형구조/HashTable.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/자료구조/비선형구조/Tree.md","mtime":"2023-08-11T02:43:31.127Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-11T02:43:35.938Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>

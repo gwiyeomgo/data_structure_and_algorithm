@@ -7,15 +7,379 @@
   * 높이:높이는 잎새 노드로부터의 경로 길이
   * 깊이:깊이는 루트에서 노드로의 경로 길이
 
+
+트리를 탐색해 얻고자 하는 값이 어떤 것이고,어떤 식으로 순회해야 효과적으로 답을 찾을 수 있는지 고민
+
+
 ## * 이진 트리
+자식 노드가 최대 2개인 트리 구성
+> 전위 순회(preorder) : root - l -r
+
+> 중위 순회(inorder) : l - root- r
+
+> 후위 순회(postorder) : l -r -root
+   
+```go
+package main
+
+import (
+	"fmt"
+)
+
+// TreeNode는 이진 트리 노드를 나타내는 구조체입니다.
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+// NewTreeNode는 새로운 TreeNode를 생성하는 함수입니다.
+func NewTreeNode(val int) *TreeNode {
+	return &TreeNode{Val: val, Left: nil, Right: nil}
+}
+
+// Insert는 이진 트리에 값을 삽입하는 함수입니다.
+func (root *TreeNode) Insert(val int) *TreeNode {
+	if root == nil {
+		return NewTreeNode(val)
+	}
+
+	if val < root.Val {
+		root.Left = root.Left.Insert(val)
+	} else {
+		root.Right = root.Right.Insert(val)
+	}
+
+	return root
+}
+
+// PreOrderTraversal는 이진 트리를 전위 순회하는 함수입니다.
+func (root *TreeNode) PreOrderTraversal() {
+	if root == nil {
+		return
+	}
+	fmt.Print(root.Val, " ")
+	root.Left.PreOrderTraversal()
+	root.Right.PreOrderTraversal()
+}
+
+// InOrderTraversal는 이진 트리를 중위 순회하는 함수입니다.
+func (root *TreeNode) InOrderTraversal() {
+	if root == nil {
+		return
+	}
+	root.Left.InOrderTraversal()
+	fmt.Print(root.Val, " ")
+	root.Right.InOrderTraversal()
+}
+
+// PostOrderTraversal는 이진 트리를 후위 순회하는 함수입니다.
+func (root *TreeNode) PostOrderTraversal() {
+	if root == nil {
+		return
+	}
+	root.Left.PostOrderTraversal()
+	root.Right.PostOrderTraversal()
+	fmt.Print(root.Val, " ")
+}
+
+// Search는 이진 트리에서 값을 찾는 함수입니다.
+func (root *TreeNode) Search(val int) *TreeNode {
+  if root == nil || root.Val == val {
+    return root
+  }
+
+  if val < root.Val {
+    return root.Left.Search(val)
+  }
+
+  return root.Right.Search(val)
+}
+
+// Delete는 이진 트리에서 값을 삭제하는 함수입니다.
+func (root *TreeNode) Delete(val int) *TreeNode {
+  if root == nil {
+    return nil
+  }
+
+  if val < root.Val {
+    root.Left = root.Left.Delete(val)
+  } else if val > root.Val {
+    root.Right = root.Right.Delete(val)
+  } else {
+    // 삭제할 노드를 찾은 경우
+
+    // 하나 이상의 자식이 없는 경우 또는 하나의 자식만 있는 경우
+    if root.Left == nil {
+      return root.Right
+    } else if root.Right == nil {
+      return root.Left
+    }
+
+    // 두 개의 자식이 있는 경우
+    root.Val = root.Right.findMinValue()
+    root.Right = root.Right.Delete(root.Val)
+  }
+  return root
+}
+
+// findMinValue는 현재 노드 아래에서 가장 작은 값을 찾아 반환하는 함수입니다.
+func (root *TreeNode) findMinValue() int {
+  current := root
+  for current.Left != nil {
+    current = current.Left
+  }
+  return current.Val
+}
+
+func main() {
+	var root *TreeNode
+
+	// 이진 트리에 값 삽입
+	root = root.Insert(5)
+	root.Insert(3)
+	root.Insert(7)
+	root.Insert(2)
+	root.Insert(4)
+	root.Insert(6)
+	root.Insert(8)
+
+	// 각 순회 방법 예제
+	fmt.Print("Pre-order traversal: ")
+	root.PreOrderTraversal() // 전위 순회 결과 출력: 5 3 2 4 7 6 8
+	fmt.Println()
+
+	fmt.Print("In-order traversal: ")
+	root.InOrderTraversal() // 중위 순회 결과 출력: 2 3 4 5 6 7 8
+	fmt.Println()
+
+	fmt.Print("Post-order traversal: ")
+	root.PostOrderTraversal() // 후위 순회 결과 출력: 2 4 3 6 8 7 5
+	fmt.Println()
+
+    // 값 찾기 예제
+    fmt.Println(root.Search(6)) // 찾은 경우: &{6 0xc000010240 0xc000010260}
+    fmt.Println(root.Search(9)) // 못 찾은 경우: <nil>
+  
+    // 값 삭제 예제
+    fmt.Print("Before deletion: ")
+    root.InOrderTraversal() // 중위 순회 결과 출력: 2 3 4 5 6 7 8
+    fmt.Println()
+  
+    root = root.Delete(5)    // 루트 노드 삭제
+    fmt.Print("After deletion: ")
+    root.InOrderTraversal() // 중위 순회 결과 출력: 2 3 4 6 7 8
+    fmt.Println()
+
+}
+
+```
 
 
+# 깊이 우선 탐색(DFS) 알고리즘으로 트리 탐색
+    stack 
+    스택 자료구조를 활용하여 현재 탐색 중인 노드를 스택에 넣고 해당 노드의 자식 노드 중 하나를 선택하여 다시 스택에 넣는 방식
 
+```go
+package main
 
+import (
+	"fmt"
+)
 
+// TreeNode는 기본 트리 노드 구조체입니다.
+type TreeNode struct {
+	Value int
+	Left  *TreeNode
+	Right *TreeNode
+}
 
-# - bfs
+// StackNode는 스택에 저장할 노드 구조체입니다.
+type StackNode struct {
+	Node  *TreeNode
+	Level int
+}
 
-#  -dfs
+// Stack은 스택 구조체입니다.
+type Stack struct {
+	Nodes []StackNode
+}
 
-## * 인덱스 트리
+// Push는 스택에 노드를 추가합니다.
+func (s *Stack) Push(node *TreeNode, level int) {
+	s.Nodes = append(s.Nodes, StackNode{Node: node, Level: level})
+}
+
+// Pop는 스택에서 노드를 꺼냅니다.
+func (s *Stack) Pop() (node *TreeNode, level int) {
+	if len(s.Nodes) == 0 {
+		return nil, -1
+	}
+	index := len(s.Nodes) - 1
+	node, level = s.Nodes[index].Node, s.Nodes[index].Level
+	s.Nodes = s.Nodes[:index]
+	return node, level
+}
+
+// DFS는 스택을 사용하여 깊이 우선 탐색을 수행합니다.
+func DFS(root *TreeNode) {
+	if root == nil {
+		return
+	}
+
+	stack := Stack{}
+	stack.Push(root, 0)
+
+	for len(stack.Nodes) > 0 {
+		node, level := stack.Pop()
+		fmt.Printf("Level %d: %d\n", level, node.Value)
+
+		// 오른쪽 자식을 먼저 스택에 넣어야 왼쪽 자식이 먼저 나오게 됩니다.
+		if node.Right != nil {
+			stack.Push(node.Right, level+1)
+		}
+		if node.Left != nil {
+			stack.Push(node.Left, level+1)
+		}
+	}
+}
+
+func main() {
+	// 트리 생성 예시:      1
+	//                /   \
+	//               2     3
+	//              / \   / \
+	//             4   5 6   7
+	root := &TreeNode{
+		Value: 1,
+		Left: &TreeNode{
+			Value: 2,
+			Left: &TreeNode{
+				Value: 4,
+			},
+			Right: &TreeNode{
+				Value: 5,
+			},
+		},
+		Right: &TreeNode{
+			Value: 3,
+			Left: &TreeNode{
+				Value: 6,
+			},
+			Right: &TreeNode{
+				Value: 7,
+			},
+		},
+	}
+
+	fmt.Println("Depth First Search:")
+	DFS(root)
+}
+
+```
+
+# 너비 우선 탐색(BFS) 알고리즘으로 트리 탐색
+    queue
+```go
+package main
+
+import (
+	"fmt"
+)
+
+// TreeNode는 기본 트리 노드 구조체입니다.
+type TreeNode struct {
+	Value int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+// QueueNode는 큐에 저장할 노드 구조체입니다.
+type QueueNode struct {
+	Node  *TreeNode
+	Level int
+}
+
+// Queue는 큐 구조체입니다.
+type Queue struct {
+	Nodes []QueueNode
+}
+
+// Enqueue는 큐에 노드를 추가합니다.
+func (q *Queue) Enqueue(node *TreeNode, level int) {
+	q.Nodes = append(q.Nodes, QueueNode{Node: node, Level: level})
+}
+
+// Dequeue는 큐에서 노드를 꺼냅니다.
+func (q *Queue) Dequeue() (node *TreeNode, level int) {
+	if len(q.Nodes) == 0 {
+		return nil, -1
+	}
+	node, level = q.Nodes[0].Node, q.Nodes[0].Level
+	q.Nodes = q.Nodes[1:]
+	return node, level
+}
+
+// BFS는 큐를 사용하여 너비 우선 탐색을 수행합니다.
+func BFS(root *TreeNode) {
+	if root == nil {
+		return
+	}
+
+	queue := Queue{}
+	queue.Enqueue(root, 0)
+
+	for len(queue.Nodes) > 0 {
+		node, level := queue.Dequeue()
+		fmt.Printf("Level %d: %d\n", level, node.Value)
+
+		if node.Left != nil {
+			queue.Enqueue(node.Left, level+1)
+		}
+		if node.Right != nil {
+			queue.Enqueue(node.Right, level+1)
+		}
+	}
+}
+
+func main() {
+	// 트리 생성 예시:      1
+	//                /   \
+	//               2     3
+	//              / \   / \
+	//             4   5 6   7
+	root := &TreeNode{
+		Value: 1,
+		Left: &TreeNode{
+			Value: 2,
+			Left: &TreeNode{
+				Value: 4,
+			},
+			Right: &TreeNode{
+				Value: 5,
+			},
+		},
+		Right: &TreeNode{
+			Value: 3,
+			Left: &TreeNode{
+				Value: 6,
+			},
+			Right: &TreeNode{
+				Value: 7,
+			},
+		},
+	}
+
+	fmt.Println("Breadth First Search:")
+	BFS(root)
+}
+
+```
+
+[Path Sum](https://leetcode.com/problems/path-sum/)
+
+[3번째 큰 수](https://leetcode.com/problems/third-maximum-number/)
+
+[이진트리 반](https://leetcode.com/problems/invert-binary-tree/)
+
+[이진 검색 트리 검색](https://leetcode.com/problems/validate-binary-search-tree/)
