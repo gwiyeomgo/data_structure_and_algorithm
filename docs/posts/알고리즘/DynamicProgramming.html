@@ -383,10 +383,182 @@
 &#xB3D9;&#xC801; &#xD504;&#xB85C;&#xADF8;&#xB798;&#xBC0D; &#xC811;&#xADFC;&#xBC95;&#xC774; &#xAC00;&#xB2A5;&#xD558;&#xB2E4;</p>
 <h3 id="&#xBA54;&#xBAA8;&#xC774;&#xC81C;&#xC774;&#xC158;&#xC744;-&#xD1B5;&#xD574;-&#xD53C;&#xBCF4;&#xB098;&#xCE58;-&#xC218;&#xC5F4;">&#xBA54;&#xBAA8;&#xC774;&#xC81C;&#xC774;&#xC158;&#xC744; &#xD1B5;&#xD574; &#xD53C;&#xBCF4;&#xB098;&#xCE58; &#xC218;&#xC5F4;</h3>
 <h3 id="&#xCD5C;&#xB300;&#xAD6C;&#xAC04;&#xC758;-&#xD569;">&#xCD5C;&#xB300;&#xAD6C;&#xAC04;&#xC758; &#xD569;</h3>
-<p><a href="https://www.hackerrank.com/contests/srin-aadc03/challenges/classic-01-knapsack/problem" target="_blank">&#xB2E8;&#xACC4;&#xBCC4; &#xB3D9;&#xC801; &#xD504;&#xB85C;&#xADF8;&#xB798;&#xBC0D; &#xC801;</a></p>
+<p><a href="https://www.hackerrank.com/contests/srin-aadc03/challenges/classic-01-knapsack/problem" target="_blank">&#xB2E8;&#xACC4;&#xBCC4; &#xB3D9;&#xC801; &#xD504;&#xB85C;&#xADF8;&#xB798;&#xBC0D; </a></p>
 <p><a href="https://leetcode.com/problems/partition-equal-subset-sum/" target="_blank">&#xB3D9;&#xC77C; &#xD569;&#xC73C;&#xB85C; &#xBC30;&#xC5F4; &#xBD84;&#xD560; &#xBB38;&#xC81C;</a></p>
-<p><a href="https://leetcode.com/problems/coin-change/" target="_blank">&#xB3D9;&#xC804; &#xAD50;&#xD658;</a></p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+)
+
+<span class="hljs-keyword">func</span> canPartition(nums []<span class="hljs-keyword">int</span>) <span class="hljs-keyword">bool</span> {
+    <span class="hljs-comment">// &#xBC30;&#xC5F4;&#xC758; &#xD569;&#xC744; &#xACC4;&#xC0B0;&#xD569;&#xB2C8;&#xB2E4;.</span>
+    sum := <span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> _, num := <span class="hljs-keyword">range</span> nums {
+        sum += num
+    }
+
+    <span class="hljs-comment">// &#xD569;&#xC774; &#xD640;&#xC218;&#xC778; &#xACBD;&#xC6B0; &#xBC30;&#xC5F4;&#xC744; &#xB450; &#xAC1C;&#xC758; &#xBD80;&#xBD84; &#xBC30;&#xC5F4;&#xB85C; &#xBD84;&#xD560;&#xD558;&#xC5EC; &#xB3D9;&#xC77C;&#xD55C; &#xD569;&#xC744; &#xB9CC;&#xB4E4; &#xC218; &#xC5C6;&#xC2B5;&#xB2C8;&#xB2E4;.</span>
+    <span class="hljs-keyword">if</span> sum%<span class="hljs-number">2</span> != <span class="hljs-number">0</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+    }
+
+    <span class="hljs-comment">// dp[i][j]&#xB294; &#xCCAB; &#xBC88;&#xC9F8; i&#xAC1C;&#xC758; &#xC694;&#xC18C;&#xB85C; &#xD569;&#xC774; j&#xAC00; &#xAC00;&#xB2A5;&#xD55C;&#xC9C0;&#xB97C; &#xB098;&#xD0C0;&#xB0B4;&#xB294; &#xBD88;&#xB9AC;&#xC5B8; &#xBC30;&#xC5F4;&#xC785;&#xB2C8;&#xB2E4;.</span>
+    halfSum := sum / <span class="hljs-number">2</span>
+    dp := <span class="hljs-built_in">make</span>([][]<span class="hljs-keyword">bool</span>, <span class="hljs-built_in">len</span>(nums)+<span class="hljs-number">1</span>)
+    <span class="hljs-keyword">for</span> i := <span class="hljs-keyword">range</span> dp {
+        dp[i] = <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">bool</span>, halfSum+<span class="hljs-number">1</span>)
+    }
+
+    <span class="hljs-comment">// &#xCD08;&#xAE30;&#xAC12; &#xC124;&#xC815;: &#xD569;&#xC774; 0&#xC778; &#xACBD;&#xC6B0;&#xB294; &#xD56D;&#xC0C1; &#xAC00;&#xB2A5;&#xD569;&#xB2C8;&#xB2E4;.</span>
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt;= <span class="hljs-built_in">len</span>(nums); i++ {
+        dp[i][<span class="hljs-number">0</span>] = <span class="hljs-literal">true</span>
+    }
+
+    <span class="hljs-comment">// &#xB3D9;&#xC801; &#xD504;&#xB85C;&#xADF8;&#xB798;&#xBC0D;&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xBC30;&#xC5F4;&#xC744; &#xBD84;&#xD560; &#xAC00;&#xB2A5;&#xD55C;&#xC9C0; &#xD655;&#xC778;&#xD569;&#xB2C8;&#xB2E4;.</span>
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">1</span>; i &lt;= <span class="hljs-built_in">len</span>(nums); i++ {
+        <span class="hljs-keyword">for</span> j := <span class="hljs-number">1</span>; j &lt;= halfSum; j++ {
+            dp[i][j] = dp[i<span class="hljs-number">-1</span>][j]
+            <span class="hljs-keyword">if</span> j &gt;= nums[i<span class="hljs-number">-1</span>] {
+                dp[i][j] = dp[i][j] || dp[i<span class="hljs-number">-1</span>][j-nums[i<span class="hljs-number">-1</span>]]
+            }
+        }
+    }
+
+    <span class="hljs-comment">// &#xBC30;&#xC5F4;&#xC744; &#xB450; &#xAC1C;&#xC758; &#xBD80;&#xBD84; &#xBC30;&#xC5F4;&#xB85C; &#xBD84;&#xD560;&#xD558;&#xC5EC; &#xB3D9;&#xC77C;&#xD55C; &#xD569;&#xC744; &#xB9CC;&#xB4E4; &#xC218; &#xC788;&#xB294;&#xC9C0; &#xC5EC;&#xBD80;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</span>
+    <span class="hljs-keyword">return</span> dp[<span class="hljs-built_in">len</span>(nums)][halfSum]
+}
+
+<span class="hljs-keyword">func</span> main() {
+    nums := []<span class="hljs-keyword">int</span>{<span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">11</span>, <span class="hljs-number">5</span>}
+    fmt.Println(canPartition(nums)) <span class="hljs-comment">// Output: true (11 = 1 + 5 + 5, 11 = 11)</span>
+}
+</code></pre>
+<hr>
+<h3 id="44-&#xB3D9;&#xC804;-&#xAD50;&#xD658;"><a href="https://leetcode.com/problems/coin-change/" target="_blank">4.4 &#xB3D9;&#xC804; &#xAD50;&#xD658;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th>(&#xC2DC;&#xAC04;/&#xACF5;&#xAC04;)&#xBCF5;&#xC7A1;&#xB3C4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#xBC94;&#xC704;,&#xC81C;&#xD55C;&#xC0AC;&#xD56D;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&#xC544;&#xC774;&#xB514;&#xC5B4;</td>
+<td>&#xC8FC;&#xC5B4;&#xC9C4; &#xCF54;&#xB4DC;&#xB294; &#xB3D9;&#xC804; &#xBC18;&#xD658; &#xBB38;&#xC81C;&#xB97C; &#xD574;&#xACB0;&#xD558;&#xB294; &#xAC83;&#xC744; &#xBAA9;&#xD45C;&#xB85C; &#xD568;. <br> coinChange &#xD568;&#xC218;&#xC640; change &#xD568;&#xC218;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xBB38;&#xC81C;&#xB97C; &#xD480;&#xC774;&#xD568;.<br> change &#xD568;&#xC218;&#xB294; &#xBA54;&#xBAA8;&#xC774;&#xC81C;&#xC774;&#xC158;&#xC744; &#xD65C;&#xC6A9;&#xD558;&#xC5EC; &#xC911;&#xBCF5; &#xACC4;&#xC0B0;&#xC744; &#xD53C;&#xD558;&#xBA70;, &#xC7AC;&#xADC0; &#xD638;&#xCD9C;&#xC744; &#xC0AC;&#xC6A9;&#xD568;.<br> &#xC8FC;&#xC5B4;&#xC9C4; &#xB3D9;&#xC804; &#xBC30;&#xC5F4;&#xACFC; &#xAE08;&#xC561;&#xC73C;&#xB85C; &#xAC00;&#xC7A5; &#xC801;&#xC740; &#xAC1C;&#xC218;&#xC758; &#xB3D9;&#xC804;&#xC73C;&#xB85C; &#xBC18;&#xD658;&#xD558;&#xB294; &#xBC29;&#xBC95;&#xC744; &#xCC3E;&#xC74C;.<br>change &#xD568;&#xC218; &#xD638;&#xCD9C; &#xC2DC; &#xCD5C;&#xCD08; &#xAC70;&#xC2A4;&#xB984;&#xB3C8; &#xAC12;&#xC744; &#xBE7C;&#xC11C; &#xB2E4;&#xC74C; &#xD638;&#xCD9C;&#xB85C; &#xC804;&#xB2EC;&#xD558;&#xB294; &#xBC29;&#xC2DD;&#xC73C;&#xB85C; &#xAD6C;&#xD604;&#xB428;.(&#xC7AC;&#xADC0;&#xC801;&#xC73C;&#xB85C; &#xCD5C;&#xC801;&#xC758; &#xB2F5;&#xC744; &#xD0D0;&#xC0C9;)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#xBA54;&#xBAA8;&#xC774;&#xC81C;&#xC774;&#xC158;(Memoization)&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xC911;&#xBCF5; &#xACC4;&#xC0B0;&#xC744; &#xD53C;&#xD558;&#xACE0;, &#xACC4;&#xC0B0;&#xD55C; &#xACB0;&#xACFC;&#xB97C; &#xBA54;&#xBAA8;&#xB9AC;&#xC5D0; &#xC800;&#xC7A5;&#xD574; &#xB450;&#xC5C8;&#xB2E4;&#xAC00; &#xD544;&#xC694;&#xD560; &#xB54C; &#xC7AC;&#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xBC29;&#xC2DD;</li>
+</ul>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;math&quot;</span>
+)
+
+<span class="hljs-keyword">func</span> coinChange(coins []<span class="hljs-keyword">int</span>, amount <span class="hljs-keyword">int</span>) <span class="hljs-keyword">int</span> {
+    <span class="hljs-keyword">return</span> change(coins, amount, <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-keyword">int</span>]<span class="hljs-keyword">int</span>))
+}
+
+<span class="hljs-keyword">func</span> change(coins []<span class="hljs-keyword">int</span>, amount <span class="hljs-keyword">int</span>, memo <span class="hljs-keyword">map</span>[<span class="hljs-keyword">int</span>]<span class="hljs-keyword">int</span>) <span class="hljs-keyword">int</span> {
+    <span class="hljs-keyword">if</span> amount == <span class="hljs-number">0</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+    }
+    <span class="hljs-keyword">if</span> amount &lt; <span class="hljs-number">0</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>
+    }
+
+    <span class="hljs-keyword">if</span> count, found := memo[amount]; found {
+        <span class="hljs-keyword">return</span> count
+    }
+
+    minCoins := math.MaxInt32
+    <span class="hljs-keyword">for</span> _, coin := <span class="hljs-keyword">range</span> coins {
+        remainingChange := change(coins, amount-coin, memo)
+        <span class="hljs-keyword">if</span> remainingChange != <span class="hljs-number">-1</span> {
+            minCoins = min(minCoins, remainingChange+<span class="hljs-number">1</span>)
+        }
+    }
+
+    <span class="hljs-keyword">if</span> minCoins == math.MaxInt32 {
+        memo[amount] = <span class="hljs-number">-1</span>
+    } <span class="hljs-keyword">else</span> {
+        memo[amount] = minCoins
+    }
+
+    <span class="hljs-keyword">return</span> memo[amount]
+}
+
+<span class="hljs-keyword">func</span> min(a, b <span class="hljs-keyword">int</span>) <span class="hljs-keyword">int</span> {
+    <span class="hljs-keyword">if</span> a &lt; b {
+        <span class="hljs-keyword">return</span> a
+    }
+    <span class="hljs-keyword">return</span> b
+}
+
+<span class="hljs-keyword">func</span> main() {
+    coins1 := []<span class="hljs-keyword">int</span>{<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>}
+    amount1 := <span class="hljs-number">11</span>
+    fmt.Printf(<span class="hljs-string">&quot;Coins: %v, Amount: %d, Fewest Coins: %d\n&quot;</span>, coins1, amount1, coinChange(coins1, amount1))
+
+    coins2 := []<span class="hljs-keyword">int</span>{<span class="hljs-number">2</span>}
+    amount2 := <span class="hljs-number">3</span>
+    fmt.Printf(<span class="hljs-string">&quot;Coins: %v, Amount: %d, Fewest Coins: %d\n&quot;</span>, coins2, amount2, coinChange(coins2, amount2))
+
+    coins3 := []<span class="hljs-keyword">int</span>{<span class="hljs-number">1</span>}
+    amount3 := <span class="hljs-number">0</span>
+    fmt.Printf(<span class="hljs-string">&quot;Coins: %v, Amount: %d, Fewest Coins: %d\n&quot;</span>, coins3, amount3, coinChange(coins3, amount3))
+}
+</code></pre>
+<hr>
 <p><a href="https://leetcode.com/problems/longest-consecutive-sequence/" target="_blank">&#xCD5C;&#xC7A5; &#xACF5;&#xD1B5;&#xBD80;&#xBD84; &#xC218;&#xC5F4;</a></p>
+<p>&#xD574;&#xC2DC; &#xB9F5; (Hash Map): numSet&#xC774;&#xB77C;&#xB294; &#xD574;&#xC2DC; &#xB9F5;&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xC5F0;&#xC18D;&#xB41C; &#xC694;&#xC18C;&#xB97C; &#xC800;&#xC7A5;&#xD558;&#xACE0; &#xC911;&#xBCF5;&#xC744; &#xD53C;&#xD558;&#xBA70; O(1) &#xC2DC;&#xAC04; &#xBCF5;&#xC7A1;&#xB3C4;&#xB85C; &#xC694;&#xC18C;&#xC5D0; &#xC811;&#xADFC;&#xD560; &#xC218; &#xC788;&#xB3C4;&#xB85D; &#xD569;&#xB2C8;&#xB2E4;. &#xC774; &#xC790;&#xB8CC;&#xAD6C;&#xC870;&#xB294; &#xB450; &#xAC00;&#xC9C0; &#xBAA9;&#xC801;&#xC744; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;: (1) &#xC694;&#xC18C;&#xC758; &#xC874;&#xC7AC; &#xC5EC;&#xBD80;&#xB97C; &#xBE60;&#xB974;&#xAC8C; &#xD655;&#xC778;&#xD558;&#xACE0;, (2) &#xC774;&#xBBF8; &#xCC98;&#xB9AC;&#xD55C; &#xC694;&#xC18C;&#xB97C; &#xCD94;&#xC801;&#xD558;&#xB294; &#xB370; &#xC0AC;&#xC6A9;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<p>&#xB2E8;&#xC21C; &#xBC18;&#xBCF5; (Iteration): &#xC8FC;&#xC5B4;&#xC9C4; &#xBC30;&#xC5F4; nums&#xB97C; &#xB450; &#xBC88; &#xBC18;&#xBCF5;&#xD558;&#xBA70; &#xC54C;&#xACE0;&#xB9AC;&#xC998;&#xC744; &#xC218;&#xD589;&#xD569;&#xB2C8;&#xB2E4;. &#xCCAB; &#xBC88;&#xC9F8; &#xBC18;&#xBCF5;&#xC5D0;&#xC11C;&#xB294; numSet&#xC5D0; &#xC694;&#xC18C;&#xB4E4;&#xC744; &#xCD94;&#xAC00;&#xD558;&#xACE0;, &#xB450; &#xBC88;&#xC9F8; &#xBC18;&#xBCF5;&#xC5D0;&#xC11C;&#xB294; &#xAC01; &#xC694;&#xC18C;&#xB97C; &#xAE30;&#xC900;&#xC73C;&#xB85C; &#xC5F0;&#xC18D;&#xB41C; &#xC694;&#xC18C;&#xC758; &#xAE38;&#xC774;&#xB97C; &#xACC4;&#xC0B0;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> longestConsecutive(nums []<span class="hljs-keyword">int</span>) <span class="hljs-keyword">int</span> {
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(nums) == <span class="hljs-number">0</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+    }
+
+    <span class="hljs-comment">// &#xC5F0;&#xC18D;&#xB41C; &#xC694;&#xC18C;&#xB97C; &#xC800;&#xC7A5;&#xD558;&#xAE30; &#xC704;&#xD55C; set&#xC744; &#xC0DD;&#xC131;&#xD558;&#xACE0; &#xC694;&#xC18C;&#xB4E4;&#xC744; &#xCD94;&#xAC00;&#xD569;&#xB2C8;&#xB2E4;.</span>
+    numSet := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-keyword">int</span>]<span class="hljs-keyword">bool</span>)
+    <span class="hljs-keyword">for</span> _, num := <span class="hljs-keyword">range</span> nums {
+        numSet[num] = <span class="hljs-literal">true</span>
+    }
+
+    maxLength := <span class="hljs-number">0</span>
+
+    <span class="hljs-comment">// &#xAC01; &#xC694;&#xC18C;&#xC5D0; &#xB300;&#xD574; &#xC5F0;&#xC18D;&#xB41C; &#xC694;&#xC18C;&#xC758; &#xC218;&#xB97C; &#xCC3E;&#xC2B5;&#xB2C8;&#xB2E4;.</span>
+    <span class="hljs-keyword">for</span> _, num := <span class="hljs-keyword">range</span> nums {
+        <span class="hljs-keyword">if</span> !numSet[num<span class="hljs-number">-1</span>] { <span class="hljs-comment">// &#xD604;&#xC7AC; &#xC694;&#xC18C;&#xC758; &#xC774;&#xC804; &#xC694;&#xC18C;&#xAC00; &#xC5C6;&#xB294; &#xACBD;&#xC6B0;&#xC5D0;&#xB9CC; &#xC2DC;&#xC791;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</span>
+            currentNum := num
+            currentLength := <span class="hljs-number">1</span>
+
+            <span class="hljs-comment">// &#xD604;&#xC7AC; &#xC694;&#xC18C;&#xB97C; &#xAE30;&#xC900;&#xC73C;&#xB85C; &#xC5F0;&#xC18D;&#xB41C; &#xC694;&#xC18C;&#xC758; &#xC218;&#xB97C; &#xC138;&#xC5B4; &#xB098;&#xAC11;&#xB2C8;&#xB2E4;.</span>
+            <span class="hljs-keyword">for</span> numSet[currentNum+<span class="hljs-number">1</span>] {
+                currentNum++
+                currentLength++
+            }
+
+            <span class="hljs-comment">// &#xCD5C;&#xB300; &#xAE38;&#xC774; &#xAC31;&#xC2E0;</span>
+            <span class="hljs-keyword">if</span> currentLength &gt; maxLength {
+                maxLength = currentLength
+            }
+        }
+    }
+
+    <span class="hljs-keyword">return</span> maxLength
+}
+</code></pre>
 
                                 
                                 </section>
@@ -430,7 +602,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"동적계획","level":"1.3.2","depth":2,"next":{"title":"탐색","level":"1.3.3","depth":2,"path":"posts/알고리즘/Search.md","ref":"posts/알고리즘/Search.md","articles":[]},"previous":{"title":"재귀","level":"1.3.1","depth":2,"path":"posts/알고리즘/Recursion.md","ref":"posts/알고리즘/Recursion.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/알고리즘/DynamicProgramming.md","mtime":"2023-08-11T02:38:00.078Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-11T02:43:35.938Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"동적계획","level":"1.3.2","depth":2,"next":{"title":"탐색","level":"1.3.3","depth":2,"path":"posts/알고리즘/Search.md","ref":"posts/알고리즘/Search.md","articles":[]},"previous":{"title":"재귀","level":"1.3.1","depth":2,"path":"posts/알고리즘/Recursion.md","ref":"posts/알고리즘/Recursion.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/알고리즘/DynamicProgramming.md","mtime":"2023-08-11T08:48:30.463Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-16T00:09:15.069Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

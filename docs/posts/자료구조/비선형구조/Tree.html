@@ -740,10 +740,155 @@
     BFS(root)
 }
 </code></pre>
-<p><a href="https://leetcode.com/problems/path-sum/" target="_blank">Path Sum</a></p>
+<p><a href="https://leetcode.com/problems/path-sum-ii/" target="_blank">Path Sum</a></p>
+<pre><code class="lang-go">
+<span class="hljs-comment">/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */</span>
+
+<span class="hljs-keyword">func</span> pathSum(root *TreeNode, targetSum <span class="hljs-keyword">int</span>) [][]<span class="hljs-keyword">int</span> {
+    <span class="hljs-keyword">var</span> result [][]<span class="hljs-keyword">int</span>
+    <span class="hljs-keyword">var</span> currentPath []<span class="hljs-keyword">int</span>
+
+    <span class="hljs-keyword">var</span> dfs <span class="hljs-keyword">func</span>(*TreeNode, <span class="hljs-keyword">int</span>)
+    dfs = <span class="hljs-keyword">func</span>(node *TreeNode, sum <span class="hljs-keyword">int</span>) {
+        <span class="hljs-keyword">if</span> node == <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span>
+        }
+
+        <span class="hljs-comment">// &#xD604;&#xC7AC; &#xB178;&#xB4DC;&#xC758; &#xAC12;&#xC744; &#xD604;&#xC7AC; &#xACBD;&#xB85C;&#xC5D0; &#xCD94;&#xAC00;&#xD569;&#xB2C8;&#xB2E4;.</span>
+        currentPath = <span class="hljs-built_in">append</span>(currentPath, node.Val)
+        sum -= node.Val
+
+        <span class="hljs-comment">// &#xB9AC;&#xD504; &#xB178;&#xB4DC;&#xC778; &#xACBD;&#xC6B0;, &#xD604;&#xC7AC; &#xACBD;&#xB85C;&#xC758; &#xD569;&#xC774; &#xBAA9;&#xD45C;&#xAC12;&#xACFC; &#xC77C;&#xCE58;&#xD558;&#xBA74; &#xACBD;&#xB85C;&#xB97C; &#xACB0;&#xACFC;&#xC5D0; &#xCD94;&#xAC00;&#xD569;&#xB2C8;&#xB2E4;.</span>
+        <span class="hljs-keyword">if</span> node.Left == <span class="hljs-literal">nil</span> &amp;&amp; node.Right == <span class="hljs-literal">nil</span> &amp;&amp; sum == <span class="hljs-number">0</span> {
+            pathCopy := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">int</span>, <span class="hljs-built_in">len</span>(currentPath))
+            <span class="hljs-built_in">copy</span>(pathCopy, currentPath)
+            result = <span class="hljs-built_in">append</span>(result, pathCopy)
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">// &#xC67C;&#xCABD;&#xACFC; &#xC624;&#xB978;&#xCABD; &#xC11C;&#xBE0C;&#xD2B8;&#xB9AC;&#xB97C; &#xD0D0;&#xC0C9;&#xD569;&#xB2C8;&#xB2E4;.</span>
+            dfs(node.Left, sum)
+            dfs(node.Right, sum)
+        }
+
+        <span class="hljs-comment">// &#xB418;&#xB3CC;&#xC544;&#xAC00;&#xAE30;: &#xD604;&#xC7AC; &#xACBD;&#xB85C;&#xC758; &#xB9C8;&#xC9C0;&#xB9C9; &#xB178;&#xB4DC;&#xB97C; &#xC81C;&#xAC70;&#xD569;&#xB2C8;&#xB2E4;.</span>
+        currentPath = currentPath[:<span class="hljs-built_in">len</span>(currentPath)<span class="hljs-number">-1</span>]
+    }
+
+    dfs(root, targetSum)
+    <span class="hljs-keyword">return</span> result
+}
+</code></pre>
+<pre><code class="lang-markdown">
+| Call # | Node Value | Add to Path | Sum | Current Path    | Result           |
+|--------|------------|-------------|-----|-----------------|------------------|
+| 1      | 5          | Yes         | 22  | [5]             |                  |
+| 1-1    | 4          | Yes         | 18  | [5, 4]          |                  |
+| 1-1-1  | 11         | Yes         | 7   | [5, 4, 11]      |                  |
+| 1-1-1-1| 7          | Yes         | 0   | [5, 4, 11, 7]   | [5, 4, 11, 2]    |
+| 1-1-2  | 2          | Yes         | 0   | [5, 4, 11, 2]   | [5, 4, 8, 5]     |
+| 1-2    | 8          | Yes         | 14  | [5, 8]          |                  |
+| 1-2-1  | 13         | Yes         | 1   | [5, 8, 13]      |                  |
+| 1-2-1-1| 4          | Yes         | -3  | [5, 8, 13, 4]   |                  |
+| 1-2-1-2| 5          | Yes         | -2  | [5, 8, 13, 4, 5]|                  |
+| 1-2-2  | 4          | Yes         | 0   | [5, 8, 4]       | [5, 8, 4, 5]     |
+| 1-2-2-1| 5          | Yes         | -1  | [5, 8, 4, 5]    |                  |
+| Result |            |             |     |                 | [[5,4,11,2],[5,8,4,5]] |
+</code></pre>
 <p><a href="https://leetcode.com/problems/third-maximum-number/" target="_blank">3&#xBC88;&#xC9F8; &#xD070; &#xC218;</a></p>
-<p><a href="https://leetcode.com/problems/invert-binary-tree/" target="_blank">&#xC774;&#xC9C4;&#xD2B8;&#xB9AC; &#xBC18;</a></p>
-<p><a href="https://leetcode.com/problems/validate-binary-search-tree/" target="_blank">&#xC774;&#xC9C4; &#xAC80;&#xC0C9; &#xD2B8;&#xB9AC; &#xAC80;&#xC0C9;</a></p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;sort&quot;</span>
+)
+
+<span class="hljs-keyword">func</span> thirdMax(nums []<span class="hljs-keyword">int</span>) <span class="hljs-keyword">int</span> {
+    uniqueNums := unique(nums)
+    sort.Ints(uniqueNums)
+
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(uniqueNums) &lt; <span class="hljs-number">3</span> {
+        <span class="hljs-keyword">return</span> uniqueNums[<span class="hljs-built_in">len</span>(uniqueNums)<span class="hljs-number">-1</span>] <span class="hljs-comment">// &#xACE0;&#xC720;&#xD55C; &#xC694;&#xC18C;&#xAC00; 1&#xAC1C; &#xB610;&#xB294; 2&#xAC1C;&#xC77C; &#xACBD;&#xC6B0; &#xAC00;&#xC7A5; &#xD070; &#xAC12;&#xC744; &#xBC18;&#xD658;</span>
+    }
+    <span class="hljs-keyword">return</span> uniqueNums[<span class="hljs-built_in">len</span>(uniqueNums)<span class="hljs-number">-3</span>] <span class="hljs-comment">// &#xC138; &#xBC88;&#xC9F8;&#xB85C; &#xD070; &#xAC12;&#xC744; &#xBC18;&#xD658;</span>
+}
+
+<span class="hljs-comment">// &#xC911;&#xBCF5;&#xC744; &#xC81C;&#xAC70;&#xD55C; &#xACE0;&#xC720;&#xD55C; &#xC815;&#xC218; &#xBC30;&#xC5F4; &#xBC18;&#xD658;</span>
+<span class="hljs-keyword">func</span> unique(intSlice []<span class="hljs-keyword">int</span>) []<span class="hljs-keyword">int</span> {
+    keys := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-keyword">int</span>]<span class="hljs-keyword">bool</span>)
+    list := []<span class="hljs-keyword">int</span>{}
+    <span class="hljs-keyword">for</span> _, entry := <span class="hljs-keyword">range</span> intSlice {
+        <span class="hljs-keyword">if</span> _, value := keys[entry]; !value {
+            keys[entry] = <span class="hljs-literal">true</span>
+            list = <span class="hljs-built_in">append</span>(list, entry)
+        }
+    }
+    <span class="hljs-keyword">return</span> list
+}
+
+<span class="hljs-keyword">func</span> main() {
+    nums := []<span class="hljs-keyword">int</span>{<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>}
+    result := thirdMax(nums)
+    fmt.Println(<span class="hljs-string">&quot;Output:&quot;</span>, result) <span class="hljs-comment">// Output: 1</span>
+}
+</code></pre>
+<p>&#xADF8;&#xB7F0;&#xB370; &#xC774;&#xBB38;&#xC81C;&#xB97C; &#xD2B8;&#xB9AC;&#xB97C; &#xC368;&#xC11C; &#xD574;&#xBCF4;&#xBA74;..? (&#xC624;&#xB958;&#xB0A8;)</p>
+<p><a href="https://leetcode.com/problems/invert-binary-tree/" target="_blank">&#xC774;&#xC9C4;&#xD2B8;&#xB9AC; &#xBC18;&#xC804;</a></p>
+<pre><code class="lang-go"><span class="hljs-comment">/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */</span>
+
+<span class="hljs-comment">// &#xC774;&#xC9C4; &#xD2B8;&#xB9AC;&#xB97C; &#xBC18;&#xC804;&#xC2DC;&#xD0A4;&#xB294; &#xD568;&#xC218;</span>
+<span class="hljs-keyword">func</span> invertTree(root *TreeNode) *TreeNode {
+    <span class="hljs-keyword">if</span> root == <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+    }
+
+    <span class="hljs-comment">// &#xC67C;&#xCABD;&#xACFC; &#xC624;&#xB978;&#xCABD; &#xC11C;&#xBE0C;&#xD2B8;&#xB9AC;&#xB97C; &#xC7AC;&#xADC0;&#xC801;&#xC73C;&#xB85C; &#xBC18;&#xC804;</span>
+    root.Left, root.Right = invertTree(root.Right), invertTree(root.Left)
+
+    <span class="hljs-keyword">return</span> root
+}
+</code></pre>
+<p><a href="https://leetcode.com/problems/validate-binary-search-tree/" target="_blank">&#xC774;&#xC9C4; &#xAC80;&#xC0C9; &#xD2B8;&#xB9AC; &#xAC80;&#xC0C9;</a>
+&#xC81C;&#xC57D;&#xC870;&#xAC74;
+&#xB178;&#xB4DC;&#xC758; &#xC67C;&#xCABD; &#xC11C;&#xBE0C;&#xD2B8;&#xB9AC;&#xC5D0; &#xC788;&#xB294; &#xBAA8;&#xB4E0; &#xB178;&#xB4DC;&#xC758; &#xAC12;&#xC740; &#xD574;&#xB2F9; &#xB178;&#xB4DC;&#xC758; &#xAC12;&#xBCF4;&#xB2E4; &#xC791;&#xC544;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;.
+&#xB178;&#xB4DC;&#xC758; &#xC624;&#xB978;&#xCABD; &#xC11C;&#xBE0C;&#xD2B8;&#xB9AC;&#xC5D0; &#xC788;&#xB294; &#xBAA8;&#xB4E0; &#xB178;&#xB4DC;&#xC758; &#xAC12;&#xC740; &#xD574;&#xB2F9; &#xB178;&#xB4DC;&#xC758; &#xAC12;&#xBCF4;&#xB2E4; &#xCEE4;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;.
+&#xC67C;&#xCABD; &#xC11C;&#xBE0C;&#xD2B8;&#xB9AC;&#xC640; &#xC624;&#xB978;&#xCABD; &#xC11C;&#xBE0C;&#xD2B8;&#xB9AC; &#xBAA8;&#xB450;&#xAC00; &#xC774;&#xC9C4; &#xD0D0;&#xC0C9; &#xD2B8;&#xB9AC;&#xC5EC;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;.
+&#xC8FC;&#xC5B4;&#xC9C4; &#xC81C;&#xC57D; &#xC870;&#xAC74;&#xC740; &#xB178;&#xB4DC;&#xC758; &#xAC1C;&#xC218;&#xAC00; [1, 104] &#xBC94;&#xC704; &#xB0B4;&#xC5D0; &#xC788;&#xC73C;&#xBA70;, &#xAC01; &#xB178;&#xB4DC;&#xC758; &#xAC12;&#xC740; -231 &#xC774;&#xC0C1; 231 - 1 &#xC774;&#xD558;&#xC758; &#xBC94;&#xC704; &#xB0B4;&#xC5D0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-go"><span class="hljs-comment">/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */</span>
+<span class="hljs-keyword">func</span> isValidBST(root *TreeNode) <span class="hljs-keyword">bool</span> {
+    <span class="hljs-keyword">return</span> isBST(root, math.MinInt64, math.MaxInt64)
+}
+
+<span class="hljs-keyword">func</span> isBST(node *TreeNode, min, max <span class="hljs-keyword">int</span>) <span class="hljs-keyword">bool</span> {
+    <span class="hljs-keyword">if</span> node == <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+    }
+    <span class="hljs-keyword">if</span> node.Val &lt;= min || node.Val &gt;= max {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+    }
+    <span class="hljs-keyword">return</span> isBST(node.Left, min, node.Val) &amp;&amp; isBST(node.Right, node.Val, max)
+}
+</code></pre>
+<p>&#xC704; &#xCF54;&#xB4DC;&#xC5D0;&#xC11C; isValidBST &#xD568;&#xC218;&#xB294; &#xC8FC;&#xC5B4;&#xC9C4; &#xC774;&#xC9C4; &#xD2B8;&#xB9AC;&#xAC00; &#xC720;&#xD6A8;&#xD55C; BST&#xC778;&#xC9C0; &#xD655;&#xC778;&#xD569;&#xB2C8;&#xB2E4;. isBST &#xD568;&#xC218;&#xB294; &#xC7AC;&#xADC0;&#xC801;&#xC73C;&#xB85C; &#xB178;&#xB4DC;&#xB97C; &#xD0D0;&#xC0C9;&#xD558;&#xBA74;&#xC11C; &#xD574;&#xB2F9; &#xB178;&#xB4DC;&#xC758; &#xAC12;&#xC774; &#xC8FC;&#xC5B4;&#xC9C4; &#xBC94;&#xC704; &#xB0B4;&#xC5D0; &#xC788;&#xB294;&#xC9C0; &#xD655;&#xC778;&#xD569;&#xB2C8;&#xB2E4;. &#xC774; &#xCF54;&#xB4DC;&#xB97C; &#xC2E4;&#xD589;&#xD558;&#xBA74; &#xC608;&#xC81C; &#xC785;&#xB825; &#xD2B8;&#xB9AC;&#xC758; &#xACB0;&#xACFC;&#xAC00; false&#xAC00; &#xB428;&#xC744; &#xD655;&#xC778;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 
                                 
                                 </section>
@@ -787,7 +932,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"비선형-트리","level":"1.2.7","depth":2,"next":{"title":"비선형-힙","level":"1.2.8","depth":2,"path":"posts/자료구조/비선형구조/Heap.md","ref":"posts/자료구조/비선형구조/Heap.md","articles":[]},"previous":{"title":"선형구조-해쉬테이블","level":"1.2.6","depth":2,"path":"posts/자료구조/선형구조/HashTable.md","ref":"posts/자료구조/선형구조/HashTable.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/자료구조/비선형구조/Tree.md","mtime":"2023-08-11T02:43:31.127Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-11T02:43:35.938Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"비선형-트리","level":"1.2.7","depth":2,"next":{"title":"비선형-힙","level":"1.2.8","depth":2,"path":"posts/자료구조/비선형구조/Heap.md","ref":"posts/자료구조/비선형구조/Heap.md","articles":[]},"previous":{"title":"선형구조-해쉬테이블","level":"1.2.6","depth":2,"path":"posts/자료구조/선형구조/HashTable.md","ref":"posts/자료구조/선형구조/HashTable.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/자료구조/비선형구조/Tree.md","mtime":"2023-08-11T08:22:55.519Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-16T00:09:15.069Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>

@@ -376,10 +376,173 @@ func main() {
 
 ```
 
-[Path Sum](https://leetcode.com/problems/path-sum/)
+[Path Sum](https://leetcode.com/problems/path-sum-ii/)
+```go
+
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+
+func pathSum(root *TreeNode, targetSum int) [][]int {
+    var result [][]int
+    var currentPath []int
+
+    var dfs func(*TreeNode, int)
+    dfs = func(node *TreeNode, sum int) {
+        if node == nil {
+            return
+        }
+
+        // 현재 노드의 값을 현재 경로에 추가합니다.
+        currentPath = append(currentPath, node.Val)
+        sum -= node.Val
+
+        // 리프 노드인 경우, 현재 경로의 합이 목표값과 일치하면 경로를 결과에 추가합니다.
+        if node.Left == nil && node.Right == nil && sum == 0 {
+            pathCopy := make([]int, len(currentPath))
+            copy(pathCopy, currentPath)
+            result = append(result, pathCopy)
+        } else {
+            // 왼쪽과 오른쪽 서브트리를 탐색합니다.
+            dfs(node.Left, sum)
+            dfs(node.Right, sum)
+        }
+
+        // 되돌아가기: 현재 경로의 마지막 노드를 제거합니다.
+        currentPath = currentPath[:len(currentPath)-1]
+    }
+
+    dfs(root, targetSum)
+    return result
+}
+
+```
+
+```markdown
+
+| Call # | Node Value | Add to Path | Sum | Current Path    | Result           |
+|--------|------------|-------------|-----|-----------------|------------------|
+| 1      | 5          | Yes         | 22  | [5]             |                  |
+| 1-1    | 4          | Yes         | 18  | [5, 4]          |                  |
+| 1-1-1  | 11         | Yes         | 7   | [5, 4, 11]      |                  |
+| 1-1-1-1| 7          | Yes         | 0   | [5, 4, 11, 7]   | [5, 4, 11, 2]    |
+| 1-1-2  | 2          | Yes         | 0   | [5, 4, 11, 2]   | [5, 4, 8, 5]     |
+| 1-2    | 8          | Yes         | 14  | [5, 8]          |                  |
+| 1-2-1  | 13         | Yes         | 1   | [5, 8, 13]      |                  |
+| 1-2-1-1| 4          | Yes         | -3  | [5, 8, 13, 4]   |                  |
+| 1-2-1-2| 5          | Yes         | -2  | [5, 8, 13, 4, 5]|                  |
+| 1-2-2  | 4          | Yes         | 0   | [5, 8, 4]       | [5, 8, 4, 5]     |
+| 1-2-2-1| 5          | Yes         | -1  | [5, 8, 4, 5]    |                  |
+| Result |            |             |     |                 | [[5,4,11,2],[5,8,4,5]] |
+
+```
+
 
 [3번째 큰 수](https://leetcode.com/problems/third-maximum-number/)
 
-[이진트리 반](https://leetcode.com/problems/invert-binary-tree/)
+```go
+package main
+
+import (
+	"fmt"
+	"sort"
+)
+
+func thirdMax(nums []int) int {
+	uniqueNums := unique(nums)
+	sort.Ints(uniqueNums)
+
+	if len(uniqueNums) < 3 {
+		return uniqueNums[len(uniqueNums)-1] // 고유한 요소가 1개 또는 2개일 경우 가장 큰 값을 반환
+	}
+	return uniqueNums[len(uniqueNums)-3] // 세 번째로 큰 값을 반환
+}
+
+// 중복을 제거한 고유한 정수 배열 반환
+func unique(intSlice []int) []int {
+	keys := make(map[int]bool)
+	list := []int{}
+	for _, entry := range intSlice {
+		if _, value := keys[entry]; !value {
+			keys[entry] = true
+			list = append(list, entry)
+		}
+	}
+	return list
+}
+
+func main() {
+	nums := []int{2, 2, 3, 1}
+	result := thirdMax(nums)
+	fmt.Println("Output:", result) // Output: 1
+}
+
+```
+그런데 이문제를 트리를 써서 해보면..? (오류남)
+
+
+
+[이진트리 반전](https://leetcode.com/problems/invert-binary-tree/)
+
+```go
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+
+// 이진 트리를 반전시키는 함수
+func invertTree(root *TreeNode) *TreeNode {
+	if root == nil {
+		return nil
+	}
+
+	// 왼쪽과 오른쪽 서브트리를 재귀적으로 반전
+	root.Left, root.Right = invertTree(root.Right), invertTree(root.Left)
+
+	return root
+}
+
+```
+
 
 [이진 검색 트리 검색](https://leetcode.com/problems/validate-binary-search-tree/)
+제약조건
+노드의 왼쪽 서브트리에 있는 모든 노드의 값은 해당 노드의 값보다 작아야 합니다.
+노드의 오른쪽 서브트리에 있는 모든 노드의 값은 해당 노드의 값보다 커야 합니다.
+왼쪽 서브트리와 오른쪽 서브트리 모두가 이진 탐색 트리여야 합니다.
+주어진 제약 조건은 노드의 개수가 [1, 104] 범위 내에 있으며, 각 노드의 값은 -231 이상 231 - 1 이하의 범위 내에 있습니다.
+
+```go
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func isValidBST(root *TreeNode) bool {
+    return isBST(root, math.MinInt64, math.MaxInt64)
+}
+
+func isBST(node *TreeNode, min, max int) bool {
+    if node == nil {
+        return true
+    }
+    if node.Val <= min || node.Val >= max {
+        return false
+    }
+    return isBST(node.Left, min, node.Val) && isBST(node.Right, node.Val, max)
+}
+
+```
+위 코드에서 isValidBST 함수는 주어진 이진 트리가 유효한 BST인지 확인합니다. isBST 함수는 재귀적으로 노드를 탐색하면서 해당 노드의 값이 주어진 범위 내에 있는지 확인합니다. 이 코드를 실행하면 예제 입력 트리의 결과가 false가 됨을 확인할 수 있습니다.
