@@ -1,12 +1,12 @@
 ___
-### [2.1 회문인지 확인](https://leetcode.com/problems/valid-palindrome/submissions/)
+### [2.1 회문인지 확인(팰린드롬)](https://leetcode.com/problems/valid-palindrome/submissions/)
 
 |                |                          | (시간/공간)복잡도                                    |
 |:----------------|-------------------------------|-----------------------------------------------|
 |범위,제한사항|      | o(n) 문자열의 길이만큼 반복문을 수행                        |
 |아이디어          | 아스키코드 알파벳소문자로 통일 <br/> 아스키코드 문자나,숫자일 경우만 분리 <br/> 문자열을 리버스해서 일치하는지 비교 <br/>  | o(n) 새로운 문자열 cleanedStr과 reversedStr을 만들기 때문에 |
 
-```go
+```
 func isPalindrome(s string) bool {
   cleanedStr := ""
   for _, ch := range s {
@@ -30,7 +30,7 @@ func isPalindrome(s string) bool {
   - 숫자: 48부터 57까지 (0부터 9까지)
   - 소문자: 97부터 122까지 (a부터 z까지)
   - 대문자: 65부터 90까지 (A부터 Z까지)
-```go
+```
 s := “GOLANG"
 //[71 79 76 65 78 71]
 
@@ -41,12 +41,12 @@ fmt.Printf("%c - %d\n", r, r)
 }
 ```
 - 공백제거
-```go
+```
 sample := " This is a sample string   "
 noSpaceString := strings.ReplaceAll(sample, " ", “")
 ```
 
-### [2.2 그룹 에너그램](https://leetcode.com/problems/group-anagrams/)
+### [2.2 그룹 애너그램](https://leetcode.com/problems/group-anagrams/)
 
 |                |                                 |(시간/공간)복잡도                    |
 |:----------------|---------------------------------|--------------------------|
@@ -76,7 +76,7 @@ func groupAnagrams(strs []string) [][]string {
 
 ```
 
->  에너그램은 두 단어가 같은 문자들로 이루어져 있지만, 서로 다른 순서로 배열되어 있을 때 발생
+>  애너그램은 두 단어가 같은 문자들로 이루어져 있지만, 서로 다른 순서로 배열되어 있을 때 발생
 Ex) ”listen”과 "silent"은 에너그램
 
 ### [2.4 validIPAddress](https://leetcode.com/problems/validate-ip-address/)
