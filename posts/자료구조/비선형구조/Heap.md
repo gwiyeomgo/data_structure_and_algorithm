@@ -1,11 +1,24 @@
 
-# 힙 = 이진힙 : 
+
+우선순위 큐 : 데이터에 우선순위가 있는 자료구조를 정의하는 추상 데이터 타입
+우선순위가 가장 높은 데이터를 먼저 꺼내고, 그 다음으로 우선순위가 높은 데이터를 그 다음으로
+꺼내는 방식으로 작동
+반대로 우선순위가 가장 낮은 값부터 꺼낼 수 있다
+
+힙의 노드 값 = 키
+
+우선순위는 부모와 자식 노드 사이에서만 적용
+형제 노드는 우선순위가 적용되지 않습니다.
+
+# 힙 = 이진힙 :
 최대값 및 최소값을 찾아내는 연산을 빠르게 하기 위해 고안된 완전 이진트리를 기본으로 한 자료구조
-   1. 완전 이진 트리(Complete Binary Tree): 마지막 레벨을 제외한 모든 레벨에서 노드가 완전히 채워진 이진 트리입니다. 마지막 레벨의 노드는 왼쪽부터 채워져야 합니다.
-   2. 부모노드의 키값과 자식 노드의 키값 사이에는 대소관계가 성립
+1. 완전 이진 트리(Complete Binary Tree): 마지막 레벨을 제외한 모든 레벨에서 노드가 완전히 채워진 이진 트리입니다. 마지막 레벨의 노드는 왼쪽부터 채워져야 합니다.
+2. 부모노드의 키값과 자식 노드의 키값 사이에는 대소관계가 성립
+
+이진힙에는 최대 힙과 최소 힙 두가지 타입이 있다.
 
 
-## - 최대힙 : 부모 키값이 자식노드 키값보다 큰 힙
+## - 최대힙 : 부모 키값이 자식노드 키값보다 큰 힙 = 우선순위 (부모 > 자식)
         - 루트 노드 삭제
         - 가장 낮은 레벨에서 가장 오른쪽의 노드를 루트로 올린다
         - 루트에서 각 자식 노드와 값을 비교하여 더 큰 값과 교환한다
@@ -198,3 +211,128 @@ func main() {
 ```
 
 Insert 연산은 bubbleUp을 사용하여 새로운 값을 부모 노드와 비교하면서 위로 올려야 하며, ExtractMin 연산은 heapify을 사용하여 힙 속성을 유지하면서 최소값을 추출
+
+
+
+# 힙 구조화
+배열과 같은 자료구조에서 힙을 만드는 것
+# 힙 재정렬
+순서가 맞지 않는 키를 다시 정렬하는 것
+
+https://www.geeksforgeeks.org/connect-n-ropes-minimum-cost/
+
+최소힙 활용
+```go
+package main
+
+import (
+	"container/heap"
+	"fmt"
+)
+
+// 최소 힙을 위한 정의
+type MinHeap []int
+
+func (h MinHeap) Len() int           { return len(h) }
+func (h MinHeap) Less(i, j int) bool { return h[i] < h[j] }
+func (h MinHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
+
+func (h *MinHeap) Push(x interface{}) {
+	*h = append(*h, x.(int))
+}
+
+func (h *MinHeap) Pop() interface{} {
+	old := *h
+	n := len(old)
+	x := old[n-1]
+	*h = old[0 : n-1]
+	return x
+}
+
+func minCostToConnectRopes(ropes []int) int {
+	// 최소 힙 초기화
+	h := &MinHeap{}
+	heap.Init(h)
+
+	// 힙에 로프 추가
+	for _, r := range ropes {
+		heap.Push(h, r)
+	}
+
+	// 전체 비용을 저장할 변수
+	totalCost := 0
+
+	// 힙에 로프가 하나 남을 때까지 반복
+	for h.Len() > 1 {
+		// 최소값 두 개 추출
+		min1 := heap.Pop(h).(int)
+		min2 := heap.Pop(h).(int)
+
+		// 최소값 두 개를 더한 후 다시 힙에 삽입
+		cost := min1 + min2
+		totalCost += cost
+		heap.Push(h, cost)
+	}
+
+	return totalCost
+}
+
+func main() {
+	ropes := []int{5, 4, 2, 8}
+	result := minCostToConnectRopes(ropes)
+	fmt.Println("전체 비용:", result)
+}
+
+```
+하지만 그리디 알고리즘으로 풀 수 있음
+
+그리디 알고리즘은 각 단계에서 지역적으로 최적인 선택을 하는 방식으로 동작합니다.
+
+로프 리스트를 정렬한 다음, 가장 작은 로프 두 개를 선택하여 연결하는 것이 전체 비용을 최소화하는 방법입니다. 선택된 두 로프 중 작은 로프는 무게를 견딜 수 있는 가장 작은 로프이므로, 두 로프의 합이 전체 비용이 됩니다. 이 작업을 리스트에 남은 로프가 하나가 될 때까지 반복합니다.
+```go
+package main
+
+import (
+	"fmt"
+	"sort"
+)
+
+func minCostToConnectRopes(ropes []int) int {
+	// 로프 리스트를 오름차순으로 정렬
+	sort.Ints(ropes)
+
+	// 전체 비용을 저장할 변수
+	totalCost := 0
+
+	// 로프가 하나 남을 때까지 반복
+	for len(ropes) > 1 {
+		// 가장 작은 두 개의 로프 선택
+		min1 := ropes[0]
+		min2 := ropes[1]
+
+		// 선택된 두 로프의 합을 전체 비용에 추가
+		cost := min1 + min2
+		totalCost += cost
+
+		// 선택된 두 로프를 리스트에서 제거하고, 합친 로프를 추가
+		ropes = ropes[2:]
+		ropes = append(ropes, cost)
+
+		// 합친 로프 리스트를 다시 정렬
+		sort.Ints(ropes)
+	}
+
+	return totalCost
+}
+
+func main() {
+	ropes := []int{5, 4, 2, 8}
+	result := minCostToConnectRopes(ropes)
+	fmt.Println("전체 비용:", result)
+}
+
+```
+
+
+[주요소- 최소비용으로 루프 연결](https://www.acmicpc.net/problem/13305)
+https://afterdawncoding.tistory.com/259

@@ -1,22 +1,19 @@
 
 
 
-스택 자료구
-filo
-fist in last out
+# 스택 
+가장 최근에 추가한 요소만 제거할 수 있는 선형 자료구조
 
+- lifo (후입 선출)
+  last in first out
+  - 마지막에 추가한 요소부터 꺼낼 수 있다
 
-리스트나 deque 로 구현
+제한된 스택 : 추가할 수 있는 요소의 수에 제한이 있는 스택
+무제한 스택 :추가할 수 있는 요소의 수에 제한이 없는 스택
 
-
-리스트는 연속적인 메모리 블록을 할당하여 공간을 하나씩 채워가는 형태고
-deque 은 이중 연결 리스트로 데이터 연결을 지원한다
-
-deque은 연결 리스트 구조여서 앞에서부터 접근하기 때문에 리스트의 인덱싱보다 조금 느리다
-또한 메모리가 허용하는 한 계속 추가할 수 있으나 리스트는 만들어진 공간이 차면 추가적으로 확장해 주는 작업이 필요하다
 
 # [슬라이스 기반 stack](https://replit.com/@gwiyeomgo/stack#main.go)
-```go
+```
 
 package main
 
@@ -25,11 +22,11 @@ import "fmt"
 type Stack struct {
     data []interface{}
 }
-
+// 스택에 요소를 추가하는 것
 func (s *Stack) Push(item interface{}) {
     s.data = append(s.data, item)
 }
-
+//스택에 마지막으로 추가한 요소를 꺼내는 것
 func (s *Stack) Pop() interface{} {
     if s.IsEmpty() {
         return nil
@@ -39,7 +36,7 @@ func (s *Stack) Pop() interface{} {
     s.data = s.data[:lastIndex]
     return popped
 }
-
+//스택에 마지막에 있는 요소를 제거하지 않고 접근
 func (s *Stack) Peek() interface{} {
     if s.IsEmpty() {
         return nil
@@ -185,3 +182,5 @@ func main() {
 
 
 ```
+
+### https://leetcode.com/problems/reverse-string/

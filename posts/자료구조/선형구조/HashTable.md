@@ -1,0 +1,46 @@
+# 해시 테이블
+고유한 키를 사용해 키-값 쌍을 저장하는 선형 자료구조
+
+해시 함수는 키를 매겨변수로 받고 정수를 반환
+
+대량의 데이터가 있고 개별 데이터에 빠르게 접근해야 할 때 사용
+
+영어 사전을 검색하는 프로그램 등..
+무작위 데이터를 빠르게 검새하는 경우..
+
+
+[두수의합](https://leetcode.com/problems/two-sum/)
+```go
+package main
+
+import "fmt"
+
+func twoSum(nums []int, target int) []int {
+    // 맵을 사용하여 요소의 값과 인덱스를 저장
+    numMap := make(map[int]int)
+
+    for i, num := range nums {
+        complement := target - num
+
+        // complement가 맵에 있다면 해당 인덱스와 현재 인덱스를 반환
+        if index, ok := numMap[complement]; ok {
+            return []int{index, i}
+        }
+
+        // complement가 맵에 없다면 현재 값을 맵에 추가
+        numMap[num] = i
+    }
+
+    // 일치하는 경우가 없으면 빈 배열 반환
+    return []int{}
+}
+
+func main() {
+    arr := []int{2, 7, 11, 15}
+    target := 9
+
+    result := twoSum(arr, target)
+    fmt.Println(result) // 예상 결과: [0 1]
+}
+
+```
