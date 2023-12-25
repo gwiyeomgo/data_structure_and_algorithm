@@ -376,10 +376,45 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#xD0D0;&#xC0C9;">&#xD0D0;&#xC0C9;</h1>
-<pre><code>- &#xC21C;&#xCC28; &#xD0D0;&#xC0C9;
-    - &#xBC30;&#xC5F4;&#xC774; &#xC788;&#xC73C;&#xBA74; &#xC774; &#xB370;&#xC774;&#xD130; &#xBC30;&#xC5F4;&#xC758; &#xCC98;&#xC74C;&#xBD80;&#xD130; &#xB05D;&#xAE4C;&#xC9C0; &#xCC28;&#xB840;&#xB300;&#xB85C; &#xBE44;&#xAD50;&#xD558;&#xC5EC; &#xC6D0;&#xD558;&#xB294; &#xB370;&#xC774;&#xD130;&#xB97C; &#xCC3E;&#xC544;&#xB0B4;&#xB294; &#xC54C;&#xACE0;&#xB9AC;&#xC998;
-- &#xC774;&#xC9C4; &#xD0D0;&#xC0C9; 
-</code></pre>
+<ul>
+<li><p>&#xC21C;&#xCC28; &#xD0D0;&#xC0C9; = &#xC120;&#xD615; &#xD0D0;&#xC0C9;</p>
+<ul>
+<li>&#xCC98;&#xC74C;&#xBD80;&#xD130; &#xB05D;&#xAE4C;&#xC9C0; &#xBAA8;&#xB4E0; &#xC694;&#xC18C;&#xB97C; &#xAC80;&#xC0AC;&#xD558;&#xB294; &#xC54C;&#xACE0;&#xB9AC;&#xC998;</li>
+<li>&#xBC30;&#xC5F4;&#xC774; &#xC788;&#xC73C;&#xBA74; &#xC774; &#xB370;&#xC774;&#xD130; &#xBC30;&#xC5F4;&#xC758; &#xCC98;&#xC74C;&#xBD80;&#xD130; &#xB05D;&#xAE4C;&#xC9C0; &#xCC28;&#xB840;&#xB300;&#xB85C; &#xBE44;&#xAD50;&#xD558;&#xC5EC; &#xC6D0;&#xD558;&#xB294; &#xB370;&#xC774;&#xD130;&#xB97C; &#xCC3E;&#xC544;&#xB0B4;&#xB294; &#xC54C;&#xACE0;&#xB9AC;&#xC998;</li>
+<li>&#xC5B4;&#xB290; &#xD55C; &#xCABD; &#xBC29;&#xD5A5;&#xC73C;&#xB85C;&#xB9CC; &#xD0D0;&#xC0C9;&#xD560; &#xC218; &#xC788;&#xB2E4;&#xB294; &#xC758;&#xBBF8;</li>
+<li><p>&#xCD5C;&#xC545;:&#xC2DC;&#xAC04;&#xBCF5;&#xC7A1;&#xB3C4; O(n) &#xCD5C;&#xC120;:O(1)</p>
+<p>ex) &#xC815;&#xB82C;&#xB418;&#xC9C0; &#xC54A;&#xC740; &#xBC30;&#xC5F4;&#xC758; &#xC694;&#xC18C;&#xB97C; &#xD558;&#xB098;&#xC529; &#xBAA8;&#xB450; &#xAC80;&#xC0AC; - &#xC624;&#xB984;&#xCC28;&#xC21C; ,&#xB0B4;&#xB9BC;&#xCC28;&#xC21C; &#xAC80;&#xC0AC;</p>
+</li>
+</ul>
+</li>
+<li><p>&#xC774;&#xC9C4; &#xD0D0;&#xC0C9; </p>
+<ul>
+<li>&#xB370;&#xC774;&#xD130;&#xAC00; &#xC815;&#xB82C;&#xB41C; &#xC0C1;&#xD0DC;&#xC77C; &#xB54C;&#xB9CC; &#xC0AC;&#xC6A9;</li>
+<li>&#xB9AC;&#xC2A4;&#xD2B8;&#xC5D0;&#xC11C; &#xD0D0;&#xC0C9;&#xC758; &#xBC94;&#xC704;&#xB97C; 1/2&#xB85C; &#xC904;&#xC5EC; &#xB098;&#xAC00;&#xBA74;&#xC11C; &#xC22B;&#xC790;&#xB97C; &#xD0D0;&#xC0C9;&#xD558;&#xB294; &#xBC29;&#xBC95;</li>
+<li><p>O(log n) &#xC2DC;&#xAC04; &#xBCF5;&#xC7A1;&#xB3C4; 
+ex) [10,12,13,14,15,18,19] &#xC5D0;&#xC11C; 18 &#xC758; &#xC778;&#xB371;&#xC2A4;&#xB97C; &#xCC3E;&#xB294; &#xBC29;&#xBC95;</p>
+<pre><code>func binarySearch(arr []int, target int) int {
+first, last := 0, len(arr)-1
+
+for first &lt;= last {
+  mid := (first + last) / 2 //&#xBAAB; &#xC5F0;&#xC0B0;&#xC790;
+  if arr[mid] == target {
+      return mid 
+  } else if arr[mid] &gt; target {
+  //&#xCC3E;&#xB294; &#xC22B;&#xC790;&#xAC00; &#xC911;&#xC559;&#xBCF4;&#xB2E4; &#xC791;&#xC740;&#xAC00;? &#xC778;&#xB371;&#xC2A4;&#xB97C; 1&#xC744; &#xBE80;&#xACE0; last &#xBCC0;&#xACBD;= &#xC911;&#xC559;&#xBCF4;&#xB2E4; &#xC791;&#xC740; &#xCABD; &#xC808;&#xBC18; &#xBC84;&#xB9BC;
+       last = mid - 1
+  } else { 
+      first = mid + 1
+  }
+}
+
+return -1 // &#xCC3E;&#xC9C0; &#xBABB;&#xD588;&#xC744; &#xB54C; -1 &#xBC18;&#xD658;
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+
                                 
                                 </section>
                             
@@ -422,7 +457,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"탐색","level":"1.3.3","depth":2,"next":{"title":"정렬","level":"1.3.4","depth":2,"path":"posts/알고리즘/Sort.md","ref":"posts/알고리즘/Sort.md","articles":[]},"previous":{"title":"동적계획","level":"1.3.2","depth":2,"path":"posts/알고리즘/DynamicProgramming.md","ref":"posts/알고리즘/DynamicProgramming.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/알고리즘/Search.md","mtime":"2023-08-11T04:23:26.836Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-16T00:09:15.069Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"탐색","level":"1.3.3","depth":2,"next":{"title":"정렬","level":"1.3.4","depth":2,"path":"posts/알고리즘/Sort.md","ref":"posts/알고리즘/Sort.md","articles":[]},"previous":{"title":"동적계획","level":"1.3.2","depth":2,"path":"posts/알고리즘/DynamicProgramming.md","ref":"posts/알고리즘/DynamicProgramming.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/알고리즘/Search.md","mtime":"2023-11-10T01:55:41.316Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-12-25T02:32:16.774Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

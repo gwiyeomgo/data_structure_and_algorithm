@@ -15,6 +15,6 @@ git clean -fx _book
 # upload
  git add .
  git commit -a -m "update docs-20230816"
- git push -u origin main
+ git push -u origin master
 
 ## gitbook serve

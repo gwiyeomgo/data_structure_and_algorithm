@@ -375,7 +375,46 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h1 id="&#xD574;&#xC2DC;-&#xD14C;&#xC774;&#xBE14;">&#xD574;&#xC2DC; &#xD14C;&#xC774;&#xBE14;</h1>
+<p>&#xACE0;&#xC720;&#xD55C; &#xD0A4;&#xB97C; &#xC0AC;&#xC6A9;&#xD574; &#xD0A4;-&#xAC12; &#xC30D;&#xC744; &#xC800;&#xC7A5;&#xD558;&#xB294; &#xC120;&#xD615; &#xC790;&#xB8CC;&#xAD6C;&#xC870;</p>
+<p>&#xD574;&#xC2DC; &#xD568;&#xC218;&#xB294; &#xD0A4;&#xB97C; &#xB9E4;&#xACA8;&#xBCC0;&#xC218;&#xB85C; &#xBC1B;&#xACE0; &#xC815;&#xC218;&#xB97C; &#xBC18;&#xD658;</p>
+<p>&#xB300;&#xB7C9;&#xC758; &#xB370;&#xC774;&#xD130;&#xAC00; &#xC788;&#xACE0; &#xAC1C;&#xBCC4; &#xB370;&#xC774;&#xD130;&#xC5D0; &#xBE60;&#xB974;&#xAC8C; &#xC811;&#xADFC;&#xD574;&#xC57C; &#xD560; &#xB54C; &#xC0AC;&#xC6A9;</p>
+<p>&#xC601;&#xC5B4; &#xC0AC;&#xC804;&#xC744; &#xAC80;&#xC0C9;&#xD558;&#xB294; &#xD504;&#xB85C;&#xADF8;&#xB7A8; &#xB4F1;..
+&#xBB34;&#xC791;&#xC704; &#xB370;&#xC774;&#xD130;&#xB97C; &#xBE60;&#xB974;&#xAC8C; &#xAC80;&#xC0C8;&#xD558;&#xB294; &#xACBD;&#xC6B0;..</p>
+<p><a href="https://leetcode.com/problems/two-sum/" target="_blank">&#xB450;&#xC218;&#xC758;&#xD569;</a></p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
+
+<span class="hljs-keyword">func</span> twoSum(nums []<span class="hljs-keyword">int</span>, target <span class="hljs-keyword">int</span>) []<span class="hljs-keyword">int</span> {
+    <span class="hljs-comment">// &#xB9F5;&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xC694;&#xC18C;&#xC758; &#xAC12;&#xACFC; &#xC778;&#xB371;&#xC2A4;&#xB97C; &#xC800;&#xC7A5;</span>
+    numMap := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-keyword">int</span>]<span class="hljs-keyword">int</span>)
+
+    <span class="hljs-keyword">for</span> i, num := <span class="hljs-keyword">range</span> nums {
+        complement := target - num
+
+        <span class="hljs-comment">// complement&#xAC00; &#xB9F5;&#xC5D0; &#xC788;&#xB2E4;&#xBA74; &#xD574;&#xB2F9; &#xC778;&#xB371;&#xC2A4;&#xC640; &#xD604;&#xC7AC; &#xC778;&#xB371;&#xC2A4;&#xB97C; &#xBC18;&#xD658;</span>
+        <span class="hljs-keyword">if</span> index, ok := numMap[complement]; ok {
+            <span class="hljs-keyword">return</span> []<span class="hljs-keyword">int</span>{index, i}
+        }
+
+        <span class="hljs-comment">// complement&#xAC00; &#xB9F5;&#xC5D0; &#xC5C6;&#xB2E4;&#xBA74; &#xD604;&#xC7AC; &#xAC12;&#xC744; &#xB9F5;&#xC5D0; &#xCD94;&#xAC00;</span>
+        numMap[num] = i
+    }
+
+    <span class="hljs-comment">// &#xC77C;&#xCE58;&#xD558;&#xB294; &#xACBD;&#xC6B0;&#xAC00; &#xC5C6;&#xC73C;&#xBA74; &#xBE48; &#xBC30;&#xC5F4; &#xBC18;&#xD658;</span>
+    <span class="hljs-keyword">return</span> []<span class="hljs-keyword">int</span>{}
+}
+
+<span class="hljs-keyword">func</span> main() {
+    arr := []<span class="hljs-keyword">int</span>{<span class="hljs-number">2</span>, <span class="hljs-number">7</span>, <span class="hljs-number">11</span>, <span class="hljs-number">15</span>}
+    target := <span class="hljs-number">9</span>
+
+    result := twoSum(arr, target)
+    fmt.Println(result) <span class="hljs-comment">// &#xC608;&#xC0C1; &#xACB0;&#xACFC;: [0 1]</span>
+}
+</code></pre>
+
                                 
                                 </section>
                             
@@ -418,7 +457,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"선형구조-해쉬테이블","level":"1.2.6","depth":2,"next":{"title":"비선형-트리","level":"1.2.7","depth":2,"path":"posts/자료구조/비선형구조/Tree.md","ref":"posts/자료구조/비선형구조/Tree.md","articles":[]},"previous":{"title":"선형구조-큐","level":"1.2.5","depth":2,"path":"posts/자료구조/선형구조/Queue.md","ref":"posts/자료구조/선형구조/Queue.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/자료구조/선형구조/HashTable.md","mtime":"2023-08-11T08:48:18.759Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-16T00:09:15.069Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"선형구조-해쉬테이블","level":"1.2.6","depth":2,"next":{"title":"비선형-트리","level":"1.2.7","depth":2,"path":"posts/자료구조/비선형구조/Tree.md","ref":"posts/자료구조/비선형구조/Tree.md","articles":[]},"previous":{"title":"선형구조-큐","level":"1.2.5","depth":2,"path":"posts/자료구조/선형구조/Queue.md","ref":"posts/자료구조/선형구조/Queue.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/자료구조/선형구조/HashTable.md","mtime":"2023-11-22T06:57:53.563Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-12-25T02:32:16.774Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
