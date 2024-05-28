@@ -191,3 +191,21 @@ func longestConsecutive(nums []int) int {
 	return maxLength
 }
 ```
+
+# [피보나치수](https://school.programmers.co.kr/learn/courses/30/lessons/12945)
+```
+function solution(n) {
+const mod = 1234567;
+const fib = [0, 1];
+
+    for (let i = 2; i <= n; i++) {
+        fib[i] = (fib[i - 1] + fib[i - 2]) % mod;
+    }
+
+    return fib[n];
+}
+```
+
+결과를 더 작은 값으로 제한하기 위해 나머지 연산을 사용하는 것이 일반적인 방법
+1234567로 나눈 나머지를 반환하여 결과를 제한
+결과가 항상 양수이면서 정수형의 범위를 초과하지 않는 값을 얻을 수 있음
